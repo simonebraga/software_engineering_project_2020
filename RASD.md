@@ -41,6 +41,10 @@
 ## INTRODUCTION
 
 ### Purpose: here we include the goals of the project
+
+- G1: SafeStreets allows users to send pictures of violations, including their date, time and position.
+- G2: 
+
 ### Scope: here we include an analysis of the world and of the shared phenomena 
 ### Definitions, Acronyms, Abbreviations
 ### Revision history
