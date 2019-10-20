@@ -42,11 +42,19 @@
 
 ### Purpose: here we include the goals of the project
 
-- G1: SafeStreets allows users to send pictures of violations, including their date, time and position.
-- G2: 
+- G1: SafeStreets must allow users to send pictures of violations, including their date, time and position. <!--TODO specify "send"-->
+- G2: Users must be allowed to access to anonymous and aggregated data.
+- G3: Authorities must be allowed to access to all the data without restrictions.
+- G4: When available, data provided from municipalities must be integrated in SafeStreets.
+- G5: SafeStreets must suggest possible interventions according to data that have been collected.
+- G6: SafeStreets must be able to generate traffic tickets using MFS.
+- G7: Data provided to generate fines must be checked in order to guarantee their reliability.
+- G8: Safestreets must provide statistics on collected data.
 
 ### Scope: here we include an analysis of the world and of the shared phenomena 
 ### Definitions, Acronyms, Abbreviations
+- MFS: municipality's service to generate fines <!--TODO-->
+
 ### Revision history
 ### Reference Documents
 ### Document Structure
