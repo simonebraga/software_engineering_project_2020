@@ -7,10 +7,10 @@
 
 * **G2**	Users must be allowed to access to anonymous and aggregated data.
 * **G3**	Authorities must be allowed to access to all the data without restrictions.
-* **G4**	When available, data provided from municipalities must be integrated into SafeStreets.
+* **G4**	When available, data provided from municipality must be integrated into SafeStreets.
 * **G5**	SafeStreets must suggest possible interventions according to data that have been collected.
 * **G6**	SafeStreets must be able to generate traffic tickets using MTS.
-* **G7**	Data provided to generate fines must be checked to guarantee their reliability.
+* **G7**	Data provided to generate traffic tickets must be checked to guarantee their reliability.
 * **G8**	SafeStreets must provide statistics on issued tickets.
 
 ### Scope
@@ -84,8 +84,18 @@
 ## EFFORT SPENT
 <!--in this section you will include information about the number of hours each group member has worked for this document-->
 
-| Task         | Braga | Calderon | Favaro |
-| ------------ | :---: | :------: | :----: |
-| Introduction |   6   |    3     |   3    |
+| Task                                      | Braga | Calderon | Favaro |
+| ----------------------------------------- | :---: | :------: | :----: |
+| Introduction                              |   6   |    3     |   3    |
+| Product perspective                       |       |          |        |
+| Product functions                         |       |          |        |
+| User characteristics                      |       |          |        |
+| Assumptions, dependencies and constraints |   1   |          |        |
+| External Interface Requirements           |       |          |        |
+| Functional Requirements                   |   1   |          |        |
+| Performance Requirements                  |       |          |        |
+| Design Constraints                        |       |          |        |
+| Software System Attributes                |       |          |        |
+| Formal Analysis using Alloy               |       |          |        |
 
 ## REFERENCES
