@@ -1,10 +1,8 @@
 [TOC]
 
+# INTRODUCTION
 
-
-## INTRODUCTION
-
-### Purpose 
+## Purpose
 <!--here we include the goals of the project-->
 
 * **G1**	SafeStreets must allow users to send pictures of violations, including their date, time and position. <!--TODO specify "send"-->
@@ -17,23 +15,22 @@
 * **G7**	Data provided to generate traffic tickets must be checked to guarantee their reliability.
 * **G8**	SafeStreets must provide statistics on issued tickets.
 
-### Scope
-
+## Scope
 <!--here we include an analysis of the world and of the shared phenomena-->
 
-### Definitions, Acronyms, Abbreviations
+## Definitions, Acronyms, Abbreviations
 
-#### Definitions
+### Definitions
 
-#### Acronyms
+### Acronyms
 
 * **MTS (Municipality Tickets Service)** Service offered by the municipality to generate traffic tickets from information about the violations.
 
-#### Abbreviations
+### Abbreviations
 
-### Revision history
-### Reference Documents
-### Document Structure
+## Revision history
+## Reference Documents
+## Document Structure
 
 **Section 1** is an overall introduction to the application. It includes the description of the main functionalities of the application, an analysis of scenarios in which the application works, the list of the potential users of the application with a concise description of the possible interactions and the definition of world-level goals. Also, some meta-informations are included, like revision history, references, and explanation of the conventions occurring in the document.
 
@@ -45,48 +42,48 @@
 
 **Section 5** includes information about the number of hours each group member has worked for this document.
 
-## OVERALL DESCRIPTION
+# OVERALL DESCRIPTION
 
-### Product perspective
+## Product perspective
 <!--here we include further details on the shared phenomena and a domain model (class diagrams and statecharts)-->
-### Product functions
+## Product functions
 <!--here we include the most important requirements-->
-### User characteristics
+## User characteristics
 <!--here we include anything that is relevant to clarify their needs-->
-### Assumptions, dependencies and constraints
+## Assumptions, dependencies and constraints
 <!--here we include domain assumptions-->
 
-## SPECIFIC REQUIREMENTS
+# SPECIFIC REQUIREMENTS
 <!--Here we include more details on all aspects in Section 2 if they can be useful for the development team-->
 
-### External Interface Requirements
+## External Interface Requirements
 
-#### User Interfaces
-#### Hardware Interfaces
-#### Software Interfaces 
-#### Communication Interfaces
+### User Interfaces
+### Hardware Interfaces
+### Software Interfaces 
+### Communication Interfaces
 
-### Functional Requirements
+## Functional Requirements
 <!--definition of use case diagrams, use cases and associated sequence/activity diagrams, and mapping on requirements-->
-### Performance Requirements
-### Design Constraints
+## Performance Requirements
+## Design Constraints
 
-#### Standards compliance
-#### Hardware limitations
-#### Any other constraint
+### Standards compliance
+### Hardware limitations
+### Any other constraint
 
-### Software System Attributes
+## Software System Attributes
 
-#### Reliability
-#### Availability
-#### Security
-#### Maintainability
-#### Portability
+### Reliability
+### Availability
+### Security
+### Maintainability
+### Portability
 
-## FORMAL ANALYSIS USING ALLOY
+# FORMAL ANALYSIS USING ALLOY
 <!--this section should include a brief presentation of the main objectives driving the formal modeling activity, as well as a description of the model itself, what can be proved with it, and why what is proved is important given the problem at hand. To show the soundness and correctness of the model, this section can show some worlds obtained by running it, and/or the results of the checks performed on meaningful assertions-->
 
-## EFFORT SPENT
+# EFFORT SPENT
 <!--in this section you will include information about the number of hours each group member has worked for this document-->
 
 | Task                                      | Braga | Calderon | Favaro |
@@ -103,4 +100,4 @@
 | Software System Attributes                |       |          |        |
 | Formal Analysis using Alloy               |       |          |        |
 
-## REFERENCES
+# REFERENCES
