@@ -1,3 +1,7 @@
+[TOC]
+
+
+
 ## INTRODUCTION
 
 ### Purpose 
@@ -14,6 +18,7 @@
 * **G8**	SafeStreets must provide statistics on issued tickets.
 
 ### Scope
+
 <!--here we include an analysis of the world and of the shared phenomena-->
 
 ### Definitions, Acronyms, Abbreviations
