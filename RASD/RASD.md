@@ -21,13 +21,13 @@
 
 ### Definitions
 
-* **User** <TOBEDEFINED>
-* **Authority** <TOBEDEFINED>
-* **Municipality** <TOBEDEFINED>
+* **User** [TOBEDEFINED]
+* **Authority** [TOBEDEFINED]
+* **Municipality** [TOBEDEFINED]
 
-* **Timestamp** <TOBEDEFINED>
-* **Violation report** <TOBEDEFINED>
-* **Equivalent events** <TOBEDEFINED>
+* **Timestamp** [TOBEDEFINED]
+* **Violation report** [TOBEDEFINED]
+* **Equivalent events** [TOBEDEFINED]
 
 ### Acronyms
 
@@ -93,7 +93,7 @@
 
 **G1)	SafeStreets must allow users to send pictures of violations, including their date, time and position.**
 
-* **R1**	When a picture is taken using <VIOLATIONREPORTFUNCTIONALITY>, a new violation record is generated.
+* **R1**	When a picture is taken using [VIOLATIONREPORTFUNCTIONALITY], a new violation record is generated.
 * **R2**	When a new violation record is generated, the current position of the user is automatically detected and added to the report.
 * **R3**	When a new violation record is generated, the timestamp is added to the report.
 * **R4**	When a new violation record is generated, the photo is scanned by an OCR software to automatically detect the plate.
@@ -104,12 +104,12 @@
 
 **G2)	Users must be allowed to access to anonymous and aggregated data.**
 
-* **R9**	<REQUESTFUNCTIONALITY> allows users to get information about violations in a specific zone and time interval.
-* **R10**	<REQUESTFUNCTIONALITY> anonymizes information before sending it to the user.
+* **R9**	[REQUESTFUNCTIONALITY] allows users to get information about violations in a specific zone and time interval.
+* **R10**	[REQUESTFUNCTIONALITY] anonymizes information before sending it to the user.
 
 **G3)	Authorities must be allowed to access to all the data without restrictions.**
 
-* **R11**	<SPECIALREQUESTFUNCTIONALITY> allows authorities to get unrestricted information about violations.
+* **R11**	[SPECIALREQUESTFUNCTIONALITY] allows authorities to get unrestricted information about violations.
 
 **G4)	SafeStreets must suggest possible interventions according to data about violations and accidents.**
 
@@ -129,7 +129,7 @@
 
 * **R17**	When a new ticket is generated using MTS, ticket-related information is stored by SafeStreets.
 * **R18**	SafeStreets must build statistics from stored data about issued tickets.
-* **R19**	<SPECIALREQUESTFUNCTIONALITY> allows authorities to get information and statistics on issued tickets.
+* **R19**	[SPECIALREQUESTFUNCTIONALITY] allows authorities to get information and statistics on issued tickets.
 
 ## Performance Requirements
 ## Design Constraints
