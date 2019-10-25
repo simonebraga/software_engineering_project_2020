@@ -5,6 +5,18 @@
 ## Purpose
 <!--here we include the goals of the project-->
 
+**SafeStreets** is a crowd-sourced application that intends to provide users with the possibility to notify authorities when traffic violations occur. The main target of the application are violations that can be easily captured by a camera (like, for instance, parking violations).
+
+The core of the application is **SafeReports**, which is the service that provides to the users the possibility to send a notification. To do so, they are requested to take a picture of the vehicle involved in the violation. Then the photo is checked and matched with some data captured at the moment (position, date and time) and sent to SafeStreets, which stores it to offer several services based on the analysis of these data.
+
+The first one is **SafeAnalytics**, which provides the possibility to mine SafeStreets data to get information about violations. This service is offered to users and authorities, that can access data with different restriction levels. Users have access to anonymous and aggregate data concerning a selected zone. Authorities, instead, have access to unrestricted information on all the stored data.
+
+SafeStreets must forward violation reports to Municipality Tickets Service to automatically generate traffic tickets. Data about issued tickets must be stored and analyzed to provide statistics to the authorities through **SafeTickets**, which is another service thought to be enjoyed by authorities.
+
+The last service provided by SafeStreets is thought for the municipality. Its name is **SafeSuggestions**, and its purpose is to analyze the data collected by SafeStreets to suggest possible interventions aimed at reducing the incidence of accidents and violations in the most critical zones.
+
+The purpose of the software is captured by the following goals:
+
 * **G1**	SafeStreets must allow users to send pictures of violations, including their date, time and position.
 
 * **G2**	Users must be allowed to access to anonymous and aggregated data.
@@ -22,9 +34,9 @@
 ### Definitions
 
 * **User** [TOBEDEFINED]
+
 * **Authority** [TOBEDEFINED]
 * **Municipality** [TOBEDEFINED]
-
 * **Timestamp** [TOBEDEFINED]
 * **Violation report** [TOBEDEFINED]
 * **Equivalent events** [TOBEDEFINED]
@@ -32,6 +44,7 @@
 ### Acronyms
 
 * **MTS (Municipality Tickets Service)** Service offered by the municipality to generate traffic tickets from information about the violations.
+
 * **OCR (Optical Character Recognition)** Software that converts text scanned from a photo in a machine-encoded text
 
 ### Abbreviations
@@ -40,7 +53,7 @@
 ## Reference Documents
 ## Document Structure
 
-**Section 1** is an overall introduction to the application. It includes the description of the main functionalities of the application, an analysis of scenarios in which the application works, the list of the potential users of the application with a concise description of the possible interactions and the definition of world-level goals. Also, some meta-informations are included, like revision history, references, and explanation of the conventions occurring in the document.
+**Section 1** is an overall introduction to the application. It includes the description of the main functionalities of the application, an analysis of scenarios in which the application works, the list of the potential users of the application with a concise description of the possible interactions and the definition of world-level goals. Also, some meta-data are included, like revision history, references, and explanation of the conventions occurring in the document.
 
 **Section 2** includes the domain assumptions, a detailed description of the shared phenomena and a formal description of the domain carried out using UML class and state diagrams. The purpose of this section is to exhaustively describe the entities and the scenarios that the application must interact with, to be able, in the following sections, to focus only on the application requirements.
 
@@ -62,6 +75,7 @@
 <!--here we include domain assumptions-->
 
 * **D1**	Users do not modify reality to generate fake violation reports.
+
 * **D2**	The violations notified by the users are coherent with the taken pictures.
 * **D3**	There exists a finite set of violations.
 * **D4**	There exists a finite number of possible interventions.
@@ -85,7 +99,7 @@
 
 ### User Interfaces
 ### Hardware Interfaces
-### Software Interfaces 
+### Software Interfaces
 ### Communication Interfaces
 
 ## Functional Requirements
@@ -94,6 +108,7 @@
 **G1)	SafeStreets must allow users to send pictures of violations, including their date, time and position.**
 
 * **R1**	When a picture is taken using [VIOLATIONREPORTFUNCTIONALITY], a new violation record is generated.
+
 * **R2**	When a new violation record is generated, the current position of the user is automatically detected and added to the report.
 * **R3**	When a new violation record is generated, the timestamp is added to the report.
 * **R4**	When a new violation record is generated, the photo is scanned by an OCR software to automatically detect the plate.
@@ -105,6 +120,7 @@
 **G2)	Users must be allowed to access to anonymous and aggregated data.**
 
 * **R9**	[REQUESTFUNCTIONALITY] allows users to get information about violations in a specific zone and time interval.
+
 * **R10**	[REQUESTFUNCTIONALITY] anonymizes information before sending it to the user.
 
 **G3)	Authorities must be allowed to access to all the data without restrictions.**
@@ -114,6 +130,7 @@
 **G4)	SafeStreets must suggest possible interventions according to data about violations and accidents.**
 
 * **R12**	SafeStreets must store data about accidents provided by the municipality when available.
+
 * **R13**	SafeStreets must analyze collected data crossed with data from the municipality to suggest possible interventions.
 
 **G5)	SafeStreets must be able to generate traffic tickets using MTS.**
@@ -123,11 +140,13 @@
 **G6)	Data provided to generate traffic tickets must be checked to guarantee their reliability.**
 
 * **R15**	When the users send a violation report, its integrity is checked.
+
 * **R16**	If the integrity check is successful, the violation report is stored. Otherwise, the violation report is discarded.
 
 **G7)	SafeStreets must provide statistics on issued tickets.**
 
 * **R17**	When a new ticket is generated using MTS, ticket-related information is stored by SafeStreets.
+
 * **R18**	SafeStreets must build statistics from stored data about issued tickets.
 * **R19**	[SPECIALREQUESTFUNCTIONALITY] allows authorities to get information and statistics on issued tickets.
 
@@ -154,13 +173,13 @@
 
 | Task                                      | Braga | Calderon | Favaro |
 | ----------------------------------------- | :---: | :------: | :----: |
-| Introduction                              |   6   |    3     |   3    |
+| Introduction                              |   10  |    3     |   3    |
 | Product perspective                       |       |          |        |
 | Product functions                         |       |          |        |
 | User characteristics                      |       |          |        |
-| Assumptions, dependencies and constraints |   5   |    3     |   3    |
+| Assumptions, dependencies and constraints |   6   |    3     |   3    |
 | External Interface Requirements           |       |          |        |
-| Functional Requirements                   |   5   |    3     |   3    |
+| Functional Requirements                   |   6   |    3     |   3    |
 | Performance Requirements                  |       |          |        |
 | Design Constraints                        |       |          |        |
 | Software System Attributes                |       |          |        |
