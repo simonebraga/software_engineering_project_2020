@@ -327,16 +327,16 @@ Municipality -> Sign up
 
 | Task                 | Braga | Calderon | Favaro |
 | -------------------- | :---: | :------: | :----: |
-| Introduction         |  10   |    3     |   5    |
+| Introduction         |  10   |    5     |   5    |
 | Product perspective  |       |          |        |
 | Product functions    |       |          |        |
 | User characteristics |       |          |        |
-| Assumptions, dependencies and constraints |   5   |    3     |   5   |
+| Assumptions, dependencies and constraints |   5   |    5     |   5   |
 | External Interface Requirements           |       |          |       |
-| Functional Requirements                   |   5   |    3     |   5  |
-| Assumptions, dependencies and constraints |   6   |    3     |   3   |
+| Functional Requirements                   |   5   |    5     |   5  |
+| Assumptions, dependencies and constraints |   6   |    4     |   3   |
 | External Interface Requirements           |       |          |       |
-| Functional Requirements                   |   6   |    3     |  7  |
+| Functional Requirements                   |   6   |    6     |  7  |
 | Performance Requirements                  |       |          |       |
 | Design Constraints                        |       |          |       |
 | Software System Attributes                |       |          |       |
