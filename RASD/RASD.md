@@ -24,10 +24,10 @@
 * **User** [TOBEDEFINED]
 * **Authority** [TOBEDEFINED]
 * **Municipality** [TOBEDEFINED]
-
 * **Timestamp** [TOBEDEFINED]
 * **Violation report** [TOBEDEFINED]
 * **Equivalent events** [TOBEDEFINED]
+* **Activation code** [TOBEDEFINED]
 
 ### Acronyms
 
@@ -89,6 +89,101 @@
 ### Communication Interfaces
 
 ## Functional Requirements
+
+### Users
+
+
+
+### Authorities
+
+**Scenarios**
+
+* **S1** <!-- {access general data} -->
+
+  [Name], a policeman, was notified about a stolen car. He gets the idea of looking for its possible traffic violations, in order to find it. He uses *SafeAnalytics* to retrieve information about it, searching for its license plate. [Name] discovers that the car is often parked on a reserved parking and finds the car in that location.
+
+  
+
+* **S2** <!-- {statistics from fines} -->
+
+  [Name],  the police chief, needs to collect the more money he can from traffic tickets, to fund the construction of another police office. Thanks to *[GETTICKETINFO]* he is able to identify the areas in which more traffic tickets are generated and focus on that areas.
+
+**Use case diagram**
+
+<!--BEGINTODO-->
+
+Authority -> Sign up
+
+​		-> Login
+
+​		-> Retrieve violations info 	-> Google Maps
+
+​		-> Get tickets info 			-> MTS
+
+<!--ENDTODO-->
+
+**Use Cases**
+
+| Name             | Sign Up                                                      |
+| :--------------- | :----------------------------------------------------------- |
+| Actor(s)         | Authority                                                    |
+| Entry conditions | The authority opens SafeStreets on his device                |
+| Events flow      | - The authority chooses the *sign up* option<br />- The authority selects the option to identify himself as authority<br />-The authority inserts the activation code<br />- The authority inserts his e-mail and password<br />- Authority confirms his data<br />- SafeStreets saves his data |
+| Exit conditions  | The authority is registered and his data are saved           |
+| Exceptions       | - An account with the same e-mail was already created. In this case SafeStreets warns the authority and asks to change e-mail or log in<br />- The activation code is not valid. The authority is asked to reinsert it<br />- The authority doesn't provide all the data. In this case the system asks him to insert them.<br /> |
+
+| Name             | Login                                                        |
+| ---------------- | ------------------------------------------------------------ |
+| Actor(s)         | Authority                                                    |
+| Entry conditions | - The user has opened the application on his device<br />- The user is already registered |
+| Events flow      | - The authority chooses the *login* option<br />- The authority inserts his e-mail and password |
+| Exit conditions  | The authority is identified                                  |
+| Exceptions       | - The e-mail is not registered. The authority is asked to reinsert it or sign up<br />- The password is incorrect. The authority is asked to reinsert it |
+
+| Name             | Retrieve violation info                                      |
+| ---------------- | ------------------------------------------------------------ |
+| Actor(s)         | Authority, Google Maps                                       |
+| Entry conditions | The authority accesses the *SafeAnalytics* function          |
+| Events flow      | - The authority selects the type of data he wants to receive<br />- Data requested are sent to the authority |
+| Exit conditions  | SafeStreets displays the data. If a map is required, it is provided by Google Maps |
+| Exceptions       | /                                                            |
+
+| Name             | Get tickets info                                             |
+| ---------------- | ------------------------------------------------------------ |
+| Actor(s)         | Authority, MTS                                               |
+| Entry conditions | Authority accesses the *[GETTICKETSINFO]* functionality      |
+| Events flow      | - The authority selects the type of data he wants to receive<br />- Data requested are sent to the authority |
+| Exit conditions  | Safestreets displays the data                                |
+| Exceptions       | /                                                            |
+
+
+
+### Municipality
+
+**Scenarios**
+
+* **S1**<!-- {get intervention suggestion} -->
+
+  [Name], a municipality officer of the city of Milan, is looking for possible interventions in the city, to improve the mobility of his area. [Name] logs in SafeStreets and accesses *SafeSuggestions*. He is suggested to build a barrier near the sidewalk in [STREETNAME], due to the frequent parking violations that occur there.
+
+(data from municipality)
+
+**Use Case Diagram**
+
+<!--BEGINTODO-->
+
+Municipality -> Sign up
+
+​						Login
+
+​						Get intervention suggestion
+
+<!--ENDTODO-->
+
+
+
+
+
 <!--definition of use case diagrams, use cases and associated sequence/activity diagrams, and mapping on requirements-->
 
 **G1)	SafeStreets must allow users to send pictures of violations, including their date, time and position.**
@@ -158,9 +253,9 @@
 | Product perspective                       |       |          |        |
 | Product functions                         |       |          |        |
 | User characteristics                      |       |          |        |
-| Assumptions, dependencies and constraints |   5   |    3     |   3    |
+| Assumptions, dependencies and constraints |   5   |    3     |   5    |
 | External Interface Requirements           |       |          |        |
-| Functional Requirements                   |   5   |    3     |   3    |
+| Functional Requirements                   |   5   |    3     |   5    |
 | Performance Requirements                  |       |          |        |
 | Design Constraints                        |       |          |        |
 | Software System Attributes                |       |          |        |
