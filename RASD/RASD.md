@@ -205,9 +205,9 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 |Exit conditions | The results are displayed in a map exploiting Google Maps'API |
 |Exceptions | |
 
-![prova](resources/sequence_diagram_reports.svg)
+![](resources/sequence_diagram_reports.svg)
 
-
+![](resources/sequence_diagram_retrieve_information.svg)
 
 ### Authorities
 
