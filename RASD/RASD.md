@@ -60,46 +60,31 @@ This section was focused on the shared phenomena and the relationships between t
 ### Definitions
 
 * **User** is the consumer of the application. It includes common users, authorities and municipality users.
-
 * **Common user** is the user type that everyone can sign up as. It does not require any kind of verification.
 * **Authority** is the user type that authorities can get. It requires the verification of a disposable code.
 * **Municipality user** is the user type that municipal employees can get. It requires the verification of a disposable code.
 * **Timestamp** is a set of information about the time. It includes date (day, month, year) and time (hour, minute, time zone).
 * **Violation report** is the unit of notification collected by SafeStreets. It consists of:
-
   * Picture of the violation
   * License plate of the vehicle involved
   * Type of the violation
   * Position of the violation
   * Timestamp of the notification
-
-<<<<<<< HEAD
-
 * **Equivalent events** are set of violation reports that satisfy the following conditions:
-
   * Same vehicles involved
   * Same types of violation
   * Position of the violations are different at most for 10 meters
   * Same dates of the violations
-=======
-* **Authority** [TOBEDEFINED]
-* **Municipality** [TOBEDEFINED]
-* **Timestamp** [TOBEDEFINED]
-* **Violation report** [TOBEDEFINED]
-* **Equivalent events** [TOBEDEFINED]
 * **Activation code** [TOBEDEFINED]
->>>>>>> 502523cbd294450bef9853686029f49ab2970ec5
 
 ### Acronyms
 
 * **MTS (Municipality Tickets Service)** Service offered by the municipality to generate traffic tickets from information about the violations.
-
 * **OCR (Optical Character Recognition)** Software that converts text scanned from a photo in a machine-encoded text.
 
 ### Abbreviations
 
 * **Gn**  nth goal.
-
 * **Dn**  nth domain assumption.
 * **Rn**  nth requirement.
 
