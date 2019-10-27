@@ -107,6 +107,8 @@ The purpose of the software is captured by the following goals:
 
 ### Users
 
+![prova](/images/usecaselogin.svg)
+
 **Scenarios**
 
 **S1**
@@ -115,7 +117,7 @@ Ted Mosby, a very honest architect , is tired of seeing cars parked in the red z
 house. He told the problem to some police agents in the past but nothing happened. He wants
 to report these violations again but he doesn't know how. Fortunately Barney, a public employee,
 suggests him to download and use the new app Safestreets for reporting violations. After signing
-up with his cf he can finally report the the violation. Mosby just need to activate the gps and the
+up identifying himself as an user and inserting the email and password he can finally report the the violation. Mosby just need to activate the gps and the
 internet connection and take a picture of the violation.He selects the type of violation from a predefined list. After that he is asked to confirm the plate of the violating
 vehicle. He finally waits for the outcome of his violation report.
 
@@ -125,7 +127,7 @@ vehicle. He finally waits for the outcome of his violation report.
 Sheldon, a theoretical physicists, is currently studying the complexity theory. He thinks that in big
 cities with a huge amount of traffic the number of traffic violations is much larger then in small
 cities and villages. Since Sheldon moved to Milan recently he wants to know the areas of Milan
-with the highest levels of traffic violations in order to avoid parking in those places . Sheldon
+with the highest levels of traffic violations in order to avoid parking in dangerous places . Sheldon
 knows about the SafeStreets app. He logs in inserting his email and password and makes a query for all the traffic violations
 reported in the last month in Milan . The results are anonymized preserving the privacy of the
 violators and then sent back to Sheldon. Sheldon can now park in safe areas.
@@ -133,24 +135,24 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 
 | Name     | Sign-Up    |
 | :------------- | :------------- |
-|Actor| User |
+|Actor| Common User |
 | Entry conditions       | The user opens the app on his smart phone      |
-| Events flow      | <ul><li>The user clicks on the sign up button</li><li>The user selects the option to identify himself as a user.<li>The user fills the forms with email, password, the fiscal code and personal data</li> <li>The users confirms the registration</li><li>The system adds the new user to his data</li></ul>|      |
+| Events flow      | <ul><li>The user clicks on the sign up button</li><li>The user selects the option to identify himself as a common user.<li>The user fills the forms with his email and a password</li> <li>The system confirms his data</li><li>The system adds the new user to his data</li></ul>|      |
 | Exit conditions     | <ul><li>The users is now registered and his account is registered to the system</li></ul>       |
-| Exceptions     | <ul><li>The user has already an account. In this case the system suggests the user to click the login button instead</li><li>The user doesn't complete the data required for the registration. In this case an error is sent to the user asking him to complete the information</li><li></li>The users fills the forms with invalid data. In this case an error is sent to the user asking him to modify the invalid data</ul>   |
+| Exceptions     | <ul><li>The user has already an account. In this case the system suggests the user to click the login button instead</li><li>The user doesn't complete the data required for the registration. In this case an error is sent to the user asking him to complete the information</li><li>The users fills the forms with invalid data. In this case an error is sent to the user asking him to modify the invalid data</ul>   |
 
 
 | Name |Login   |
 | :------------- | :------------- |
-|Actor| User |
+|Actor| Common User |
 | Entry conditions       | <ul><li>The users opens the app on his device </li><li>The user has already Sign up in the app</ul>      |
-| Events flow      | <ul><li>The users presses the login button</li><li>The users types the email and the password</li><li>The user confirms the successful login</ul>     |
-| Exit conditions    | <ul><li>The user is logged in and can now use the SafeStreets services     |
+| Events flow      | <ul><li>The users presses the login button</li><li>The users types the email and the password</li><li>The system confirms the successful login</ul>     |
+| Exit conditions    | <ul><li>The user is logged in and is able to use the SafeStreets services     |
 | Exceptions      | <ul><li>The user types the wrong email or password. In both cases the system sends and error to the user asking him to try the email password combination again.        |
 
 | Name |Report a violation   |
 | :------------- | :------------- |
-|Actor| User, OCR |
+|Actor| Common User, OCR |
 | Entry conditions       | <ul><li>The user has already done the login    |
 | Events flow      |  <ul><li>The user takes a picture of the traffic violation.<li>The required metadata() is added automatically to the picture.<li> The user selects the type of violation from a list of violations.<li>The picture is sent to the OCR software to automatically scan and read the plate.<li>After receiving the plate from the OCR, the system asks the user to confirm the plate of the violation vehicle .<li> After the confirmation the system checks if the new violation is equivalent to an already stored one.<li>The system checks the integrity of the report <li> The systems stores the violation report if and only if the previous equivalence check returned a negative result and the integrity test was positive.  |
 | Exit conditions    | The user receives a notification about the outcome of its violation        |
@@ -159,11 +161,13 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 
 | Name | Retrieve information  |
 | :------------- | :------------- |
-| Actors     | User, Google Maps  |
+| Actors     | Common User, Google Maps  |
 |Entry conditions| <ul><li>The user has already done the login<li>The user wants to retrieve information about traffic violations|
 | Events flow | <ul><li> The user presses the button to start the query for the desired data.<li>The user inserts the geographical filter for the query.<li> The user inserts the time filter for the query<li> The system anonymizes the  information <li> The results are sent to the user
 |Exit conditions | The results are displayed in a map exploiting Google Maps'API |
 |Exceptions | |
+
+![prova](/images/useCaseReport.svg)
 
 
 
