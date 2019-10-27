@@ -207,7 +207,10 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 
 ![](resources/sequence_diagram_reports.svg)
 
-![](resources/sequence_diagram_retrieve_information.svg)
+<br>
+
+<div style="text-align:center"><img src="resources/sequence_diagram_retrieve_information.svg"/></div>
+
 
 ### Authorities
 
