@@ -73,6 +73,7 @@ This section was focused on the shared phenomena and the relationships between t
   * Position of the violation
   * Timestamp of the notification
 
+<<<<<<< HEAD
 
 * **Equivalent events** are set of violation reports that satisfy the following conditions:
 
@@ -80,6 +81,14 @@ This section was focused on the shared phenomena and the relationships between t
   * Same types of violation
   * Position of the violations are different at most for 10 meters
   * Same dates of the violations
+=======
+* **Authority** [TOBEDEFINED]
+* **Municipality** [TOBEDEFINED]
+* **Timestamp** [TOBEDEFINED]
+* **Violation report** [TOBEDEFINED]
+* **Equivalent events** [TOBEDEFINED]
+* **Activation code** [TOBEDEFINED]
+>>>>>>> 502523cbd294450bef9853686029f49ab2970ec5
 
 ### Acronyms
 
@@ -148,6 +157,159 @@ This section was focused on the shared phenomena and the relationships between t
 ### Communication Interfaces
 
 ## Functional Requirements
+
+### Users
+
+**Scenarios**
+
+**S1**
+
+Ted Mosby, a very honest architect , is tired of seeing cars parked in the red zone right in front of his
+house. He told the problem to some police agents in the past but nothing happened. He wants
+to report these violations again but he doesn't know how. Fortunately Barney, a public employee,
+suggests him to download and use the new app Safestreets for reporting violations. After signing
+up with his cf he can finally report the the violation. Mosby just need to activate the gps and the
+internet connection and take a picture of the violation.He selects the type of violation from a predefined list. After that he is asked to confirm the plate of the violating
+vehicle. He finally waits for the outcome of his violation report.
+
+
+**S2**
+
+Sheldon, a theoretical physicists, is currently studying the complexity theory. He thinks that in big
+cities with a huge amount of traffic the number of traffic violations is much larger then in small
+cities and villages. Since Sheldon moved to Milan recently he wants to know the areas of Milan
+with the highest levels of traffic violations in order to avoid parking in those places . Sheldon
+knows about the SafeStreets app. He logs in inserting his email and password and makes a query for all the traffic violations
+reported in the last month in Milan . The results are anonymized preserving the privacy of the
+violators and then sent back to Sheldon. Sheldon can now park in safe areas.
+
+
+| Name     | Sign-Up    |
+| :------------- | :------------- |
+|Actor| User |
+| Entry conditions       | The user opens the app on his smart phone      |
+| Events flow      | <ul><li>The user clicks on the sign up button</li><li>The user selects the option to identify himself as a user.<li>The user fills the forms with email, password, the fiscal code and personal data</li> <li>The users confirms the registration</li><li>The system adds the new user to his data</li></ul>|      |
+| Exit conditions     | <ul><li>The users is now registered and his account is registered to the system</li></ul>       |
+| Exceptions     | <ul><li>The user has already an account. In this case the system suggests the user to click the login button instead</li><li>The user doesn't complete the data required for the registration. In this case an error is sent to the user asking him to complete the information</li><li></li>The users fills the forms with invalid data. In this case an error is sent to the user asking him to modify the invalid data</ul>   |
+
+
+| Name |Login   |
+| :------------- | :------------- |
+|Actor| User |
+| Entry conditions       | <ul><li>The users opens the app on his device </li><li>The user has already Sign up in the app</ul>      |
+| Events flow      | <ul><li>The users presses the login button</li><li>The users types the email and the password</li><li>The user confirms the successful login</ul>     |
+| Exit conditions    | <ul><li>The user is logged in and can now use the SafeStreets services     |
+| Exceptions      | <ul><li>The user types the wrong email or password. In both cases the system sends and error to the user asking him to try the email password combination again.        |
+
+| Name |Report a violation   |
+| :------------- | :------------- |
+|Actor| User, OCR |
+| Entry conditions       | <ul><li>The user has already done the login    |
+| Events flow      |  <ul><li>The user takes a picture of the traffic violation.<li>The required metadata() is added automatically to the picture.<li> The user selects the type of violation from a list of violations.<li>The picture is sent to the OCR software to automatically scan and read the plate.<li>After receiving the plate from the OCR, the system asks the user to confirm the plate of the violation vehicle .<li> After the confirmation the system checks if the new violation is equivalent to an already stored one.<li>The system checks the integrity of the report <li> The systems stores the violation report if and only if the previous equivalence check returned a negative result and the integrity test was positive.  |
+| Exit conditions    | The user receives a notification about the outcome of its violation        |
+| Exceptions      | If the OCR is not able to read the plate then the system sends an error to the user and asks him to repeat the procedure .    |
+
+
+| Name | Retrieve information  |
+| :------------- | :------------- |
+| Actors     | User, Google Maps  |
+|Entry conditions| <ul><li>The user has already done the login<li>The user wants to retrieve information about traffic violations|
+| Events flow | <ul><li> The user presses the button to start the query for the desired data.<li>The user inserts the geographical filter for the query.<li> The user inserts the time filter for the query<li> The system anonymizes the  information <li> The results are sent to the user
+|Exit conditions | The results are displayed in a map exploiting Google Maps'API |
+|Exceptions | |
+
+
+
+### Authorities
+
+**Scenarios**
+
+* **S1** <!-- {access general data} -->
+
+  [Name], a policeman, was notified about a stolen car. He gets the idea of looking for its possible traffic violations, in order to find it. He uses *SafeAnalytics* to retrieve information about it, searching for its license plate. [Name] discovers that the car is often parked on a reserved parking and finds the car in that location.
+
+
+
+* **S2** <!-- {statistics from fines} -->
+
+  [Name],  the police chief, needs to collect the more money he can from traffic tickets, to fund the construction of another police office. Thanks to *[GETTICKETINFO]* he is able to identify the areas in which more traffic tickets are generated and focus on that areas.
+
+**Use case diagram**
+
+<!--BEGINTODO-->
+
+Authority -> Sign up
+
+​		-> Login
+
+​		-> Retrieve violations info 	-> Google Maps
+
+​		-> Get tickets info 			-> MTS
+
+<!--ENDTODO-->
+
+**Use Cases**
+
+| Name             | Sign Up                                                      |
+| :--------------- | :----------------------------------------------------------- |
+| Actor(s)         | Authority                                                    |
+| Entry conditions | The authority opens SafeStreets on his device                |
+| Events flow      | - The authority chooses the *sign up* option<br />- The authority selects the option to identify himself as authority<br />-The authority inserts the activation code<br />- The authority inserts his e-mail and password<br />- Authority confirms his data<br />- SafeStreets saves his data |
+| Exit conditions  | The authority is registered and his data are saved           |
+| Exceptions       | - An account with the same e-mail was already created. In this case SafeStreets warns the authority and asks to change e-mail or log in<br />- The activation code is not valid. The authority is asked to reinsert it<br />- The authority doesn't provide all the data. In this case the system asks him to insert them.<br /> |
+
+| Name             | Login                                                        |
+| ---------------- | ------------------------------------------------------------ |
+| Actor(s)         | Authority                                                    |
+| Entry conditions | - The user has opened the application on his device<br />- The user is already registered |
+| Events flow      | - The authority chooses the *login* option<br />- The authority inserts his e-mail and password |
+| Exit conditions  | The authority is identified                                  |
+| Exceptions       | - The e-mail is not registered. The authority is asked to reinsert it or sign up<br />- The password is incorrect. The authority is asked to reinsert it |
+
+| Name             | Retrieve violation info                                      |
+| ---------------- | ------------------------------------------------------------ |
+| Actor(s)         | Authority, Google Maps                                       |
+| Entry conditions | The authority accesses the *SafeAnalytics* function          |
+| Events flow      | - The authority selects the type of data he wants to receive<br />- Data requested are sent to the authority |
+| Exit conditions  | SafeStreets displays the data. If a map is required, it is provided by Google Maps |
+| Exceptions       | /                                                            |
+
+| Name             | Get tickets info                                             |
+| ---------------- | ------------------------------------------------------------ |
+| Actor(s)         | Authority, MTS                                               |
+| Entry conditions | Authority accesses the *[GETTICKETSINFO]* functionality      |
+| Events flow      | - The authority selects the type of data he wants to receive<br />- Data requested are sent to the authority |
+| Exit conditions  | Safestreets displays the data                                |
+| Exceptions       | /                                                            |
+
+
+
+### Municipality
+
+**Scenarios**
+
+* **S1**<!-- {get intervention suggestion} -->
+
+  [Name], a municipality officer of the city of Milan, is looking for possible interventions in the city, to improve the mobility of his area. [Name] logs in SafeStreets and accesses *SafeSuggestions*. He is suggested to build a barrier near the sidewalk in [STREETNAME], due to the frequent parking violations that occur there.
+
+(data from municipality)
+
+**Use Case Diagram**
+
+<!--BEGINTODO-->
+
+Municipality -> Sign up
+
+​						Login
+
+​						Get intervention suggestion
+
+<!--ENDTODO-->
+
+
+
+
+
 <!--definition of use case diagrams, use cases and associated sequence/activity diagrams, and mapping on requirements-->
 
 **G1)	SafeStreets must allow common users to send pictures of violations, including their date, time and position.**
@@ -217,18 +379,21 @@ This section was focused on the shared phenomena and the relationships between t
 # EFFORT SPENT
 <!--in this section you will include information about the number of hours each group member has worked for this document-->
 
-| Task                                      | Braga | Calderon | Favaro |
-| ----------------------------------------- | :---: | :------: | :----: |
-| Introduction                              |   10  |    3     |   3    |
-| Product perspective                       |       |          |        |
-| Product functions                         |       |          |        |
-| User characteristics                      |       |          |        |
-| Assumptions, dependencies and constraints |   6   |    3     |   3    |
-| External Interface Requirements           |       |          |        |
-| Functional Requirements                   |   6   |    3     |   3    |
-| Performance Requirements                  |       |          |        |
-| Design Constraints                        |       |          |        |
-| Software System Attributes                |       |          |        |
-| Formal Analysis using Alloy               |       |          |        |
+| Task                 | Braga | Calderon | Favaro |
+| -------------------- | :---: | :------: | :----: |
+| Introduction         |  10   |    5     |   5    |
+| Product perspective  |       |          |        |
+| Product functions    |       |          |        |
+| User characteristics |       |          |        |
+| Assumptions, dependencies and constraints |   5   |    5     |   5   |
+| External Interface Requirements           |       |          |       |
+| Functional Requirements                   |   5   |    5     |   5  |
+| Assumptions, dependencies and constraints |   6   |    4     |   3   |
+| External Interface Requirements           |       |          |       |
+| Functional Requirements                   |   6   |    6     |  7  |
+| Performance Requirements                  |       |          |       |
+| Design Constraints                        |       |          |       |
+| Software System Attributes                |       |          |       |
+| Formal Analysis using Alloy               |       |          |       |
 
 # REFERENCES
