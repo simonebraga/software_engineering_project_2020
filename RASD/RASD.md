@@ -145,7 +145,7 @@ This section was focused on the shared phenomena and the relationships between t
 
 ### Users
 
-![prova](/images/usecaselogin.svg)
+![](resources/use_case_common_user.svg)
 
 **Scenarios**
 
@@ -205,7 +205,7 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 |Exit conditions | The results are displayed in a map exploiting Google Maps'API |
 |Exceptions | |
 
-![prova](/images/useCaseReport.svg)
+![prova](resources/sequence_diagram_reports.svg)
 
 
 
