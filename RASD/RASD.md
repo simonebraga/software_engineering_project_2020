@@ -240,7 +240,7 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 | :--------------- | :----------------------------------------------------------- |
 | Actor(s)         | Authority                                                    |
 | Entry conditions | The authority opens SafeStreets on his device                |
-| Events flow      | - The authority chooses the *sign up* option<br />- The authority selects the option to identify himself as authority<br />-The authority inserts the activation code<br />- The authority inserts his e-mail and password<br />- Authority confirms his data<br />- SafeStreets saves his data |
+| Events flow      | - The authority chooses the *sign up* option<br />- The authority selects the option to identify himself as authority<br />- The authority inserts the activation code<br />- The authority inserts his e-mail and password<br />- Authority confirms his data<br />- SafeStreets saves his data |
 | Exit conditions  | The authority is registered and his data are saved           |
 | Exceptions       | - An account with the same e-mail was already created. In this case SafeStreets warns the authority and asks to change e-mail or log in<br />- The activation code is not valid. The authority is asked to reinsert it<br />- The authority doesn't provide all the data. In this case the system asks him to insert them.<br /> |
 
@@ -255,22 +255,32 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 | Name             | Retrieve violation info                                      |
 | ---------------- | ------------------------------------------------------------ |
 | Actor(s)         | Authority, Google Maps                                       |
-| Entry conditions | The authority accesses the *SafeAnalytics* function          |
-| Events flow      | - The authority selects the type of data he wants to receive<br />- Data requested are sent to the authority |
+| Entry conditions | - The authority is logged in SafeStreets   <br /> - The authority wants to collect data about violations       |
+| Events flow      | - The authority accesses the *SafeAnalytics* function<br />- The authority selects the geographical filters <br /> - The authority selects the time filters <br /> - The authority selects the license plate filters <br />- Data requested are sent to the authority |
 | Exit conditions  | SafeStreets displays the data. If a map is required, it is provided by Google Maps |
 | Exceptions       | /                                                            |
+
+
 
 | Name             | Get tickets info                                             |
 | ---------------- | ------------------------------------------------------------ |
 | Actor(s)         | Authority, MTS                                               |
-| Entry conditions | Authority accesses the *[GETTICKETSINFO]* functionality      |
-| Events flow      | - The authority selects the type of data he wants to receive<br />- Data requested are sent by SafeStreets to the authority |
+| Entry conditions | - The authority is logged in SafeStreets <br /> - The authority wants to get information about tickets issued by SafeStreets      |
+| Events flow      | - Authority accesses the *[GETTICKETSINFO]* functionality <br/> - The authority selects the geographical filters<br />  - The authority selects the time filters<br />  - The authority selects the license plate filters<br />- Data requested are sent by SafeStreets to the authority |
 | Exit conditions  | Safestreets displays the data                                |
 | Exceptions       | /                                                            |
 
 
+**Sequence diagrams**
 
-### Municipality
+<!-- TODO sequence diagrams -->
+
+![](resources/retrieve_violation_info_sequence_diagram.svg)
+
+![](resources/get_tickets_info_sequence_diagram.svg)
+
+
+### Municipality user
 
 **Scenarios**
 
@@ -278,11 +288,11 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 
   [Name], a municipality officer of the city of Milan, is looking for possible interventions in the city, to improve the mobility of his area. [Name] logs in SafeStreets and accesses *SafeSuggestions*. He is suggested to build a barrier near the sidewalk in [STREETNAME], due to the frequent parking violations that occur there.
 
-(data from municipality)
+(data from municipality, send data to MTS) <!--TODO ? -->
 
 **Use Case Diagram**
 
-![](resources/municipality_usecases.svg) <!--TODO change municipality to municipality user-->
+![](resources/municipality_usecases.svg)
 
 **Use cases**
 
@@ -306,10 +316,16 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 | Name | Get intervention suggestion |
 | -------  | --------- |
 | Actor | Municipality user |
-| Entry conditions | The municipality user has opened the application on his device and logged in|
-| Events flow | - The municipality user accesses the *SafeSuggestions* functionality <br /> - The municipality user selects the filters he is interested to <br /> - SafeStreets sends (if available) the suggestion relative to the filters provided <br />|
+| Entry conditions | - The municipality user has opened the application on his device and logged in <br /> - The municipality user wants to get suggestions about possible improvements |
+| Events flow | - The municipality user accesses the *SafeSuggestions* functionality <br /> - The municipality user selects the geographical filters <br /> - SafeStreets sends (if available) the suggestion relative to the filters provided <br />|
 | Exit conditions | SafeStreets displays the suggestion (if given) or a "no suggestions" notice |
 | Exceptions | / |
+
+<!-- Geo filters -> the idea is that the number of violations in an area is counted, and a suggestion of improvement is given for those more frequent ->
+
+**Sequence diagrams**
+<!-- TODO sequence diagrams -->
+![](resources/get_intervention_suggestion_sequence_diagram.svg)
 
 
 
