@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="398px" preserveAspectRatio="none" style="width:770px;height:398px;" version="1.1" viewBox="0 0 770 398" width="770px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="f1a2yk544p5fnw" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0" />
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0" />
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3" />
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal" />
+        </filter>
+    </defs>
+    <g>
+        <!--cluster SafeStreets-->
+        <rect fill="#FFFFFF" filter="url(#f1a2yk544p5fnw)" height="261" style="stroke: #000000; stroke-width: 1.5;" width="523" x="151" y="16.5" /><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="93" x="366" y="31.4951">SafeStreets</text>
+        <ellipse cx="240.234" cy="68.5236" fill="#FEFECE" filter="url(#f1a2yk544p5fnw)" rx="36.234" ry="14.5236" style="stroke: #A80036; stroke-width: 1.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="47" x="216.734" y="73.1721">signup</text>
+        <ellipse cx="239.9883" cy="136.5977" fill="#FEFECE" filter="url(#f1a2yk544p5fnw)" rx="80.9883" ry="18.5977" style="stroke: #A80036; stroke-width: 1.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="133" x="173.4883" y="141.2461">retrieve information</text>
+        <ellipse cx="239.9465" cy="225.6893" fill="#FEFECE" filter="url(#f1a2yk544p5fnw)" rx="71.4465" ry="16.6893" style="stroke: #A80036; stroke-width: 1.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="110" x="184.9465" y="230.3377">report violations</text>
+        <ellipse cx="599.9597" cy="234.5919" fill="#FEFECE" filter="url(#f1a2yk544p5fnw)" rx="65.9597" ry="15.5919" style="stroke: #A80036; stroke-width: 1.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="96" x="551.9597" y="239.2404">read the plate</text>
+        <ellipse cx="599.8345" cy="103.5236" fill="#FEFECE" filter="url(#f1a2yk544p5fnw)" rx="26.3345" ry="14.5236" style="stroke: #A80036; stroke-width: 1.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="33" x="583.3345" y="108.1721">login</text>
+        <!--entity user-->
+        <ellipse cx="22" cy="105" fill="#FEFECE" filter="url(#f1a2yk544p5fnw)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
+        <path d="M22,113 L22,140 M9,121 L35,121 M22,140 L9,155 M22,140 L35,155 " fill="none" filter="url(#f1a2yk544p5fnw)" style="stroke: #A80036; stroke-width: 2.0;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="6" y="174.9951">User</text>
+        <!--entity ocr-->
+        <ellipse cx="742.5" cy="203" fill="#FEFECE" filter="url(#f1a2yk544p5fnw)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
+        <path d="M742.5,211 L742.5,238 M729.5,219 L755.5,219 M742.5,238 L729.5,253 M742.5,238 L755.5,253 " fill="none" filter="url(#f1a2yk544p5fnw)" style="stroke: #A80036; stroke-width: 2.0;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="31" x="727" y="272.9951">OCR</text>
+        <!--entity gm-->
+        <ellipse cx="427.5" cy="315" fill="#FEFECE" filter="url(#f1a2yk544p5fnw)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
+        <path d="M427.5,323 L427.5,350 M414.5,331 L440.5,331 M427.5,350 L414.5,365 M427.5,350 L440.5,365 " fill="none" filter="url(#f1a2yk544p5fnw)" style="stroke: #A80036; stroke-width: 2.0;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="91" x="382" y="384.9951">Google Maps</text>
+        <!--link user to signup-->
+        <path d="M38.2356,127.3442 C46.8793,122.7383 57.8043,117.335 68,113.5 C115.2353,95.7329 172.294,82.3049 207.3608,74.9207 " fill="none" id="user-signup" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="59" x="69" y="90.5669">«initiate»</text>
+        <!--link user to retrieve information-->
+        <path d="M38.0301,136.5 C63.3989,136.5 114.4852,136.5 158.9289,136.5 " fill="none" id="user-retrieve information" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="59" x="69" y="132.5669">«initiate»</text>
+        <!--link user to report violations-->
+        <path d="M38.3198,146.1033 C46.9865,151.0143 57.9068,156.9074 68,161.5 C111.6454,181.3596 163.4192,199.988 198.6797,211.9691 " fill="none" id="user-report violations" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="59" x="69" y="157.5669">«initiate»</text>
+        <!--link report violations to read the plate-->
+        <path d="M311.1244,227.2781 C374.2057,228.8551 465.8632,231.1466 528.9285,232.7232 " fill="none" id="report violations-read the plate" style="stroke: #A80036; stroke-width: 1.0;" />
+        <polygon fill="#A80036" points="534.1782,232.8545,525.2811,228.6305,529.1798,232.7294,525.0809,236.628,534.1782,232.8545" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="46" x="404.5" y="225.5669">«uses»</text>
+        <!--link report violations to login-->
+        <path d="M286.3215,210.1519 C333.375,194.524 408.3259,169.528 473,147.5 C507.375,135.7919 546.8896,122.0583 572.5916,113.0887 " fill="none" id="report violations-login" style="stroke: #A80036; stroke-width: 1.0;" />
+        <polygon fill="#A80036" points="577.5422,111.3603,567.7267,110.5505,572.8216,113.0084,570.3637,118.1034,577.5422,111.3603" style="stroke: #A80036; stroke-width: 1.0;" />
+        <polygon fill="#A80036" points="281.291,211.8223,291.093,212.782,286.0362,210.2465,288.5717,205.1897,281.291,211.8223" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="89" x="383" y="143.5669">«partecipate»</text>
+        <!--link retrieve information to login-->
+        <path d="M319.5588,128.4958 C339.9108,126.4923 361.7622,124.3795 382,122.5 C448.3392,116.339 526.092,109.7027 568.4887,106.1336 " fill="none" id="retrieve information-login" style="stroke: #A80036; stroke-width: 1.0;" />
+        <polygon fill="#A80036" points="573.4807,105.7138,564.1772,102.4821,568.4983,106.1328,564.8476,110.4539,573.4807,105.7138" style="stroke: #A80036; stroke-width: 1.0;" />
+        <polygon fill="#A80036" points="314.4188,129.0026,323.7679,132.1,319.3947,128.5119,322.9828,124.1386,314.4188,129.0026" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="89" x="383" y="110.5669">«partecipate»</text>
+        <!--link read the plate to ocr-->
+        <path d="M666.2439,234.5 C688.7752,234.5 711.9774,234.5 726.7783,234.5 " fill="none" id="read the plate-ocr" style="stroke: #A80036; stroke-width: 1.0;" />
+        <!--link report violations to gm-->
+        <path d="M264.1285,241.0709 C293.8008,260.2195 344.79,293.1245 381.9282,317.091 " fill="none" id="report violations-gm" style="stroke: #A80036; stroke-width: 1.0;" />
+        <!--
+@startuml
+
+left to right direction
+
+:User: as user
+:OCR: as ocr
+:Google Maps: as gm
+
+
+rectangle SafeStreets{
+
+  user - - (signup) :<<initiate>>
+  user - - (retrieve information) :<<initiate>>
+  user - -(report violations) :<<initiate>>
+  (report violations)- ->(read the plate)  :<<uses>>
+  (report violations)<- ->(login) :<<partecipate>>
+  (retrieve information)<- ->(login) :<<partecipate>>
+  (read the plate)- -ocr
+  (report violations)- -gm
+
+
+}
+
+@enduml
+
+PlantUML version 1.2018.14(Fri Dec 21 17:33:16 CET 2018)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.4+11-post-Ubuntu-1ubuntu218.04.3
+Operating System: Linux
+OS Version: 4.18.0-22-generic
+Default Encoding: UTF-8
+Language: en
+Country: US
+-->
+    </g>
+</svg>
