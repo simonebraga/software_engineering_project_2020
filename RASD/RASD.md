@@ -156,12 +156,11 @@ This section was focused on the shared phenomena and the relationships between t
 
 **S1**
 
-Ted Mosby, a very honest architect , is tired of seeing cars parked in the red zone right in front of his
-house. He told the problem to some police agents in the past but nothing happened. He wants
+Ted Mosby, a very honest architect , is tired of seeing cars parked in the red zone right in front of his house. He told the problem to some police agents in the past but nothing happened. He wants
 to report these violations again but he doesn't know how. Fortunately Barney, a public employee,
 suggests him to download and use the new app Safestreets for reporting violations. After signing
-up identifying himself as an user and inserting the email and password he can finally report the the violation. Mosby just need to activate the gps and the
-internet connection and take a picture of the violation.He selects the type of violation from a predefined list. After that he is asked to confirm the plate of the violating
+up identifying himself as an user and inserting the email and password he can finally report the the violation. Mosby just needs to activate the GPS and the
+internet connection and take a picture of the violation. He selects the type of violation from a predefined list. After that he is asked to confirm the plate of the violating
 vehicle. He finally waits for the outcome of his violation report.
 
 
@@ -169,7 +168,7 @@ vehicle. He finally waits for the outcome of his violation report.
 
 Sheldon, a theoretical physicists, is currently studying the complexity theory. He thinks that in big
 cities with a huge amount of traffic the number of traffic violations is much larger then in small
-cities and villages. Since Sheldon moved to Milan recently he wants to know the areas of Milan
+cities and villages. Since Sheldon moved to Milan recently, he wants to know the areas of Milan
 with the highest levels of traffic violations in order to avoid parking in dangerous places . Sheldon
 knows about the SafeStreets app. He logs in inserting his email and password and makes a query for all the traffic violations
 reported in the last month in Milan . The results are anonymized preserving the privacy of the
@@ -233,17 +232,7 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 
 **Use case diagram**
 
-<!--BEGINTODO-->
-
-Authority -> Sign up
-
-​		-> Login
-
-​		-> Retrieve violations info 	-> Google Maps
-
-​		-> Get tickets info 			-> MTS
-
-<!--ENDTODO-->
+![](resources/authorities_usecases.svg)
 
 **Use Cases**
 
@@ -258,7 +247,7 @@ Authority -> Sign up
 | Name             | Login                                                        |
 | ---------------- | ------------------------------------------------------------ |
 | Actor(s)         | Authority                                                    |
-| Entry conditions | - The user has opened the application on his device<br />- The user is already registered |
+| Entry conditions | - The authority has opened the application on his device<br />- The authority is already registered |
 | Events flow      | - The authority chooses the *login* option<br />- The authority inserts his e-mail and password |
 | Exit conditions  | The authority is identified                                  |
 | Exceptions       | - The e-mail is not registered. The authority is asked to reinsert it or sign up<br />- The password is incorrect. The authority is asked to reinsert it |
@@ -275,7 +264,7 @@ Authority -> Sign up
 | ---------------- | ------------------------------------------------------------ |
 | Actor(s)         | Authority, MTS                                               |
 | Entry conditions | Authority accesses the *[GETTICKETSINFO]* functionality      |
-| Events flow      | - The authority selects the type of data he wants to receive<br />- Data requested are sent to the authority |
+| Events flow      | - The authority selects the type of data he wants to receive<br />- Data requested are sent by SafeStreets to the authority |
 | Exit conditions  | Safestreets displays the data                                |
 | Exceptions       | /                                                            |
 
@@ -293,20 +282,38 @@ Authority -> Sign up
 
 **Use Case Diagram**
 
-<!--BEGINTODO-->
+![](resources/municipality_usecases.svg) <!--TODO change municipality to municipality user-->
 
-Municipality -> Sign up
+**Use cases**
 
-​						Login
+| Name             | Sign Up                                                      |
+| :--------------- | :----------------------------------------------------------- |
+| Actor         | Municipality user                                                  |
+| Entry conditions | The municipality user opens SafeStreets on his device                |
+| Events flow      | - The municipality user chooses the *sign up* option<br />- The municipality user selects the option to identify himself as municipality user<br />-The municipality user inserts the activation code<br />- The municipality user inserts its e-mail and password<br />- Municipality user confirms its data<br />- SafeStreets saves the data |
+| Exit conditions  | The municipality user is registered and its data are saved           |
+| Exceptions       | - An account with the same e-mail was already created. In this case SafeStreets warns the authority and asks to change e-mail or log in<br />- The activation code is not valid. The municipality user is asked to reinsert it<br />- The municipality user doesn't provide all the data. In this case the system asks to insert them<br /> |
 
-​						Get intervention suggestion
+| Name             | Login                                                        |
+| ---------------- | ------------------------------------------------------------ |
+| Actor            | Municipality user                                                |
+| Entry conditions | - The municipality user has opened the application on his device<br />- The municipality user is already registered |
+| Events flow      | - The municipality user chooses the *login* option<br />- The municipality user inserts his e-mail and password |
+| Exit conditions  | The municipality user is identified                                  |
+| Exceptions       | - The e-mail is not registered. The municipality user is asked to reinsert it or sign up<br />- The password is incorrect. The municipality user is asked to reinsert it |
 
-<!--ENDTODO-->
+
+| Name | Get intervention suggestion |
+| -------  | --------- |
+| Actor | Municipality user |
+| Entry conditions | The municipality user has opened the application on his device and logged in|
+| Events flow | - The municipality user accesses the *SafeSuggestions* functionality <br /> - The municipality user selects the filters he is interested to <br /> - SafeStreets sends (if available) the suggestion relative to the filters provided <br />|
+| Exit conditions | SafeStreets displays the suggestion (if given) or a "no suggestions" notice |
+| Exceptions | / |
 
 
 
-
-
+REQUIREMENTS
 <!--definition of use case diagrams, use cases and associated sequence/activity diagrams, and mapping on requirements-->
 
 **G1)	SafeStreets must allow common users to send pictures of violations, including their date, time and position.**
