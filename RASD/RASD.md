@@ -56,7 +56,7 @@ Municipality data about accidents is crossed with data collected by SafeStreets 
 
 This section was focused on the shared phenomena and the relationships between the entities of the scenario. A more detailed description of how every service is exploited can be found later in the document.
 
-## Definitions, Acronyms, Abbreviations
+## Definitions and acronyms
 
 ### Definitions
 
@@ -87,13 +87,6 @@ This section was focused on the shared phenomena and the relationships between t
 
 * **OCR (Optical Character Recognition)** Software that converts text scanned from a photo in a machine-encoded text.
 
-### Abbreviations
-
-* **Gn**  nth goal.
-
-* **Dn**  nth domain assumption.
-* **Rn**  nth requirement.
-
 ## Revision history
 ## Reference Documents
 ## Document Structure
@@ -107,6 +100,8 @@ This section was focused on the shared phenomena and the relationships between t
 **Section 4** includes the formal analysis carried out using Alloy as a modeling language. This section includes the model built focusing on the most critical aspects and the results of the analysis that proves the soundness and consistency of the model. Moreover, some worlds obtained by running the analysis are included to study in deep the most meaningful assertions.
 
 **Section 5** includes information about the number of hours each group member has worked for this document.
+
+**Section 6** includes the references to the tools used to draw up this document.
 
 # OVERALL DESCRIPTION
 
