@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="476px" preserveAspectRatio="none" style="width:393px;height:476px;" version="1.1" viewBox="0 0 393 476" width="393px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="f1v1pxqf6dp1q8" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0" />
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0" />
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3" />
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal" />
+        </filter>
+    </defs>
+    <g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="161" x="116.75" y="22.9951">Retrieve information</text>
+        <rect fill="#FFFFFF" filter="url(#f1v1pxqf6dp1q8)" height="231.9297" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="22" y="126.5938" />
+        <rect fill="#FFFFFF" filter="url(#f1v1pxqf6dp1q8)" height="231.9297" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="205" y="126.5938" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="27" x2="27" y1="116.5938" y2="367.5234" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="210" x2="210" y1="116.5938" y2="367.5234" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="337.5" x2="337.5" y1="116.5938" y2="367.5234" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="8" y="113.292">User</text>
+        <ellipse cx="27" cy="43.2969" fill="#FEFECE" filter="url(#f1v1pxqf6dp1q8)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
+        <path d="M27,51.2969 L27,78.2969 M14,59.2969 L40,59.2969 M27,78.2969 L14,93.2969 M27,78.2969 L40,93.2969 " fill="none" filter="url(#f1v1pxqf6dp1q8)" style="stroke: #A80036; stroke-width: 2.0;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="8" y="379.5186">User</text>
+        <ellipse cx="27" cy="392.8203" fill="#FEFECE" filter="url(#f1v1pxqf6dp1q8)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
+        <path d="M27,400.8203 L27,427.8203 M14,408.8203 L40,408.8203 M27,427.8203 L14,442.8203 M27,427.8203 L40,442.8203 " fill="none" filter="url(#f1v1pxqf6dp1q8)" style="stroke: #A80036; stroke-width: 2.0;" />
+        <rect fill="#FEFECE" filter="url(#f1v1pxqf6dp1q8)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="94" x="161" y="81.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="80" x="168" y="101.292">SafeStreets</text>
+        <rect fill="#FEFECE" filter="url(#f1v1pxqf6dp1q8)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="94" x="161" y="366.5234" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="80" x="168" y="386.5186">SafeStreets</text>
+        <rect fill="#FEFECE" filter="url(#f1v1pxqf6dp1q8)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="93" x="289.5" y="81.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="79" x="296.5" y="101.292">GoogleMap</text>
+        <rect fill="#FEFECE" filter="url(#f1v1pxqf6dp1q8)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="93" x="289.5" y="366.5234" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="79" x="296.5" y="386.5186">GoogleMap</text>
+        <rect fill="#FFFFFF" filter="url(#f1v1pxqf6dp1q8)" height="231.9297" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="22" y="126.5938" />
+        <rect fill="#FFFFFF" filter="url(#f1v1pxqf6dp1q8)" height="231.9297" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="205" y="126.5938" />
+        <polygon fill="#A80036" points="193,143.7266,203,147.7266,193,151.7266,197,147.7266" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="32" x2="199" y1="147.7266" y2="147.7266" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="70" x="39" y="142.6606">start query</text>
+        <polygon fill="#A80036" points="43,172.8594,33,176.8594,43,180.8594,39,176.8594" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="37" x2="204" y1="176.8594" y2="176.8594" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="82" x="49" y="171.7935">ask for filters</text>
+        <polygon fill="#A80036" points="193,201.9922,203,205.9922,193,209.9922,197,205.9922" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="32" x2="199" y1="205.9922" y2="205.9922" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="149" x="39" y="200.9263">send geographical filter</text>
+        <polygon fill="#A80036" points="193,231.125,203,235.125,193,239.125,197,235.125" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="32" x2="199" y1="235.125" y2="235.125" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="96" x="39" y="230.0591">send time filter</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="215" x2="257" y1="264.2578" y2="264.2578" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="257" x2="257" y1="264.2578" y2="277.2578" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="216" x2="257" y1="277.2578" y2="277.2578" />
+        <polygon fill="#A80036" points="226,273.2578,216,277.2578,226,281.2578,222,277.2578" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="103" x="222" y="259.1919">anonymize data</text>
+        <polygon fill="#A80036" points="326,302.3906,336,306.3906,326,310.3906,330,306.3906" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="215" x2="332" y1="306.3906" y2="306.3906" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="99" x="222" y="301.3247">exploit map API</text>
+        <polygon fill="#A80036" points="226,316.3906,216,320.3906,226,324.3906,222,320.3906" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="220" x2="337" y1="320.3906" y2="320.3906" />
+        <polygon fill="#A80036" points="43,345.5234,33,349.5234,43,353.5234,39,349.5234" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="37" x2="204" y1="349.5234" y2="349.5234" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="78" x="49" y="344.4575">send results</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="136" x="129.25" y="463.1025">Figure x. Sequence diagram</text>
+        <!--
+@startuml
+title Retrieve information
+
+actor User as us
+
+activate us
+activate SafeStreets
+us -> SafeStreets : start query
+SafeStreets -> us : ask for filters
+us - -> SafeStreets : send geographical filter
+us - -> SafeStreets : send time filter
+
+SafeStreets->SafeStreets : anonymize data
+SafeStreets -> GoogleMap : exploit map API
+return
+SafeStreets - -> us : send results
+
+footer Figure x. Sequence diagram
+
+@enduml
+
+PlantUML version 1.2018.14(Fri Dec 21 17:33:16 CET 2018)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.4+11-post-Ubuntu-1ubuntu218.04.3
+Operating System: Linux
+OS Version: 4.18.0-22-generic
+Default Encoding: UTF-8
+Language: en
+Country: US
+-->
+    </g>
+</svg>
