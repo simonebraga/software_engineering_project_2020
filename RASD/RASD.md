@@ -153,16 +153,16 @@ This section was focused on the shared phenomena and the relationships between t
 **G1)  SafeReports must allow common users to send violation reports.**
 * **R1**	When a picture is taken using SafeReports, a new violation record is generated.
 
-* **R2**	When a new violation record is generated, the current position of the user is automatically detected and added to the report.
+* **R2**	When a new violation record is generated, the current position of the user is added to the report.
 * **R3**	When a new violation record is generated, the timestamp is added to the report.
 * **R4**	When a new violation record is generated, the photo is scanned by an OCR software to automatically detect the plate.
-* **R5**	If the OCR software fails in detecting the plate, the user is notified about it and asked to repeat the procedure.
+* **R5**	If the OCR software fails in detecting the plate, the user is notified and asked to repeat the procedure.
 * **R6**	If the OCR software detects the plate, the user is asked to confirm the violation report.
 * **R7**	If the user confirms the violation report, it is sent to SafeStreets.
-* **R8**	SafeStreets stores the information about the violation only if there are no equivalent events already stored.
+* **R8**	SafeStreets stores the information about the violation only if there aren't equivalent events already stored.
 
 **G2) SafeAnalytics must allow common users to get anonymous data on violations.**
-* **R9**	SafeAnalytics allows common users to get information about violations in a specific zone and time interval.
+* **R9**	SafeAnalytics allows common users to get data about violations selecting zone, time and type of violation.
 
 * **R10**	SafeAnalytics anonymizes information before sending it to common users.
 
@@ -172,17 +172,17 @@ This section was focused on the shared phenomena and the relationships between t
 **G4) SafeSuggestions must allow municipality users to get suggestions on possible interventions.**
 * **R12**	SafeStreets must store data about accidents provided by the municipality when available.
 
-* **R13**	SafeStreets must analyze collected data crossed with data from the municipality to suggest possible interventions.
+* **R13**	SafeStreets must analyze collected data crossed with data from the municipality to identify possible interventions.
 * **R14**  SafeSuggestions allows municipality users to get suggestions provided by SafeStreets.
 
 **G5) SafeStreets must generate traffic tickets forwarding reliable data to MTS.**
 * **R15**	When the users send a violation report, its integrity is checked.
 
-* **R16**	If the integrity check is successful, the violation report is stored. Otherwise, the violation report is discarded.
+* **R16**	If the integrity check is not successful, the violation report is discarded.
 * **R17**	SafeStreets must forward every new stored violation report to MTS to generate traffic tickets.
 
 **G6) SafeTickets must allow authorities to get statistics on issued tickets.**
-* **R18**	When a new ticket is generated using MTS, ticket-related information is stored by SafeStreets.
+* **R18**	When a new ticket is generated using MTS, ticket-related data are stored by SafeStreets.
 
 * **R19**	SafeStreets must build statistics from stored data about issued tickets.
 * **R20**	SafeTickets allows authorities to get information and statistics on issued tickets.
