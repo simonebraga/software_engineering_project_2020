@@ -5,7 +5,7 @@
 ## Purpose
 <!--here we include the goals of the project-->
 
-**SafeStreets** is a crowd-sourced application that intends to provide common users with the possibility to notify authorities when traffic violations occur. The main target of the application are violations that can be easily captured by a camera (like, for instance, parking violations).
+**SafeStreets** is a crowd-sourced application that intends to provide users with the possibility to notify authorities when traffic violations occur. The main target of the application are violations that can be easily captured by a camera (like, for instance, parking violations).
 
 The core of the application is **SafeReports**, which is the service that provides the common users the possibility to send a notification. To do so, they are requested to take a picture of the vehicle involved in the violation. Then the photo is checked and matched with some data captured at the moment (position, date and time) and sent to SafeStreets, which stores it to offer several services based on the analysis of these data.
 
@@ -15,16 +15,17 @@ SafeStreets must forward violation reports to Municipality Tickets Service to au
 
 The last service provided by SafeStreets is thought for the municipality users. Its name is **SafeSuggestions**, and its purpose is to analyze the data collected by SafeStreets to suggest possible interventions aimed at reducing the incidence of accidents and violations in the most critical zones.
 
+### Goals
+
 The purpose of the software is captured by the following goals:
 
-* **G1**	SafeStreets must allow common users to send pictures of violations, including their date, time and position.
+* **G1**	SafeReports must allow common users to send violation reports.
 
-* **G2**	Common users must be allowed to access to anonymous and aggregated data.
-* **G3**	Authorities must be allowed to access to all the data without restrictions.
-* **G4**	SafeStreets must suggest possible interventions according to data about violations and accidents.
-* **G5**	SafeStreets must be able to generate traffic tickets using MTS.
-* **G6**	Data provided to generate traffic tickets must be checked to guarantee their reliability.
-* **G7**	SafeStreets must provide statistics on issued tickets.
+* **G2**	SafeAnalytics must allow common users to get anonymous data on violations.
+* **G3**	SafeAnalytics must allow authorities to access to all the data without restrictions.
+* **G4**	SafeSuggestions must allow municipality users to get suggestions on possible interventions.
+* **G5**	SafeStreets must generate traffic tickets forwarding reliable data to MTS.
+* **G6**	SafeTickets must allow authorities to get statistics on issued tickets.
 
 ## Scope
 <!--here we include an analysis of the world and of the shared phenomena-->
@@ -55,7 +56,7 @@ Municipality data about accidents is crossed with data collected by SafeStreets 
 
 This section was focused on the shared phenomena and the relationships between the entities of the scenario. A more detailed description of how every service is exploited can be found later in the document.
 
-## Definitions, Acronyms, Abbreviations
+## Definitions and acronyms
 
 ### Definitions
 
@@ -86,13 +87,6 @@ This section was focused on the shared phenomena and the relationships between t
 
 * **OCR (Optical Character Recognition)** Software that converts text scanned from a photo in a machine-encoded text.
 
-### Abbreviations
-
-* **Gn**  nth goal.
-
-* **Dn**  nth domain assumption.
-* **Rn**  nth requirement.
-
 ## Revision history
 ## Reference Documents
 ## Document Structure
@@ -106,6 +100,8 @@ This section was focused on the shared phenomena and the relationships between t
 **Section 4** includes the formal analysis carried out using Alloy as a modeling language. This section includes the model built focusing on the most critical aspects and the results of the analysis that proves the soundness and consistency of the model. Moreover, some worlds obtained by running the analysis are included to study in deep the most meaningful assertions.
 
 **Section 5** includes information about the number of hours each group member has worked for this document.
+
+**Section 6** includes the references to the tools used to draw up this document.
 
 # OVERALL DESCRIPTION
 
@@ -147,8 +143,48 @@ This section was focused on the shared phenomena and the relationships between t
 ### Communication Interfaces
 
 ## Functional Requirements
+<!--definition of use case diagrams, use cases and associated sequence/activity diagrams, and mapping on requirements-->
 
-### Users
+**G1)  SafeReports must allow common users to send violation reports.**
+* **R1**	When a picture is taken using SafeReports, a new violation record is generated.
+
+* **R2**	When a new violation record is generated, the current position of the user is added to the report.
+* **R3**	When a new violation record is generated, the timestamp is added to the report.
+* **R4**	When a new violation record is generated, the photo is scanned by an OCR software to automatically detect the plate.
+* **R5**	If the OCR software fails in detecting the plate, the user is notified and asked to repeat the procedure.
+* **R6**	If the OCR software detects the plate, the user is asked to confirm the violation report.
+* **R7**	If the user confirms the violation report, it is sent to SafeStreets.
+* **R8**	SafeStreets stores the information about the violation only if there aren't equivalent events already stored.
+
+**G2) SafeAnalytics must allow common users to get anonymous data on violations.**
+* **R9**	SafeAnalytics allows common users to get data about violations selecting zone, time and type of violation.
+
+* **R10**	SafeAnalytics anonymizes information before sending it to common users.
+
+**G3) SafeAnalytics must allow authorities to access to all the data without restrictions.**
+* **R11**	SafeAnalytics allows authorities to get all the data stored by SafeStreets.
+
+**G4) SafeSuggestions must allow municipality users to get suggestions on possible interventions.**
+* **R12**	SafeStreets must store data about accidents provided by the municipality when available.
+
+* **R13**	SafeStreets must analyze collected data crossed with data from the municipality to identify possible interventions.
+* **R14**  SafeSuggestions allows municipality users to get suggestions provided by SafeStreets.
+
+**G5) SafeStreets must generate traffic tickets forwarding reliable data to MTS.**
+* **R15**	When the users send a violation report, its integrity is checked.
+
+* **R16**	If the integrity check is not successful, the violation report is discarded.
+* **R17**	SafeStreets must forward every new stored violation report to MTS to generate traffic tickets.
+
+**G6) SafeTickets must allow authorities to get statistics on issued tickets.**
+* **R18**	When a new ticket is generated using MTS, ticket-related data are stored by SafeStreets.
+
+* **R19**	SafeStreets must build statistics from stored data about issued tickets.
+* **R20**	SafeTickets allows authorities to get information and statistics on issued tickets.
+
+### Use cases diagrams
+
+#### Common users
 
 ![](resources/use_case_common_user.svg)
 
@@ -216,7 +252,7 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 <div style="text-align:center"><img src="resources/sequence_diagram_retrieve_information.svg"/></div>
 
 
-### Authorities
+#### Authorities
 
 **Scenarios**
 
@@ -321,62 +357,7 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 | Exit conditions | SafeStreets displays the suggestion (if given) or a "no suggestions" notice |
 | Exceptions | / |
 
-<!-- Geo filters -> the idea is that the number of violations in an area is counted, and a suggestion of improvement is given for those more frequent ->
-
-**Sequence diagrams**
-<!-- TODO sequence diagrams -->
 ![](resources/get_intervention_suggestion_sequence_diagram.svg)
-
-
-
-REQUIREMENTS
-<!--definition of use case diagrams, use cases and associated sequence/activity diagrams, and mapping on requirements-->
-
-**G1)	SafeStreets must allow common users to send pictures of violations, including their date, time and position.**
-
-* **R1**	When a picture is taken using SafeReports, a new violation record is generated.
-
-* **R2**	When a new violation record is generated, the current position of the user is automatically detected and added to the report.
-* **R3**	When a new violation record is generated, the timestamp is added to the report.
-* **R4**	When a new violation record is generated, the photo is scanned by an OCR software to automatically detect the plate.
-* **R5**	If the OCR software fails in detecting the plate, the user is notified about it and asked to repeat the procedure.
-* **R6**	If the OCR software detects the plate, the user is asked to confirm the violation report.
-* **R7**	If the user confirms the violation report, it is sent to SafeStreets.
-* **R8**	SafeStreets stores the information about the violation only if there are no equivalent events already stored.
-
-**G2)	Common users must be allowed to access to anonymous and aggregated data.**
-
-* **R9**	SafeAnalytics allows common users to get information about violations in a specific zone and time interval.
-
-* **R10**	SafeAnalytics anonymizes information before sending it to common users.
-
-**G3)	Authorities must be allowed to access to all the data without restrictions.**
-
-* **R11**	SafeAnalytics allows authorities to get unrestricted information about violations.
-
-**G4)	SafeStreets must suggest possible interventions according to data about violations and accidents.**
-
-* **R12**	SafeStreets must store data about accidents provided by the municipality when available.
-
-* **R13**	SafeStreets must analyze collected data crossed with data from the municipality to suggest possible interventions.
-* **R14**  SafeSuggestions allows municipality users to get suggestions provided by SafeStreets.
-
-**G5)	SafeStreets must be able to generate traffic tickets using MTS.**
-
-* **R15**	SafeStreets must forward every new stored violation report to MTS to generate traffic tickets.
-
-**G6)	Data provided to generate traffic tickets must be checked to guarantee their reliability.**
-
-* **R16**	When the users send a violation report, its integrity is checked.
-
-* **R17**	If the integrity check is successful, the violation report is stored. Otherwise, the violation report is discarded.
-
-**G7)	SafeStreets must provide statistics on issued tickets.**
-
-* **R18**	When a new ticket is generated using MTS, ticket-related information is stored by SafeStreets.
-
-* **R19**	SafeStreets must build statistics from stored data about issued tickets.
-* **R20**	SafeTickets allows authorities to get information and statistics on issued tickets.
 
 ## Performance Requirements
 ## Design Constraints
