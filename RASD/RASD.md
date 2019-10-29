@@ -302,7 +302,7 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 | ---------------- | ------------------------------------------------------------ |
 | Actor(s)         | Authority, MTS                                               |
 | Entry conditions | - The authority is logged in SafeStreets <br /> - The authority wants to get information about tickets issued by SafeStreets      |
-| Events flow      | - Authority accesses the *[GETTICKETSINFO]* functionality <br/> - The authority selects the geographical filters<br />  - The authority selects the time filters<br />  - The authority selects the license plate filters<br />- Data requested are sent by SafeStreets to the authority |
+| Events flow      | - Authority accesses the *SafeTickets* functionality <br/> - The authority selects the geographical filters<br />  - The authority selects the time filters<br />  - The authority selects the license plate filters<br />- Data requested are sent by SafeStreets to the authority |
 | Exit conditions  | Safestreets displays the data                                |
 | Exceptions       | /                                                            |
 
@@ -313,7 +313,9 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 
 ![](resources/retrieve_violation_info_sequence_diagram.svg)
 
-![](resources/get_tickets_info_sequence_diagram.svg)
+![](resources/get_tickets_info_sequence_diagram.svg) <!--TODO save the tickets (don't ask directly to MTS)-->
+
+<!--TODO ticket generation-->
 
 
 ### Municipality user
@@ -332,32 +334,30 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 
 **Use cases**
 
-| Name             | Sign Up                                                      |
-| :--------------- | :----------------------------------------------------------- |
-| Actor         | Municipality user                                                  |
-| Entry conditions | The municipality user opens SafeStreets on his device                |
-| Events flow      | - The municipality user chooses the *sign up* option<br />- The municipality user selects the option to identify himself as municipality user<br />-The municipality user inserts the activation code<br />- The municipality user inserts its e-mail and password<br />- Municipality user confirms its data<br />- SafeStreets saves the data |
-| Exit conditions  | The municipality user is registered and its data are saved           |
-| Exceptions       | - An account with the same e-mail was already created. In this case SafeStreets warns the authority and asks to change e-mail or log in<br />- The activation code is not valid. The municipality user is asked to reinsert it<br />- The municipality user doesn't provide all the data. In this case the system asks to insert them<br /> |
+The login and sign up procedures for the municipality user are the same as the municipality ones.
 
-| Name             | Login                                                        |
-| ---------------- | ------------------------------------------------------------ |
-| Actor            | Municipality user                                                |
-| Entry conditions | - The municipality user has opened the application on his device<br />- The municipality user is already registered |
-| Events flow      | - The municipality user chooses the *login* option<br />- The municipality user inserts his e-mail and password |
-| Exit conditions  | The municipality user is identified                                  |
-| Exceptions       | - The e-mail is not registered. The municipality user is asked to reinsert it or sign up<br />- The password is incorrect. The municipality user is asked to reinsert it |
-
+<!--TODO (municipality gives data about accidents)
+Crossing information about violations and accidents-->
 
 | Name | Get intervention suggestion |
 | -------  | --------- |
 | Actor | Municipality user |
 | Entry conditions | - The municipality user has opened the application on his device and logged in <br /> - The municipality user wants to get suggestions about possible improvements |
-| Events flow | - The municipality user accesses the *SafeSuggestions* functionality <br /> - The municipality user selects the geographical filters <br /> - SafeStreets sends (if available) the suggestion relative to the filters provided <br />|
+| Events flow | - The municipality user accesses the *SafeSuggestions* functionality <br /> - The municipality user selects the geographical filters <br /> SafeSuggestions gets possible interventions based on the filters provided <br />- SafeStreets sends (if available) the suggestion relative to the filters provided <br />|
 | Exit conditions | SafeStreets displays the suggestion (if given) or a "no suggestions" notice |
 | Exceptions | / |
 
+| Name | Get accidents |
+|-----||
+| Actor | Municipality |
+| Entry conditions | New accidents are inserted in the municipality system |
+| Events flow | - New data is requested by SafeStreets from the municipality <br /> - The municipality evaluates if updates in data occurred <br /> - The municipality provides the new data to SafeStreets <br />  |
+| Exit condition | SafeStreets stores the data |
+| Exceptions | / |
+
 ![](resources/get_intervention_suggestion_sequence_diagram.svg)
+![](resources/get_accidents_sequence_diagram.svg)
+
 
 ## Performance Requirements
 ## Design Constraints
@@ -369,6 +369,8 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 ## Software System Attributes
 
 ### Reliability
+
+
 ### Availability
 ### Security
 ### Maintainability
