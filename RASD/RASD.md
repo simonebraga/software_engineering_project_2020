@@ -1,19 +1,19 @@
 [TOC]
 
-# INTRODUCTION
+# 1.  INTRODUCTION
 
 ## Purpose
 <!--here we include the goals of the project-->
 
-**SafeStreets** is a crowd-sourced application that intends to provide users with the possibility to notify authorities when traffic violations occur. The main target of the application are violations that can be easily captured by a camera (like, for instance, parking violations).
+**SafeStreets** is a crowd-sourced application that intends to provide users with the possibility to notify authorities when traffic violations occur. The main target of the application are violations that can be easily captured by a camera (like, for instance, parking violations). SafeStreets intends also to provide users with the possibility to mine the stored information with different levels of visibility. Moreover, the application must cross the collected data with information coming from the municipality to provide suggestions on possible interventions to decrease the incidence of violations and accidents. In the end, the application must forward data about violations to generate traffic tickets, and must allow authorities to get statistics on issued tickets.
 
-The core of the application is **SafeReports**, which is the service that provides the common users the possibility to send a notification. To do so, they are requested to take a picture of the vehicle involved in the violation. Then the photo is checked and matched with some data captured at the moment (position, date and time) and sent to SafeStreets, which stores it to offer several services based on the analysis of these data.
+These requirements are exploited by developing several services:
 
-The first one is **SafeAnalytics**, which provides the possibility to mine SafeStreets data to get information about violations. This service is offered to common users and authorities, that can access data with different restriction levels. Common users have access to anonymous and aggregate data concerning a selected zone. Authorities, instead, have access to unrestricted information on all the stored data.
+* **SafeReports** allows common users to send violation reports.
 
-SafeStreets must forward violation reports to Municipality Tickets Service to automatically generate traffic tickets. Data about issued tickets must be stored and analyzed to provide statistics through **SafeTickets**, which is another service thought to be enjoyed by authorities.
-
-The last service provided by SafeStreets is thought for the municipality users. Its name is **SafeSuggestions**, and its purpose is to analyze the data collected by SafeStreets to suggest possible interventions aimed at reducing the incidence of accidents and violations in the most critical zones.
+* **SafeAnalytics** allows common users and authorities to mine stored information.
+* **SafeTickets** allows authorities to get statistics on issued tickets.
+* **SafeSuggestions** allows municipality users to get suggestions on possible interventions.
 
 ### Goals
 
@@ -33,62 +33,57 @@ The purpose of the software is captured by the following goals:
 SafeStreets must interface with different types of users and information sources. In this context, it is very important to identify the placement of SafeStreets and its services with the entities of the scenario. To do so, we will refer to the following diagram. Afterward, every link between SafeStreets and the entities will be deeply analyzed to exhaustively describe the shared phenomena of the scenario.
 
 <div style="text-align:center"><img src="resources/relationship_diagram.svg"/></div>
-
 Two types of interactions can be defined:
 
-* **Interactions with users** (blue arrows in the diagram)
+* **Interactions through services** (blue arrows in the diagram)
 
-* **Interactions with information sources** (red arrows in the diagram)
+* **Interactions with resources** (red arrows in the diagram)
 
-The main difference between the two types of interactions is the role of SafeStreets. In the interactions with users, SafeStreets has a passive role, in the sense that the activation of the interaction is triggered by a request coming from the user through one of the offered services. In the interactions with information sources, SafeStreets has an active role, in the sense that the activation of the interaction is automatically triggered by SafeStreets application to exploit back-end processes.
+The main difference between the two types of interactions is the role of SafeStreets. In the interactions through services, SafeStreets has a passive role, in the sense that the activation of the interaction is triggered by a request coming from the user through one of the offered services. In the interactions with resources, SafeStreets has an active role, in the sense that the activation of the interaction is automatically triggered by SafeStreets application to exploit back-end processes.
 
-As mentioned before, services are exploited differently depending on the type of user that is enjoying the application. The type of the user is determined in the registration phase, which is different depending on this choice. Everyone can sign up as a common user. Instead, to sign up as an authority or municipality user, it is necessary to provide a unique disposable code, which assignment is not part of the application (SafeStreets must take care only of the verification of the provided code). The code is assigned only to users whose role declaration has been manually verified by a human operator. For this reason, the verification of authorities and municipality users is not considered in the registration phase.
+Services are exploited differently depending on the type of user that is enjoying the application. The type of the user is determined in the registration phase, which is different depending on this choice. Everyone can sign up as a common user. Instead, to sign up as an authority or municipality user, it is necessary to provide a unique disposable code, which assignment is not part of the application (SafeStreets must take care only of the verification of the provided code). The code is assigned only to users whose role declaration has been manually verified by a human operator. For this reason, the verification of authorities and municipality users is not considered in the registration phase.
 
-Common users can notify a violation using SafeReports service. To do so, they are asked to select the type of violation and to take a picture of the violation where the license plate is visible. Then the picture is matched with some metadata, and users are asked to confirm the violation notification. Common users are also allowed to use SafeAnalytics service with restrictions, in the sense that they can access anonymous information about violations using some filters to select the zone and the time interval.
+### SafeReports
 
-Authorities can access information about violations through SafeAnalytics service without restrictions. This means that they have access to all the violation reports, including pictures and license plates. Authorities are also allowed to access statistics on issued tickets by SafeStreets using MTS.
+SafeReports is the core of the application. It provides common users with the possibility to send a notification about a violation. To do so, they are asked to take a picture of the vehicle involved in the violation. Then the photo is checked and matched with some data captured at the moment (position, date and time). The user is asked to review and confirm the violation report that, in case of confirmation, is sent to SafeStreets, which stores it to offer several other services.
 
-Municipality users are provided with SafeSuggestions service, which allows them to access suggestions on how to reduce the accidents and violations rate in the most critical zones. This is possible thanks to an internal analysis of SafeStreets on the stored data.
+### SafeAnalytics
 
-MTS is used by SafeStreets to generate traffic tickets. When a new violation is stored (after it is verified not to be a duplicated event), the violation report is forwarded to MTS which generates the traffic tickets and informs SafeStreets of the outcome. SafeStreets stores data about the issued tickets to provide statistics through SafeTickets service.
+SafeAnalytics provides the possibility to mine SafeStreets data to get information about violations. This service is offered to common users and authorities, that can access data with different restriction levels. Common users have access to anonymous data concerning a selected zone. Authorities, instead, have access to unrestricted information on all the stored data.
+
+### SafeTickets
+
+SafeStreets uses Municipality Tickets Service (MTS) to generate traffic tickets. When a new violation is stored (after it is verified not to be a duplicated event), the violation report is forwarded to MTS which generates the traffic tickets and informs SafeStreets of the outcome. SafeStreets stores data about the issued tickets to provide statistics through SafeTickets service.
+SafeTickets is a service that allows authorities to access data about tickets generated from SafeStreets using MTS. Authorities are also allowed to select some filters to get statistics and aggregated data.
+
+### SafeSuggestions
 
 Municipality data about accidents is crossed with data collected by SafeStreets to identify possible unsafe areas and provide suggestions through SafeSuggestions service. SafeStreets periodically checks for new data to collect it and keep suggestions up to date.
-
-This section was focused on the shared phenomena and the relationships between the entities of the scenario. A more detailed description of how every service is exploited can be found later in the document.
+SafeSuggestions service is developed to municipality users. It allows them to access suggestions on how to reduce the accidents and violations rate in the most critical zones. Users can ask for suggestions using specific filters, depending on their intention to attend in a specific zone or to prevent a specific violation.
 
 ## Definitions and acronyms
 
-### Definitions
-
-* **User** is the consumer of the application. It includes common users, authorities and municipality users.
-
-* **Common user** is the user type that everyone can sign up as. It does not require any kind of verification.
-* **Authority** is the user type that authorities can get. It requires the verification of a disposable code.
-* **Municipality user** is the user type that municipal employees can get. It requires the verification of a disposable code.
-* **Timestamp** is a set of information about the time. It includes date (day, month, year) and time (hour, minute, time zone).
-* **Violation report** is the unit of notification collected by SafeStreets. It consists of:
-  * Picture of the violation
-
-  * License plate of the vehicle involved
-  * Type of the violation
-  * Position of the violation
-  * Timestamp of the notification
-* **Equivalent events** are set of violation reports that satisfy the following conditions:
-  * Same vehicles involved
-
-  * Same types of violation
-  * Position of the violations are different at most for 10 meters
-  * Same dates of the violations
-* **Activation code** [TOBEDEFINED]
-
-### Acronyms
-
-* **MTS (Municipality Tickets Service)** Service offered by the municipality to generate traffic tickets from information about the violations.
-
-* **OCR (Optical Character Recognition)** Software that converts text scanned from a photo in a machine-encoded text.
+| Subject                       | Acronym | Definition                                                   |
+| ----------------------------- | ------- | ------------------------------------------------------------ |
+| User                          | -       | The consumer of the application. It includes common users, authorities and municipality users. |
+| Common user                   | -       | The user type that everyone can sign up as. It does not require any kind of verification. |
+| Authority                     | -       | The user type that authorities can get. It requires the verification of an activation code. |
+| Municipality user             | -       | The user type that municipal employees can get. It requires the verification of an activation code. |
+| Timestamp                     | -       | A set of information about the time. It includes date (day, month, year) and time (hour, minute, time zone). |
+| Violation report              | -       | The unit of notification collected by SafeStreets. It consists of:<ul><li>Picture of the violation<li>License plate of the vehicle involved<li>Type of the violation<li>Position of the violation<li>Timestamp of the notification |
+| Equivalent events             | -       | Set of violation reports that satisfy the following conditions:<ul><li>Same vehicles involved<li>Same types of violation<li>Position of the violations are different at most for 10 meters<li>Same dates of the violations |
+| Activation code               | -       | The code to be provided during the registration to get special permits on the account. |
+| Municipality Tickets Service  | MTS     | Service offered by the municipality to generate traffic tickets from information about the violations. |
+| Optical Character Recognition | OCR     | Software that converts text scanned from a photo in a machine-encoded text. |
 
 ## Revision history
-## Reference Documents
+
+| Version | Release date | Description   |
+| ------- | ------------ | ------------- |
+| 1.0     |              | First release |
+
+
+
 ## Document Structure
 
 **Section 1** is an overall introduction to the application. It includes the description of the main functionalities of the application, an analysis of scenarios in which the application works, the list of the potential users of the application with a concise description of the possible interactions and the definition of world-level goals. Also, some meta-information is included, like revision history, references, and explanation of the conventions occurring in the document.
@@ -103,10 +98,13 @@ This section was focused on the shared phenomena and the relationships between t
 
 **Section 6** includes the references to the tools used to draw up this document.
 
-# OVERALL DESCRIPTION
+# 2.  OVERALL DESCRIPTION
 
 ## Product perspective
 <!--here we include further details on the shared phenomena and a domain model (class diagrams and statecharts)-->
+
+![](resources/class_diagram.svg)
+
 ## Product functions
 <!--here we include the most important requirements-->
 ## User characteristics
@@ -132,7 +130,7 @@ This section was focused on the shared phenomena and the relationships between t
 * **D15**	MTS is always right when generating traffic tickets.
 * **D16**	Data from the municipality is reliable.
 
-# SPECIFIC REQUIREMENTS
+# 3.  SPECIFIC REQUIREMENTS
 <!--Here we include more details on all aspects in Section 2 if they can be useful for the development team-->
 
 ## External Interface Requirements
@@ -251,8 +249,6 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 <br>
 
 <div style="text-align:center"><img src="resources/sequence_diagram_retrieve_information.svg"/></div>
-
-
 #### Authorities
 
 **Scenarios**
@@ -354,10 +350,10 @@ Municipality -> Sign up
 ### Maintainability
 ### Portability
 
-# FORMAL ANALYSIS USING ALLOY
+# 4.  FORMAL ANALYSIS USING ALLOY
 <!--this section should include a brief presentation of the main objectives driving the formal modeling activity, as well as a description of the model itself, what can be proved with it, and why what is proved is important given the problem at hand. To show the soundness and correctness of the model, this section can show some worlds obtained by running it, and/or the results of the checks performed on meaningful assertions-->
 
-# EFFORT SPENT
+# 5.  EFFORT SPENT
 <!--in this section you will include information about the number of hours each group member has worked for this document-->
 
 | Task                 | Braga | Calderon | Favaro |
@@ -377,4 +373,4 @@ Municipality -> Sign up
 | Software System Attributes                |       |          |       |
 | Formal Analysis using Alloy               |       |          |       |
 
-# REFERENCES
+# 6.  REFERENCES
