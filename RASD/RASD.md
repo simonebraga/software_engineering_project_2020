@@ -407,7 +407,7 @@ REQUIREMENTS
 | User characteristics |       |          |        |
 | Assumptions, dependencies and constraints |   5   |    5     |   5   |
 | External Interface Requirements           |       |          |       |
-| Functional Requirements                   |   5   |    5     |   5  |
+| Functional Requirements                   |   5   |    5     |   9  |
 | Assumptions, dependencies and constraints |   6   |    4     |   3   |
 | External Interface Requirements           |       |          |       |
 | Functional Requirements                   |   6   |    6     |  7  |
