@@ -7,7 +7,7 @@
             <feBlend in="SourceGraphic" in2="blurOut3" mode="normal" />
         </filter>
     </defs>
-    <g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="148" x="237" y="22.9951">Tickets generation</text>
+    <g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="148" x="237" y="22.9951">Generate tickets</text>
         <rect fill="#FFFFFF" filter="url(#f1beck9alplia7)" height="316.1328" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="254" y="126.5938" />
         <rect fill="#FFFFFF" filter="url(#f1beck9alplia7)" height="316.1328" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="473" y="126.5938" />
         <rect fill="#FFFFFF" filter="url(#f1beck9alplia7)" height="174.4688" style="stroke: #000000; stroke-width: 2.0;" width="306" x="200" y="260.2578" />
