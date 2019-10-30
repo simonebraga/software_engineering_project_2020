@@ -32,7 +32,10 @@ The purpose of the software is captured by the following goals:
 
 SafeStreets must interface with different types of users and information sources. In this context, it is very important to identify the placement of SafeStreets and its services with the entities of the scenario. To do so, we will refer to the following diagram. Afterward, every link between SafeStreets and the entities will be deeply analyzed to exhaustively describe the shared phenomena of the scenario.
 
+<br>
 <div style="text-align:center"><img src="resources/relationship_diagram.svg"/></div>
+<br>
+
 Two types of interactions can be defined:
 
 * **Interactions through services** (blue arrows in the diagram)
@@ -80,9 +83,6 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 
 | Version | Release date | Description   |
 | ------- | ------------ | ------------- |
-| 1.0     |              | First release |
-
-
 
 ## Document Structure
 
@@ -103,7 +103,9 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 ## Product perspective
 <!--here we include further details on the shared phenomena and a domain model (class diagrams and statecharts)-->
 
-![](resources/class_diagram.svg)
+<br>
+<div style="text-align:center"><img src="resources/class_diagram.svg"/></div>
+<br>
 
 ## Product functions
 <!--here we include the most important requirements-->
