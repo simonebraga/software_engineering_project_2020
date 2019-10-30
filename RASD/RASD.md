@@ -186,7 +186,7 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 
 #### Common users
 
-![](resources/use_case_common_user.svg)
+![](resources/usecase_common_user.svg)
 
 **Scenarios**
 
@@ -232,9 +232,17 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 | :------------- | :------------- |
 |Actor| Common User, OCR |
 | Entry conditions       | <ul><li>The user has already done the login    |
-| Events flow      |  <ul><li>The user takes a picture of the traffic violation.<li>The required metadata() is added automatically to the picture.<li> The user selects the type of violation from a list of violations.<li>The picture is sent to the OCR software to automatically scan and read the plate.<li>After receiving the plate from the OCR, the system asks the user to confirm the plate of the violation vehicle .<li> After the confirmation the system checks if the new violation is equivalent to an already stored one.<li>The system checks the integrity of the report <li> The systems stores the violation report if and only if the previous equivalence check returned a negative result and the integrity test was positive.  |
+| Events flow      |  <ul><li>The user takes a picture of the traffic violation.<li>The required metadata() is added automatically to the picture.<li> The user selects the type of violation from a list of violations.<li>The picture is sent to the OCR software to automatically scan and read the plate.<li>After receiving the plate from the OCR, the system asks the user to confirm the plate of the violation vehicle .<li> After the confirmation the system checks if the new violation is equivalent to an already stored one.<li>The system checks the integrity of the report <li> The systems stores the violation report if and only if the previous equivalence check returned a negative result and the integrity test was positive.|
 | Exit conditions    | The user receives a notification about the outcome of its violation        |
 | Exceptions      | If the OCR is not able to read the plate then the system sends an error to the user and asks him to repeat the procedure .    |
+
+| Name | Generates tickets     |
+| :------------- | :------------- |
+| Actor       | SafeStreets, MTS     |
+| Entry condition | The system has validated and stored a new traffic violation report. |
+|Events flow |<ul><li>The system forwards the violation report to MTS<li>MTS generates tickets from the violation report<li> MTS sends the results to SafeStreets |
+|Exit conditions | The system stores data about issued tickets |
+|Exceptions | If MTS is not able to generate the tickets then and error is sent to SafeStreets and no data about issued tickets is stored
 
 
 | Name | Retrieve information  |
@@ -243,13 +251,17 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 |Entry conditions| <ul><li>The user has already done the login<li>The user wants to retrieve information about traffic violations|
 | Events flow | <ul><li> The user presses the button to start the query for the desired data.<li>The user inserts the geographical filter for the query.<li> The user inserts the time filter for the query<li> The system anonymizes the  information <li> The results are sent to the user
 |Exit conditions | The results are displayed in a map exploiting Google Maps'API |
-|Exceptions | |
+|Exceptions ||
 
-![](resources/sequence_diagram_reports.svg)
+![](resources/sequence_diagram_report.svg)
 
 <br>
 
-<div style="text-align:center"><img src="resources/sequence_diagram_retrieve_information.svg"/></div>
+![](resources/sequence_tickets_generation.svg)
+
+<div style="text-align:center"><img src="resources/sequence_diagram_retrieve_information_.svg"/></div>
+
+
 #### Authorities
 
 **Scenarios**

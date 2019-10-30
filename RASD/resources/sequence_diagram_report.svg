@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="804px" preserveAspectRatio="none" style="width:779px;height:804px;" version="1.1" viewBox="0 0 779 804" width="779px" zoomAndPan="magnify">
     <defs>
-        <filter height="300%" id="f1u4npyy1umna9" width="300%" x="-1" y="-1">
+        <filter height="300%" id="f14rkgsidp14lj" width="300%" x="-1" y="-1">
             <feGaussianBlur result="blurOut" stdDeviation="2.0" />
             <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0" />
             <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3" />
@@ -8,31 +8,31 @@
         </filter>
     </defs>
     <g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="138" x="319.5" y="22.9951">Report a violation</text>
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="50.2656" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="57" y="126.5938" />
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="443.4688" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="57" y="242.9922" />
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="538.7344" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="434" y="147.7266" />
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="480.4688" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="661" y="205.9922" />
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="415.3359" style="stroke: #000000; stroke-width: 2.0;" width="687.5" x="13" y="263.125" />
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="252.8672" style="stroke: #000000; stroke-width: 2.0;" width="643" x="23" y="345.5234" />
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="77.3984" style="stroke: #000000; stroke-width: 2.0;" width="465" x="33" y="440.9219" />
-        <rect fill="#FFFFFF" height="31.1328" style="stroke: none; stroke-width: 1.0;" width="465" x="33" y="487.1875" />
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="50.2656" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="57" y="126.5938" />
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="443.4688" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="57" y="242.9922" />
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="538.7344" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="434" y="147.7266" />
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="480.4688" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="661" y="205.9922" />
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="415.3359" style="stroke: #000000; stroke-width: 2.0;" width="687.5" x="13" y="263.125" />
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="252.8672" style="stroke: #000000; stroke-width: 2.0;" width="643" x="23" y="345.5234" />
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="77.3984" style="stroke: #000000; stroke-width: 2.0;" width="467.5" x="33" y="440.9219" />
+        <rect fill="#FFFFFF" height="31.1328" style="stroke: none; stroke-width: 1.0;" width="467.5" x="33" y="487.1875" />
         <rect fill="#FFFFFF" height="73.0703" style="stroke: none; stroke-width: 1.0;" width="643" x="23" y="525.3203" />
         <rect fill="#FFFFFF" height="73.0703" style="stroke: none; stroke-width: 1.0;" width="687.5" x="13" y="605.3906" />
         <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="62" x2="62" y1="116.5938" y2="695.4609" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="439" x2="439" y1="116.5938" y2="695.4609" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="438.5" x2="438.5" y1="116.5938" y2="695.4609" />
         <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="665.5" x2="665.5" y1="116.5938" y2="695.4609" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="43" y="113.292">User</text>
-        <ellipse cx="62" cy="43.2969" fill="#FEFECE" filter="url(#f1u4npyy1umna9)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
-        <path d="M62,51.2969 L62,78.2969 M49,59.2969 L75,59.2969 M62,78.2969 L49,93.2969 M62,78.2969 L75,93.2969 " fill="none" filter="url(#f1u4npyy1umna9)" style="stroke: #A80036; stroke-width: 2.0;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="43" y="707.4561">User</text>
-        <ellipse cx="62" cy="720.7578" fill="#FEFECE" filter="url(#f1u4npyy1umna9)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
-        <path d="M62,728.7578 L62,755.7578 M49,736.7578 L75,736.7578 M62,755.7578 L49,770.7578 M62,755.7578 L75,770.7578 " fill="none" filter="url(#f1u4npyy1umna9)" style="stroke: #A80036; stroke-width: 2.0;" />
-        <rect fill="#FEFECE" filter="url(#f1u4npyy1umna9)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="94" x="390" y="81.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="80" x="397" y="101.292">SafeStreets</text>
-        <rect fill="#FEFECE" filter="url(#f1u4npyy1umna9)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="94" x="390" y="694.4609" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="80" x="397" y="714.4561">SafeStreets</text>
-        <rect fill="#FEFECE" filter="url(#f1u4npyy1umna9)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="45" x="641.5" y="81.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="31" x="648.5" y="101.292">OCR</text>
-        <rect fill="#FEFECE" filter="url(#f1u4npyy1umna9)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="45" x="641.5" y="694.4609" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="31" x="648.5" y="714.4561">OCR</text>
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="50.2656" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="57" y="126.5938" />
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="443.4688" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="57" y="242.9922" />
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="538.7344" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="434" y="147.7266" />
-        <rect fill="#FFFFFF" filter="url(#f1u4npyy1umna9)" height="480.4688" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="661" y="205.9922" />
+        <ellipse cx="62" cy="43.2969" fill="#FEFECE" filter="url(#f14rkgsidp14lj)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
+        <path d="M62,51.2969 L62,78.2969 M49,59.2969 L75,59.2969 M62,78.2969 L49,93.2969 M62,78.2969 L75,93.2969 " fill="none" filter="url(#f14rkgsidp14lj)" style="stroke: #A80036; stroke-width: 2.0;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="32" x="43" y="707.4561">User</text>
+        <ellipse cx="62" cy="720.7578" fill="#FEFECE" filter="url(#f14rkgsidp14lj)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
+        <path d="M62,728.7578 L62,755.7578 M49,736.7578 L75,736.7578 M62,755.7578 L49,770.7578 M62,755.7578 L75,770.7578 " fill="none" filter="url(#f14rkgsidp14lj)" style="stroke: #A80036; stroke-width: 2.0;" />
+        <rect fill="#FEFECE" filter="url(#f14rkgsidp14lj)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="387.5" y="81.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="394.5" y="101.292">SafeReports</text>
+        <rect fill="#FEFECE" filter="url(#f14rkgsidp14lj)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="99" x="387.5" y="694.4609" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="85" x="394.5" y="714.4561">SafeReports</text>
+        <rect fill="#FEFECE" filter="url(#f14rkgsidp14lj)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="45" x="641.5" y="81.2969" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="31" x="648.5" y="101.292">OCR</text>
+        <rect fill="#FEFECE" filter="url(#f14rkgsidp14lj)" height="30.2969" style="stroke: #A80036; stroke-width: 1.5;" width="45" x="641.5" y="694.4609" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="31" x="648.5" y="714.4561">OCR</text>
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="50.2656" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="57" y="126.5938" />
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="443.4688" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="57" y="242.9922" />
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="538.7344" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="434" y="147.7266" />
+        <rect fill="#FFFFFF" filter="url(#f14rkgsidp14lj)" height="480.4688" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="661" y="205.9922" />
         <polygon fill="#A80036" points="422,143.7266,432,147.7266,422,151.7266,426,147.7266" style="stroke: #A80036; stroke-width: 1.0;" />
         <line style="stroke: #A80036; stroke-width: 1.0;" x1="67" x2="428" y1="147.7266" y2="147.7266" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="107" x="74" y="142.6606">select a violation</text>
         <polygon fill="#A80036" points="422,172.8594,432,176.8594,422,180.8594,426,176.8594" style="stroke: #A80036; stroke-width: 1.0;" />
@@ -58,10 +58,10 @@
         <line style="stroke: #A80036; stroke-width: 1.0;" x1="445" x2="486" y1="425.9219" y2="425.9219" />
         <polygon fill="#A80036" points="455,421.9219,445,425.9219,455,429.9219,451,425.9219" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="203" x="451" y="407.856">Check integrity and equivalence</text>
         <path d="M33,440.9219 L97,440.9219 L97,447.9219 L87,457.9219 L33,457.9219 L33,440.9219 " fill="#EEEEEE" style="stroke: #000000; stroke-width: 1.0;" />
-        <rect fill="none" height="77.3984" style="stroke: #000000; stroke-width: 2.0;" width="465" x="33" y="440.9219" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="19" x="48" y="453.9888">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="296" x="112" y="453.1323">[integrity holds and equivalence doesn't hold]</text>
+        <rect fill="none" height="77.3984" style="stroke: #000000; stroke-width: 2.0;" width="467.5" x="33" y="440.9219" /><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="19" x="48" y="453.9888">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="296" x="112" y="453.1323">[integrity holds and equivalence doesn't hold]</text>
         <polygon fill="#A80036" points="78,475.1875,68,479.1875,78,483.1875,74,479.1875" style="stroke: #A80036; stroke-width: 1.0;" />
         <line style="stroke: #A80036; stroke-width: 1.0;" x1="72" x2="433" y1="479.1875" y2="479.1875" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="268" x="84" y="474.1216">Confirmation of successful violation report</text>
-        <line style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="33" x2="498" y1="488.1875" y2="488.1875" />
+        <line style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="33" x2="500.5" y1="488.1875" y2="488.1875" />
         <polygon fill="#A80036" points="78,506.3203,68,510.3203,78,514.3203,74,510.3203" style="stroke: #A80036; stroke-width: 1.0;" />
         <line style="stroke: #A80036; stroke-width: 1.0;" x1="72" x2="433" y1="510.3203" y2="510.3203" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="343" x="84" y="505.2544">Negative confirmation. Duplicate or not altered report</text>
         <line style="stroke: #000000; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="23" x2="666" y1="526.3203" y2="526.3203" /><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="142" x="28" y="536.5308">[User doesn't confirm]</text>
@@ -73,7 +73,7 @@
         <polygon fill="#A80036" points="455,637.3281,445,641.3281,455,645.3281,451,641.3281" style="stroke: #A80036; stroke-width: 1.0;" />
         <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="449" x2="660" y1="641.3281" y2="641.3281" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="179" x="461" y="636.2622">Error while reading the plate</text>
         <polygon fill="#A80036" points="78,666.4609,68,670.4609,78,674.4609,74,670.4609" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="72" x2="433" y1="670.4609" y2="670.4609" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="204" x="84" y="665.395">Error. Repeat the entire process</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="136" x="320.5" y="791.04">Figure x. Sequence diagram</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="72" x2="433" y1="670.4609" y2="670.4609" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="204" x="84" y="665.395">Error. Repeat the entire process</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacingAndGlyphs" textLength="109" x="334" y="791.04">Sequence diagram x.x</text>
         <!--
 @startuml
 
@@ -81,7 +81,7 @@ title Report a violation
 
 actor User as us
 activate us
-us -> SafeStreets : select a violation
+us -> "SafeReports" as SafeStreets : select a violation
 activate SafeStreets
 us -> SafeStreets : take a picture
 deactivate us
@@ -116,7 +116,7 @@ else Plate not recognized
   SafeStreets->us : Error. Repeat the entire process
 end
 
-footer Figure x. Sequence diagram
+footer Sequence diagram x.x
 
 
 @enduml
