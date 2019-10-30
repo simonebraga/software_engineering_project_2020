@@ -30,7 +30,7 @@ The purpose of the software is captured by the following goals:
 ## Scope
 <!--here we include an analysis of the world and of the shared phenomena-->
 
-SafeStreets must interface with different types of users and information sources. In this context, it is very important to identify the placement of SafeStreets and its services with the entities of the scenario. To do so, we will refer to the following diagram. Afterward, every link between SafeStreets and the entities will be deeply analyzed to exhaustively describe the shared phenomena of the scenario.
+SafeStreets must interface with different types of users and information sources. In this context, it is very important to identify the placement of SafeStreets and its services with the entities of the scenario. To do so, we will refer to the following picture. Afterward, every link between SafeStreets and the entities will be deeply analyzed to exhaustively describe the shared phenomena of the scenario.
 
 <br>
 <div style="text-align:center"><img src="resources/relationship_diagram.svg"/></div>
@@ -78,6 +78,7 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 | Activation code               | -       | The code to be provided during the registration to get special permits on the account. |
 | Municipality Tickets Service  | MTS     | Service offered by the municipality to generate traffic tickets from information about the violations. |
 | Optical Character Recognition | OCR     | Software that converts text scanned from a photo in a machine-encoded text. |
+| Query interface               | -       | The interface provided to the users to select some filters when requesting data. |
 
 ## Revision history
 
@@ -103,8 +104,41 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 ## Product perspective
 <!--here we include further details on the shared phenomena and a domain model (class diagrams and statecharts)-->
 
+The following diagram formally describes the relations between the entities taken into account in the description of the world and of the shared phenomena. More specifically, it provides a clear point of view on which types of users can access the developed services, and shows how SafeStreets interfaces with external resources to exploit back-end processes.
+
 <br>
 <div style="text-align:center"><img src="resources/class_diagram.svg"/></div>
+<br>
+
+As mentioned in the previous section, a service is exploited differently depending on the type of user that is enjoying it. This is important when considering SafeAnalytics, which has a crucial role in the application, but is developed both to common users and authorities. These types of user have different rights when accessing data stored by SafeStreets, and will be provided with different query interfaces to make their requests. If referring to the diagram, one could think to the classes as the processes inherent to specific functionalities, and to the relations as the interfaces provided to the users to enjoy a service.
+Relations between application and the resources do not need further explanation, as they are deeply analyzed in the following sections to describe how the interaction works.
+
+### State diagrams
+
+In the diagrams shown below are emphasized the possible states of the entities, and the transitions between one state to another.
+
+<br>
+<center><b>Application</b></center>
+<br>
+<div style="text-align:center"><img src="resources/state_diagram_application.svg"/></div>
+<br>
+
+---
+<center><b>Common user</b></center>
+<br>
+<div style="text-align:center"><img src="resources/state_diagram_common_user.svg"/></div>
+<br>
+
+---
+<center><b>Authority</b></center>
+<br>
+<div style="text-align:center"><img src="resources/state_diagram_authority.svg"/></div>
+<br>
+
+---
+<center><b>Municipality user</b></center>
+<br>
+<div style="text-align:center"><img src="resources/state_diagram_municipality_user.svg"/></div>
 <br>
 
 ## Product functions
@@ -260,7 +294,6 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 ![](resources/sequence_tickets_generation.svg)
 
 <div style="text-align:center"><img src="resources/sequence_diagram_retrieve_information_.svg"/></div>
-
 
 #### Authorities
 
