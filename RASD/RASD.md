@@ -217,7 +217,7 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 | Entry conditions       | The user opens the app on his smart phone      |
 | Events flow      | <ul><li>The user clicks on the sign up button</li><li>The user selects the option to identify himself as a common user.<li>The user fills the forms with his email and a password</li> <li>The system confirms his data</li><li>The system adds the new user to his data</li></ul>|      |
 | Exit conditions     | <ul><li>The users is now registered and his account is registered to the system</li></ul>       |
-| Exceptions     | <ul><li>The user has already an account. In this case the system suggests the user to click the login button instead</li><li>The user doesn't complete the data required for the registration. In this case an error is sent to the user asking him to complete the information</li><li>The users fills the forms with invalid data. In this case an error is sent to the user asking him to modify the invalid data</ul>   |
+| Exceptions     | <ul><li>The user has already an account. In this case the system suggests the user to click the login button instead or to use another email.</li>   |
 
 
 | Name |Login   |
@@ -241,7 +241,7 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 | Actor       | SafeStreets, MTS     |
 | Entry condition | The system has validated and stored a new traffic violation report. |
 |Events flow |<ul><li>The system forwards the violation report to MTS<li>MTS generates tickets from the violation report<li> MTS sends the results to SafeStreets |
-|Exit conditions | The system stores data about issued tickets |
+|Exit conditions | The system stores data about issued tickets and builds statistics from that data |
 |Exceptions | If MTS is not able to generate the tickets then and error is sent to SafeStreets and no data about issued tickets is stored
 
 
@@ -367,7 +367,52 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 | Exit conditions | SafeStreets displays the suggestion (if given) or a "no suggestions" notice |
 | Exceptions | / |
 
+| Name | Store suggestions    |
+| :------------- | :------------- |
+| Actor     | SafeStreets, Municipality information   |
+| Entry conditions | Timeout trigger is activated |
+|Events flow | <ul><li> SafeStreets checks for new accident data from the municipality information<li> SafeStreets collects the new accident data from the municipality information<li> The new data is crossed with the data already stored into SafeStreets<li> SafeStreets builds statistics from the crossed data to generates new suggestions
+|Exit conditions | The new suggestions are stored in the system |
+|Exceptions | / |
+
 ![](resources/get_intervention_suggestion_sequence_diagram.svg)
+
+## Activity Diagrams
+Shown the sign up activity diagram for all the different type of users.
+
+![](resources/activity_diagram_login.svg)
+
+Shown the activity diagram for the generation of new suggestions.
+
+![](resources/activity_diagram_create_suggestions.svg)
+
+## Traceability Matrix
+
+| Requirements | Goal | Use case   |
+| :------------- |:------------- | :--------------- |
+| R1 |G1|      Report violations      |
+| R2 |G1|      Report violations      |
+| R3|G1|       Report violations      |
+| R4|G1|       Report violations      |
+| R5|G1|       Report violations      |
+| R6|G1|       Report violations      |
+| R7|G1|       Report violations      |
+| R8|G1|       Report violations      |
+| R9|G2|       Retrieve information   |
+| R10|G2|      Retrieve information   |
+| R11|G3|      Retrieve violations info |
+| R12|G4|      Store suggestions |
+| R13|G4|      Store suggestions |
+| R14|G4|      Get intervention suggestion |
+| R15|G5|      Generate tickets |
+| R16|G5|      Generate tickets |
+| R17|G5|      Generate tickets |
+| R18|G6|      Generate tickets |
+| R19|G6|      Generate tickets |
+| R20|G6|      Get tickets info |
+
+
+
 
 ## Performance Requirements
 ## Design Constraints
