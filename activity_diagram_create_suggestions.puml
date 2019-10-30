@@ -1,0 +1,34 @@
+@startuml
+
+title Store suggestions
+
+start
+:timeout trigger;
+:check new accident data from municipalities;
+
+if (new data available) then (yes)
+
+  :collect data from municipalities;
+
+  :cross municipality data with
+   already stored data;
+
+  :build statistics for creating new suggestions;
+
+  if (new suggestions created) then (yes)
+    :store new suggestions;
+
+  else (no)
+    stop
+  endif
+
+else (no)
+  stop
+
+endif
+
+stop
+
+footer Activity diagram x.x
+
+@enduml
