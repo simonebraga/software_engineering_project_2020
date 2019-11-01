@@ -64,24 +64,26 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 
 ## Definitions and acronyms
 
-| Subject                       | Acronym | Definition                                                   |
-| ----------------------------- | ------- | ------------------------------------------------------------ |
-| User                          | -       | The consumer of the application. It includes common users, authorities and municipality users. |
-| Common user                   | -       | The user type that everyone can sign up as. It does not require any kind of verification. |
-| Authority                     | -       | The user type that authorities can get. It requires the verification of an activation code. |
-| Municipality user             | -       | The user type that municipal employees can get. It requires the verification of an activation code. |
-| Timestamp                     | -       | A set of information about the time. It includes date (day, month, year) and time (hour, minute, time zone). |
-| Violation report              | -       | The unit of notification collected by SafeStreets. It consists of:<ul><li>Picture of the violation<li>License plate of the vehicle involved<li>Type of the violation<li>Position of the violation<li>Timestamp of the notification |
-| Equivalent events             | -       | Set of violation reports that satisfy the following conditions:<ul><li>Same vehicles involved<li>Same types of violation<li>Position of the violations are different at most for 10 meters<li>Same dates of the violations |
-| Activation code               | -       | The code to be provided during the registration to get special permits on the account. |
-| Municipality Tickets Service  | MTS     | Service offered by the municipality to generate traffic tickets from information about the violations. |
-| Optical Character Recognition | OCR     | Software that converts text scanned from a photo in a machine-encoded text. |
-| Query interface               | -       | The interface provided to the users to select some filters when requesting data. |
+| Subject                           | Acronym | Definition                                                   |
+| --------------------------------- | ------- | ------------------------------------------------------------ |
+| User                              | -       | The consumer of the application. It includes common users, authorities and municipality users. |
+| Common user                       | -       | The user type that everyone can sign up as. It does not require any kind of verification. |
+| Authority                         | -       | The user type that authorities can get. It requires the verification of an activation code. |
+| Municipality user                 | -       | The user type that municipal employees can get. It requires the verification of an activation code. |
+| Timestamp                         | -       | A set of information about the time. It includes date (day, month, year) and time (hour, minute, time zone). |
+| Violation report                  | -       | The unit of notification collected by SafeStreets. It consists of:<ul><li>The picture of the violation<li>The license plate of the vehicle involved<li>The type of the violation<li>The position of the violation<li>The timestamp of the notification |
+| Equivalent events                 | -       | Set of violation reports that satisfy the following conditions:<ul><li>Same vehicles involved<li>Same types of violation<li>Position of the violations are different at most for 10 meters<li>Same dates of the violations |
+| Activation code                   | -       | The code to be provided during the registration to get special permits on the account. |
+| Municipality Tickets Service      | MTS     | Service offered by the municipality to generate traffic tickets from information about the violations. |
+| Optical Character Recognition     | OCR     | Software that converts text scanned from a photo in a machine-encoded text. |
+| Query interface                   | -       | The interface provided to the users to select some filters when requesting data. |
+| Application Programming Interface | API     | An interface or communication protocol between client and server intended to simplify the building of client-side software. |
 
 ## Revision history
 
-| Version | Release date | Description   |
-| ------- | ------------ | ------------- |
+| Version | Release date | Description |
+| ------- | ------------ | ----------- |
+|         |              |             |
 
 ## Document Structure
 
@@ -110,29 +112,29 @@ The following diagram formally describes the relations between the entities take
 
 <br>
 
-As mentioned in the previous section, a service is exploited differently depending on the type of user that is enjoying it. This is important when considering SafeAnalytics, which has a crucial role in the application, but is developed both to common users and authorities. These types of user have different rights when accessing data stored by SafeStreets, and will be provided with different query interfaces to make their requests. If referring to the diagram, one could think to the classes as the processes inherent to specific functionalities, and to the relations as the interfaces provided to the users to enjoy a service.
+As mentioned in the previous section, a service is exploited differently depending on the type of user that is enjoying it. This is important when considering SafeAnalytics, which has a crucial role in the application, but is developed both to common users and authorities. These types of users have different rights when accessing data stored by SafeStreets, and will be provided with different query interfaces to make their requests. If referring to the diagram, one could think to the classes as the processes inherent to specific functionalities, and to the relations as the interfaces provided to the users to enjoy a service.
 Relations between application and the resources do not need further explanation, as they are deeply analyzed in the following sections to describe how the interaction works.
 
 ### State diagrams
 
 In the diagrams shown below are emphasized the possible states of the entities, and the transitions between one state to another.
 
-**Application**
+#### Application
 
 ![](resources/state_diagram_application.svg)
 
 ---
-**Common user**
+#### Common user
 
 ![](resources/state_diagram_common_user.svg)
 
 ---
-**Authority**
+#### Authority
 
 ![](resources/state_diagram_authority.svg)
 
 ---
-**Municipality user**
+#### Municipality user
 
 ![](resources/state_diagram_municipality_user.svg)
 
@@ -140,10 +142,72 @@ In the diagrams shown below are emphasized the possible states of the entities, 
 
 ## Product functions
 <!--here we include the most important requirements-->
+
+This section focuses on the definition of the functions to be provided to reach the goals previously listed. For each service, a set of requirements is identified. Later on in the document, these requirements will be revised and factored to be mapped on the goals.
+
+### SafeReports
+
+* The service must allow users to take pictures.
+* The service must forward pictures to OCR software to detect license plates.
+* The service must detect the timestamp.
+* The service must detect the position of the user.
+* The service must create a violation report filling it with the needed data.
+* The service must ask confirmation to the user before sending the violation report.
+* The service must check the integrity of the violation report before storing it.
+* The service must check for duplicated events before storing the violation report.
+* The service must forward stored violation report to MTS.
+* The service must store information on issued tickets when forwarding violation reports.
+
+### SafeAnalytics
+
+* The service must provide users with a query interface.
+* The service must allow common users to select a time interval in the query interface.
+* The service must allow common users to select a day as a minimum granularity of the time interval.
+* The service must allow common users to select a zone in the query interface.
+* The service must allow common users to select 1 kilometer as the minimum granularity of the zone.
+* The service must allow common users to select a violation type in the query interface.
+* The service must allow authorities to access a special query interface.
+* The service must allow authorities to consult all the information stored.
+* The service must allow authorities to select a license plate in the special query interface.
+* The service must allow authorities to see the pictures of the violations.
+* The service must allow authorities to filter data using any granularity.
+
+### SafeTickets
+
+* The service must provide authorities with a query interface.
+* The service must allow authorities to consult all the stored data about issued tickets.
+* The service must allow authorities to use the same filters of SafeAnalytics.
+* The service must allow going back to the violation report from which the tickets were generated.
+
+### SafeSuggestions
+
+* The service must provide municipality users with a query interface.
+* The service must allow municipality users to request a suggestion using the query interface.
+* The service must allow municipality users to select a type of violation in the query interface.
+* The service must allow municipality users to select a zone in the query interface.
+* The service must provide suggestions to reduce the incidence of the selected violation in the selected zone.
+
 ## User characteristics
 <!--here we include anything that is relevant to clarify their needs-->
-## Assumptions, dependencies and constraints
+
+As previously mentioned, several types of users can be identified. Every type of user has different needs and limitations, that must be satisfied providing different services. In this section, users are analyzed with relation to their characteristics, to formally define these needs and limitations.
+
+### Common users
+
+Common users are the core of the application and the channel through which the application collects data. Common users contribute to building the data set that they can query to get data about violations. They must be guided through the process of notification to make it easy and intuitive and must be provided with the possibility to select the correct filters to query the stored data.
+
+### Authorities
+
+Authorities are, from a certain point of view, supervisors of the stored data. They are not provided with the possibility to notify violations (it is not what the authority account was designed for), but they can access all the stored data about both notified violations and issued tickets. For this type of account is not so important the easiness of the interaction. Instead, it is very important to provide authorities with the possibility to use powerful filters to query data.
+
+### Municipality users
+
+The needs of the municipality users are somehow disjoint from those of other users. This type of account is designed to give the possibility to get the suggestions identified by the application. Because of this, municipality users are not provided with the possibility to query the stored data or to notify violations. Instead, they are provided with a special query interface that allows them to select filters depending on which type of intervention they want to put in place.
+
+## Assumptions and dependencies
 <!--here we include domain assumptions-->
+
+### Domain assumptions
 
 * **D1**	Users do not modify reality to generate fake violation reports.
 
@@ -159,9 +223,24 @@ In the diagrams shown below are emphasized the possible states of the entities, 
 * **D11**	If OCR software is not able to recognize a plate, it returns a special response.
 * **D12**	A violation report is anonymous if and only if it consists only of the type of violation, position, and date.
 * **D13**	Authorities and municipality users are previously verified.
-* **D14**	MTS provides uninterrupted service.
+* **D14**	MTS provides an uninterrupted service.
 * **D15**	MTS is always right when generating traffic tickets.
 * **D16**	Data from the municipality is reliable.
+
+### Dependencies
+
+There are not strong dependencies between the services developed by the application. There is a clear distinction between services that store data and services that access data, thanks to this they can be exploited independently one from each other. It is obvious that accessing the same data set, it is useless to exploit services without storing data, so the utility of the query services is bound to the existence of data collection services.
+
+* SafeAnalytics is based on data collection through SafeReports.
+* SafeTickets is based on the data collection from MTS.
+* SafeSuggestions is based on the data collection from the municipality data set.
+
+Stronger dependencies exist between SafeStreets and the external services to whom some tasks are delegated.
+
+* SafeReports uses external OCR software.
+* SafeStreets is based on the GoogleMaps API.
+
+The characteristic of these dependencies is that the link is not exclusive with the service to which the tasks are delegated, in the sense that services can be changed. OCR software can be any, and OpenStreetMaps API can be used instead of GoogleMaps ones.
 
 # 3.  SPECIFIC REQUIREMENTS
 <!--Here we include more details on all aspects in Section 2 if they can be useful for the development team-->
@@ -291,7 +370,6 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 ![](resources/sequence_tickets_generation.svg)
 
 <div style="text-align:center"><img src="resources/sequence_diagram_retrieve_information_.svg"/></div>
-
 #### Authorities
 
 **Scenarios**
@@ -418,28 +496,28 @@ Shown the activity diagram for the generation of new suggestions.
 
 ## Traceability Matrix
 
-| Requirements | Goal | Use case   |
-| :------------- |:------------- | :--------------- |
-| R1 |G1|      Report violations      |
-| R2 |G1|      Report violations      |
-| R3|G1|       Report violations      |
-| R4|G1|       Report violations      |
-| R5|G1|       Report violations      |
-| R6|G1|       Report violations      |
-| R7|G1|       Report violations      |
-| R8|G1|       Report violations      |
-| R9|G2|       Retrieve information   |
-| R10|G2|      Retrieve information   |
-| R11|G3|      Retrieve violations info |
-| R12|G4|      Store suggestions |
-| R13|G4|      Store suggestions |
-| R14|G4|      Get intervention suggestion |
-| R15|G5|      Generate tickets |
-| R16|G5|      Generate tickets |
-| R17|G5|      Generate tickets |
-| R18|G6|      Generate tickets |
-| R19|G6|      Generate tickets |
-| R20|G6|      Get tickets info |
+| Requirements | Goal | Use case                    |
+| :----------- | :--- | :-------------------------- |
+| R1           | G1   | Report violations           |
+| R2           | G1   | Report violations           |
+| R3           | G1   | Report violations           |
+| R4           | G1   | Report violations           |
+| R5           | G1   | Report violations           |
+| R6           | G1   | Report violations           |
+| R7           | G1   | Report violations           |
+| R8           | G1   | Report violations           |
+| R9           | G2   | Retrieve information        |
+| R10          | G2   | Retrieve information        |
+| R11          | G3   | Retrieve violations info    |
+| R12          | G4   | Store suggestions           |
+| R13          | G4   | Store suggestions           |
+| R14          | G4   | Get intervention suggestion |
+| R15          | G5   | Generate tickets            |
+| R16          | G5   | Generate tickets            |
+| R17          | G5   | Generate tickets            |
+| R18          | G6   | Generate tickets            |
+| R19          | G6   | Generate tickets            |
+| R20          | G6   | Get tickets info            |
 
 
 
@@ -465,21 +543,18 @@ Shown the activity diagram for the generation of new suggestions.
 # 5.  EFFORT SPENT
 <!--in this section you will include information about the number of hours each group member has worked for this document-->
 
-| Task                 | Braga | Calderon | Favaro |
-| -------------------- | :---: | :------: | :----: |
-| Introduction         |  10   |    5     |   5    |
-| Product perspective  |       |          |        |
-| Product functions    |       |          |        |
-| User characteristics |       |          |        |
-| Assumptions, dependencies and constraints |   5   |    5     |   5   |
-| External Interface Requirements           |       |          |       |
-| Functional Requirements                   |   5   |    5     |   9  |
-| Assumptions, dependencies and constraints |   6   |    4     |   3   |
-| External Interface Requirements           |       |          |       |
-| Functional Requirements                   |   6   |    6     |  7  |
-| Performance Requirements                  |       |          |       |
-| Design Constraints                        |       |          |       |
-| Software System Attributes                |       |          |       |
-| Formal Analysis using Alloy               |       |          |       |
+| Task                                      | Braga | Calderon | Favaro |
+| ----------------------------------------- | :---: | :------: | :----: |
+| Introduction                              |  10   |    10    |   10   |
+| Product perspective                       |   3   |    3     |   3    |
+| Product functions                         |   2   |    2     |   2    |
+| User characteristics                      |   2   |    2     |   2    |
+| Assumptions, dependencies and constraints |   4   |    4     |   4    |
+| External Interface Requirements           |       |          |        |
+| Functional Requirements                   |  12   |    12    |   12   |
+| Performance Requirements                  |       |          |        |
+| Design Constraints                        |       |          |        |
+| Software System Attributes                |       |          |        |
+| Formal Analysis using Alloy               |       |          |        |
 
 # 6.  REFERENCES
