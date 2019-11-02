@@ -1,9 +1,6 @@
-[TOC]
-
-# 1.  INTRODUCTION
+# INTRODUCTION
 
 ## Purpose
-<!--here we include the goals of the project-->
 
 **SafeStreets** is a crowd-sourced application that intends to provide users with the possibility to notify authorities when traffic violations occur. The main target of the application are violations that can be easily captured by a camera (like, for instance, parking violations). SafeStreets intends also to provide users with the possibility to mine the stored information with different levels of visibility. Moreover, the application must cross the collected data with information coming from the municipality to provide suggestions on possible interventions to decrease the incidence of violations and accidents. In the end, the application must forward data about violations to generate traffic tickets, and must allow authorities to get statistics on issued tickets.
 
@@ -28,11 +25,14 @@ The purpose of the software is captured by the following goals:
 * **G6**	SafeTickets must allow authorities to get statistics on issued tickets.
 
 ## Scope
-<!--here we include an analysis of the world and of the shared phenomena-->
 
 SafeStreets must interface with different types of users and information sources. In this context, it is very important to identify the placement of SafeStreets and its services with the entities of the scenario. To do so, we will refer to the following picture. Afterward, every link between SafeStreets and the entities will be deeply analyzed to exhaustively describe the shared phenomena of the scenario.
 
+<br>
+
 ![](resources/relationship_diagram.svg)
+
+<br>
 
 Two types of interactions can be defined:
 
@@ -44,23 +44,21 @@ The main difference between the two types of interactions is the role of SafeStr
 
 Services are exploited differently depending on the type of user that is enjoying the application. The type of the user is determined in the registration phase, which is different depending on this choice. Everyone can sign up as a common user. Instead, to sign up as an authority or municipality user, it is necessary to provide a unique disposable code, which assignment is not part of the application (SafeStreets must take care only of the verification of the provided code). The code is assigned only to users whose role declaration has been manually verified by a human operator. For this reason, the verification of authorities and municipality users is not considered in the registration phase.
 
-### SafeReports
-
+**SafeReports**
 SafeReports is the core of the application. It provides common users with the possibility to send a notification about a violation. To do so, they are asked to take a picture of the vehicle involved in the violation. Then the photo is checked and matched with some data captured at the moment (position, date and time). The user is asked to review and confirm the violation report that, in case of confirmation, is sent to SafeStreets, which stores it to offer several other services.
 
-### SafeAnalytics
-
+**SafeAnalytics**
 SafeAnalytics provides the possibility to mine SafeStreets data to get information about violations. This service is offered to common users and authorities, that can access data with different restriction levels. Common users have access to anonymous data concerning a selected zone. Authorities, instead, have access to unrestricted information on all the stored data.
 
-### SafeTickets
-
+**SafeTickets**
 SafeStreets uses Municipality Tickets Service (MTS) to generate traffic tickets. When a new violation is stored (after it is verified not to be a duplicated event), the violation report is forwarded to MTS which generates the traffic tickets and informs SafeStreets of the outcome. SafeStreets stores data about the issued tickets to provide statistics through SafeTickets service.
 SafeTickets is a service that allows authorities to access data about tickets generated from SafeStreets using MTS. Authorities are also allowed to select some filters to get statistics and aggregated data.
 
-### SafeSuggestions
-
+**SafeSuggestions**
 Municipality data about accidents is crossed with data collected by SafeStreets to identify possible unsafe areas and provide suggestions through SafeSuggestions service. SafeStreets periodically checks for new data to collect it and keep suggestions up to date.
 SafeSuggestions service is developed to municipality users. It allows them to access suggestions on how to reduce the accidents and violations rate in the most critical zones. Users can ask for suggestions using specific filters, depending on their intention to attend in a specific zone or to prevent a specific violation.
+
+### Shared phenomena
 
 ## Definitions and acronyms
 
@@ -99,10 +97,9 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 
 **Section 6** includes the references to the tools used to draw up this document.
 
-# 2.  OVERALL DESCRIPTION
+# OVERALL DESCRIPTION
 
 ## Product perspective
-<!--here we include further details on the shared phenomena and a domain model (class diagrams and statecharts)-->
 
 The following diagram formally describes the relations between the entities taken into account in the description of the world and of the shared phenomena. More specifically, it provides a clear point of view on which types of users can access the developed services, and shows how SafeStreets interfaces with external resources to exploit back-end processes.
 
@@ -119,29 +116,23 @@ Relations between application and the resources do not need further explanation,
 
 In the diagrams shown below are emphasized the possible states of the entities, and the transitions between one state to another.
 
-#### Application
+**Application**
 
 ![](resources/state_diagram_application.svg)
 
----
-#### Common user
+**Common user**
 
 ![](resources/state_diagram_common_user.svg)
 
----
-#### Authority
+**Authority**
 
 ![](resources/state_diagram_authority.svg)
 
----
-#### Municipality user
+**Municipality user**
 
 ![](resources/state_diagram_municipality_user.svg)
 
-<br>
-
 ## Product functions
-<!--here we include the most important requirements-->
 
 This section focuses on the definition of the functions to be provided to reach the goals previously listed. For each service, a set of requirements is identified. Later on in the document, these requirements will be revised and factored to be mapped on the goals.
 
@@ -188,7 +179,6 @@ This section focuses on the definition of the functions to be provided to reach 
 * The service must provide suggestions to reduce the incidence of the selected violation in the selected zone.
 
 ## User characteristics
-<!--here we include anything that is relevant to clarify their needs-->
 
 As previously mentioned, several types of users can be identified. Every type of user has different needs and limitations, that must be satisfied providing different services. In this section, users are analyzed with relation to their characteristics, to formally define these needs and limitations.
 
@@ -205,7 +195,6 @@ Authorities are, from a certain point of view, supervisors of the stored data. T
 The needs of the municipality users are somehow disjoint from those of other users. This type of account is designed to give the possibility to get the suggestions identified by the application. Because of this, municipality users are not provided with the possibility to query the stored data or to notify violations. Instead, they are provided with a special query interface that allows them to select filters depending on which type of intervention they want to put in place.
 
 ## Assumptions and dependencies
-<!--here we include domain assumptions-->
 
 ### Domain assumptions
 
@@ -232,17 +221,19 @@ The needs of the municipality users are somehow disjoint from those of other use
 There are not strong dependencies between the services developed by the application. There is a clear distinction between services that store data and services that access data, thanks to this they can be exploited independently one from each other. It is obvious that accessing the same data set, it is useless to exploit services without storing data, so the utility of the query services is bound to the existence of data collection services.
 
 * SafeAnalytics is based on data collection through SafeReports.
+
 * SafeTickets is based on the data collection from MTS.
 * SafeSuggestions is based on the data collection from the municipality data set.
 
 Stronger dependencies exist between SafeStreets and the external services to whom some tasks are delegated.
 
 * SafeReports uses external OCR software.
+
 * SafeStreets is based on the GoogleMaps API.
 
 The characteristic of these dependencies is that the link is not exclusive with the service to which the tasks are delegated, in the sense that services can be changed. OCR software can be any, and OpenStreetMaps API can be used instead of GoogleMaps ones.
 
-# 3.  SPECIFIC REQUIREMENTS
+# SPECIFIC REQUIREMENTS
 <!--Here we include more details on all aspects in Section 2 if they can be useful for the development team-->
 
 ## External Interface Requirements
@@ -561,10 +552,10 @@ Shown the activity diagram for the generation of new suggestions.
 ### Maintainability
 ### Portability
 
-# 4.  FORMAL ANALYSIS USING ALLOY
+# FORMAL ANALYSIS USING ALLOY
 <!--this section should include a brief presentation of the main objectives driving the formal modeling activity, as well as a description of the model itself, what can be proved with it, and why what is proved is important given the problem at hand. To show the soundness and correctness of the model, this section can show some worlds obtained by running it, and/or the results of the checks performed on meaningful assertions-->
 
-# 5.  EFFORT SPENT
+# EFFORT SPENT
 <!--in this section you will include information about the number of hours each group member has worked for this document-->
 
 | Task                                      | Braga | Calderon | Favaro |
@@ -581,4 +572,4 @@ Shown the activity diagram for the generation of new suggestions.
 | Software System Attributes                |       |          |        |
 | Formal Analysis using Alloy               |       |          |        |
 
-# 6.  REFERENCES
+# REFERENCES
