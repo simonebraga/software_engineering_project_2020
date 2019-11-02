@@ -385,6 +385,9 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 ![](resources/sequence_tickets_generation.svg)
 
 <div style="text-align:center"><img src="resources/sequence_diagram_retrieve_information_.svg"/></div>
+
+<!--TODO images description-->
+
 #### Authorities
 
 **Scenarios**
@@ -435,7 +438,7 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 | ---------------- | ------------------------------------------------------------ |
 | Actor(s)         | Authority, MTS                                               |
 | Entry conditions | - The authority is logged in SafeStreets <br /> - The authority wants to get information about tickets issued by SafeStreets      |
-| Events flow      | - Authority accesses the *[GETTICKETSINFO]* functionality <br/> - The authority selects the geographical filters<br />  - The authority selects the time filters<br />  - The authority selects the license plate filters<br />- Data requested are sent by SafeStreets to the authority |
+| Events flow      | - Authority accesses the *SafeTickets* functionality <br/> - The authority selects the geographical filters<br />  - The authority selects the time filters<br />  - The authority selects the license plate filters<br />- Data requested are sent by SafeStreets to the authority |
 | Exit conditions  | Safestreets displays the data                                |
 | Exceptions       | /                                                            |
 
@@ -446,7 +449,9 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 
 ![](resources/retrieve_violation_info_sequence_diagram.svg)
 
-![](resources/get_tickets_info_sequence_diagram.svg)
+![](resources/get_tickets_info_sequence_diagram.svg) <!--TODO save the tickets (don't ask directly to MTS)-->
+
+<!--TODO ticket generation-->
 
 
 ### Municipality user
@@ -465,40 +470,30 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 
 **Use cases**
 
-| Name             | Sign Up                                                      |
-| :--------------- | :----------------------------------------------------------- |
-| Actor         | Municipality user                                                  |
-| Entry conditions | The municipality user opens SafeStreets on his device                |
-| Events flow      | - The municipality user chooses the *sign up* option<br />- The municipality user selects the option to identify himself as municipality user<br />-The municipality user inserts the activation code<br />- The municipality user inserts its e-mail and password<br />- Municipality user confirms its data<br />- SafeStreets saves the data |
-| Exit conditions  | The municipality user is registered and its data are saved           |
-| Exceptions       | - An account with the same e-mail was already created. In this case SafeStreets warns the authority and asks to change e-mail or log in<br />- The activation code is not valid. The municipality user is asked to reinsert it<br />- The municipality user doesn't provide all the data. In this case the system asks to insert them<br /> |
+The login and sign up procedures for the municipality user are the same as the municipality ones.
 
-| Name             | Login                                                        |
-| ---------------- | ------------------------------------------------------------ |
-| Actor            | Municipality user                                                |
-| Entry conditions | - The municipality user has opened the application on his device<br />- The municipality user is already registered |
-| Events flow      | - The municipality user chooses the *login* option<br />- The municipality user inserts his e-mail and password |
-| Exit conditions  | The municipality user is identified                                  |
-| Exceptions       | - The e-mail is not registered. The municipality user is asked to reinsert it or sign up<br />- The password is incorrect. The municipality user is asked to reinsert it |
-
+<!--TODO (municipality gives data about accidents)
+Crossing information about violations and accidents-->
 
 | Name | Get intervention suggestion |
 | -------  | --------- |
 | Actor | Municipality user |
 | Entry conditions | - The municipality user has opened the application on his device and logged in <br /> - The municipality user wants to get suggestions about possible improvements |
-| Events flow | - The municipality user accesses the *SafeSuggestions* functionality <br /> - The municipality user selects the geographical filters <br /> - SafeStreets sends (if available) the suggestion relative to the filters provided <br />|
+| Events flow | - The municipality user accesses the *SafeSuggestions* functionality <br /> - The municipality user selects the geographical filters <br /> SafeSuggestions gets possible interventions based on the filters provided <br />- SafeStreets sends (if available) the suggestion relative to the filters provided <br />|
 | Exit conditions | SafeStreets displays the suggestion (if given) or a "no suggestions" notice |
 | Exceptions | / |
 
-| Name | Store suggestions    |
-| :------------- | :------------- |
-| Actor     | SafeStreets, Municipality information   |
+| Name | Get accidents |
+|-----||
+| Actor | Municipality |
 | Entry conditions | Timeout trigger is activated |
-|Events flow | <ul><li> SafeStreets checks for new accident data from the municipality information<li> SafeStreets collects the new accident data from the municipality information<li> The new data is crossed with the data already stored into SafeStreets<li> SafeStreets builds statistics from the crossed data to generates new suggestions
-|Exit conditions | The new suggestions are stored in the system |
-|Exceptions | / |
+| Events flow | - New data is requested by SafeStreets from the municipality <br /> - The municipality evaluates if updates in data occurred <br /> - The municipality provides the new data to SafeStreets <br /> - Safestreets updates its data and builds new statistics in order to generate new suggestions |
+| Exit condition | The new suggestions are stored in the system |
+| Exceptions | / |
 
 ![](resources/get_intervention_suggestion_sequence_diagram.svg)
+![](resources/get_accidents_sequence_diagram.svg)
+
 
 ## Activity Diagrams
 Shown the sign up activity diagram for all the different type of users.
@@ -524,8 +519,8 @@ Shown the activity diagram for the generation of new suggestions.
 | R9           | G2   | Retrieve information        |
 | R10          | G2   | Retrieve information        |
 | R11          | G3   | Retrieve violations info    |
-| R12          | G4   | Store suggestions           |
-| R13          | G4   | Store suggestions           |
+| R12          | G4   | Get accidents           |
+| R13          | G4   | Get accidents           |
 | R14          | G4   | Get intervention suggestion |
 | R15          | G5   | Generate tickets            |
 | R16          | G5   | Generate tickets            |
@@ -538,19 +533,52 @@ Shown the activity diagram for the generation of new suggestions.
 
 
 ## Performance Requirements
-## Design Constraints
 
+- The system must be able to serve a great number of users reporting a violation simultaneously.
+- The *SafeAnalytics* function must be able to provide the data requested by both common users and authorities in less than 3 seconds, in order to provide the best experience.
+- The data about accidents provided by the municipality must be updated at least every 5 minutes, to provide reliable and always updated statistics.
+
+## Design Constraints
 ### Standards compliance
+
+- The timestamp must adopt ISO 8601 standard ([YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]±[hh]:[mm] representation).
+- The chain of custody of the information coming from the user must never be broken, so the correspondence of the data provided by common user and the one received by MTS must be guaranteed.
+
 ### Hardware limitations
+
+To run correctly the application, the device must have a camera with a resolution sufficient to provide a clearly understandable image, a working internet connection, and a GPS.
+
 ### Any other constraint
 
-## Software System Attributes
+The system must not provide sensitive data to common users, so the license plate and the photo of a violation must not be provided to them.
 
+## Software System Attributes
 ### Reliability
+
+SafeStreets must be fault tolerant, so data must not be lost. This can be achieved keeping multiple copies of the data.
+
 ### Availability
+
+SafeStreets must be working 24/7.
+
+The *SafeReports* functionality is expected to work with an availability of the 99.999%, as it is the core of the application. The other functionalities can be slightly less fault tolerant, and be available 99.99% of the time.
+
 ### Security
+
+The data provided by the common users contains sensitive information, so security is a crucial point.
+
+The databases on which data is collected must be protected to avoid attacks, and the software must be GDPR compliant. Data must be encrypted when sent, and the reliability of the data received by MTS must be checked.
+
 ### Maintainability
+
+Code must be easy to fix and modify, to reduce the effort and the cost of the modifications. It must avoid fast obsolescence, so be always as aligned as possible to the new stable technologies.
+
+Modularity of the code and the reusability of the logic (which needs to be as separated as possible from the implementation) are needed to guarantee the ease of maintenance in the future.
+
+
 ### Portability
+
+The software is thought to run on the majority of mobile devices, so it could be developed for Android and iOS smartphones.
 
 # FORMAL ANALYSIS USING ALLOY
 <!--this section should include a brief presentation of the main objectives driving the formal modeling activity, as well as a description of the model itself, what can be proved with it, and why what is proved is important given the problem at hand. To show the soundness and correctness of the model, this section can show some worlds obtained by running it, and/or the results of the checks performed on meaningful assertions-->
