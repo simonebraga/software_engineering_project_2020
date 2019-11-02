@@ -248,6 +248,30 @@ The characteristic of these dependencies is that the link is not exclusive with 
 ## External Interface Requirements
 
 ### User Interfaces
+
+The following mockups are made to give an idea of what the UI should look like after the developing process.
+The mockups represents the core services of SafeStreets focusing on the interaction between the users and the system.
+
+![c](resources/mockup/choose_user.png)
+<br>
+*Figure 3.1. Choosing between the different type of users*
+
+![c](resources/mockup/sign_up.png)
+<br>
+*Figure 3.2. The figure shows the sign up process for the municipality user*
+
+![c](resources/mockup/select_violation.png)
+<br>
+*Figure 3.3. The figure shows the selection of the type of violation after a user took a picture*
+
+![c](resources/mockup/get_violations.png)
+<br>
+*Figure 3.4. The figure shows the result of a query for violations made by an authority. The municipality can see all the data stored and can click on a specific violation for more information.*
+
+![c](resources/mockup/get_suggestions.png)
+<br>
+*Figure 3.5. The figure shows the results of a query for SafeSuggestions.For more information the user needs to click on the selected suggestion*
+
 ### Hardware Interfaces
 ### Software Interfaces
 ### Communication Interfaces
