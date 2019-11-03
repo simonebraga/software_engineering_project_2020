@@ -66,18 +66,18 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 
 | Phenomenon                                                   | Shared | Controller |
 | ------------------------------------------------------------ | ------ | ---------- |
-| User wants to notify about a violation                       | No     | World      |
-| User takes a picture using the application                   | Yes    | World      |
+| A user wants to notify about a violation                     | No     | World      |
+| The user takes a picture using the application               | Yes    | World      |
 | The application scans the picture to find a license plate    | No     | Machine    |
 | The application does not find a license plate                | No     | Machine    |
 | The application asks the user to repeat the procedure        | Yes    | Machine    |
 | The application finds a license plate                        | No     | Machine    |
 | The application builds a violation report detecting position and timestamp | No     | Machine    |
 | The application asks confirmation to the user                | Yes    | Machine    |
-| User confirms the violation report                           | Yes    | World      |
+| The user confirms the violation report                       | Yes    | World      |
 | The application stores the violation report                  | No     | Machine    |
-| User wants information on a violation                        | No     | World      |
-| User selects certain filters                                 | Yes    | World      |
+| A user wants information on a violation                      | No     | World      |
+| The user selects certain filters                             | Yes    | World      |
 | An authority wants information on issued tickets             | No     | World      |
 | The authority selects certain filters                        | Yes    | World      |
 | The application searches for the requested data              | No     | Machine    |
@@ -92,7 +92,7 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 | The application stores data about accidents                  | No     | Machine    |
 | The application analyzes data to identify suggestions        | No     | Machine    |
 
-\* MTS and Municipality are considered part of the world, as they are not part of the application.
+\* MTS and Municipality are considered part of the world, as they are not part of the software to be.
 
 ## Definitions and acronyms
 
