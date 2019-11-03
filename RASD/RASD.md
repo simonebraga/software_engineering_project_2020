@@ -64,6 +64,36 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 
 ### Shared phenomena
 
+| Phenomenon                                                   | Shared | Controller |
+| ------------------------------------------------------------ | ------ | ---------- |
+| User wants to notify about a violation                       | No     | World      |
+| User takes a picture using the application                   | Yes    | World      |
+| The application scans the picture to find a license plate    | No     | Machine    |
+| The application does not find a license plate                | No     | Machine    |
+| The application asks the user to repeat the procedure        | Yes    | Machine    |
+| The application finds a license plate                        | No     | Machine    |
+| The application builds a violation report detecting position and timestamp | No     | Machine    |
+| The application asks confirmation to the user                | Yes    | Machine    |
+| User confirms the violation report                           | Yes    | World      |
+| The application stores the violation report                  | No     | Machine    |
+| User wants information on a violation                        | No     | World      |
+| User selects certain filters                                 | Yes    | World      |
+| An authority wants information on issued tickets             | No     | World      |
+| The authority selects certain filters                        | Yes    | World      |
+| The application searches for the requested data              | No     | Machine    |
+| The application returns and shows the requested data         | Yes    | Machine    |
+| A municipality user wants suggestions                        | No     | World      |
+| The municipality user select certain filters                 | Yes    | World      |
+| The application searches for the requested suggestions       | No     | Machine    |
+| The application returns and shows the requested suggestions  | Yes    | Machine    |
+| The application forwards report violations to MTS *          | Yes    | Machine    |
+| The application stores data about issued tickets             | No     | Machine    |
+| The application requests data about accidents to the municipality * | Yes    | Machine    |
+| The application stores data about accidents                  | No     | Machine    |
+| The application analyzes data to identify suggestions        | No     | Machine    |
+
+\* MTS and Municipality are considered part of the world, as they are not part of the application.
+
 ## Definitions and acronyms
 
 | Subject                           | Acronym | Definition                                                   |
@@ -208,7 +238,7 @@ The needs of the municipality users are somehow disjoint from those of other use
 * **D3**	There exists a finite set of violations.
 * **D4**	There exists a finite number of possible interventions.
 * **D5**	Devices running SafeStreets has a working camera.
-* **D6**	The device camera is always safe (it is not possible to alter the data acquired by the camera).
+* **D6**	The camera is always safe (it is not possible to alter the data acquired by the camera).
 * **D7**	Devices running SafeStreets are always able to get the timestamp.
 * **D8**	Devices running SafeStreets are always able to detect the position with an error of at least 5 meters.
 * **D9**	Internet connection is supposed to work whenever a user wants to use SafeStreets.
@@ -216,9 +246,7 @@ The needs of the municipality users are somehow disjoint from those of other use
 * **D11**	If OCR software is not able to recognize a plate, it returns a special response.
 * **D12**	A violation report is anonymous if and only if it consists only of the type of violation, position, and date.
 * **D13**	Authorities and municipality users are previously verified.
-* **D14**	MTS provides an uninterrupted service.
-* **D15**	MTS is always right when generating traffic tickets.
-* **D16**	Data from the municipality is reliable.
+* **D14**	Data from the municipality is reliable.
 
 ### Dependencies
 
@@ -389,7 +417,6 @@ violators and then sent back to Sheldon. Sheldon can now park in safe areas.
 ![](resources/sequence_tickets_generation.svg)
 
 <div style="text-align:center"><img src="resources/sequence_diagram_retrieve_information_.svg"/></div>
-
 <!--TODO images description-->
 
 #### Authorities
@@ -588,11 +615,10 @@ The software is thought to run on the majority of mobile devices, so it could be
 <!--this section should include a brief presentation of the main objectives driving the formal modeling activity, as well as a description of the model itself, what can be proved with it, and why what is proved is important given the problem at hand. To show the soundness and correctness of the model, this section can show some worlds obtained by running it, and/or the results of the checks performed on meaningful assertions-->
 
 # EFFORT SPENT
-<!--in this section you will include information about the number of hours each group member has worked for this document-->
 
 | Task                                      | Braga | Calderon | Favaro |
 | ----------------------------------------- | :---: | :------: | :----: |
-| Introduction                              |  10   |    10    |   10   |
+| Introduction                              |  11   |    11    |   11   |
 | Product perspective                       |   3   |    3     |   3    |
 | Product functions                         |   2   |    2     |   2    |
 | User characteristics                      |   2   |    2     |   2    |
