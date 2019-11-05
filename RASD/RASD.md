@@ -520,7 +520,7 @@ The following activity diagram shows the activity flow of the generation of new 
 * **R19**	SafeStreets must build statistics from stored data about issued tickets.
 * **R20**	SafeTickets allows authorities to get information and statistics on issued tickets.
 
-#### Traceability matrix
+### Traceability matrix
 
 | Requirements | Goal | Use case                    |
 | :----------- | :--- | :-------------------------- |
