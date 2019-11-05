@@ -44,20 +44,20 @@ The main difference between the two types of interactions is the role of SafeStr
 
 Services are exploited differently depending on the type of user that is enjoying the application. The type of the user is determined in the registration phase, which is different depending on this choice. Everyone can sign up as a common user. Instead, to sign up as an authority or municipality user, it is necessary to provide a unique disposable code, which assignment is not part of the application (SafeStreets must take care only of the verification of the provided code). The code is assigned only to users whose role declaration has been manually verified by a human operator. For this reason, the verification of authorities and municipality users is not considered in the registration phase.
 
-**SafeReports**
+### SafeReports
 
 SafeReports is the core of the application. It provides common users with the possibility to send a notification about a violation. To do so, they are asked to take a picture of the vehicle involved in the violation. Then the photo is checked and matched with some data captured at the moment (position, date and time). The user is asked to review and confirm the violation report that, in case of confirmation, is sent to SafeStreets, which stores it to offer several other services.
 
-**SafeAnalytics**
+### SafeAnalytics
 
 SafeAnalytics provides the possibility to mine SafeStreets data to get information about violations. This service is offered to common users and authorities, that can access data with different restriction levels. Common users have access to anonymous data concerning a selected zone. Authorities, instead, have access to unrestricted information on all the stored data.
 
-**SafeTickets**
+### SafeTickets
 
 SafeStreets uses Municipality Tickets Service (MTS) to generate traffic tickets. When a new violation is stored (after it is verified not to be a duplicated event), the violation report is forwarded to MTS which generates the traffic tickets and informs SafeStreets of the outcome. SafeStreets stores data about the issued tickets to provide statistics through SafeTickets service.
 SafeTickets is a service that allows authorities to access data about tickets generated from SafeStreets using MTS. Authorities are also allowed to select some filters to get statistics and aggregated data.
 
-**SafeSuggestions**
+### SafeSuggestions
 
 Municipality data about accidents is crossed with data collected by SafeStreets to identify possible unsafe areas and provide suggestions through SafeSuggestions service. SafeStreets periodically checks for new data to collect it and keep suggestions up to date.
 SafeSuggestions service is developed to municipality users. It allows them to access suggestions on how to reduce the accidents and violations rate in the most critical zones. Users can ask for suggestions using specific filters, depending on their intention to attend in a specific zone or to prevent a specific violation.
@@ -113,9 +113,9 @@ SafeSuggestions service is developed to municipality users. It allows them to ac
 
 ## Revision history
 
-| Version | Release date | Description |
-| ------- | ------------ | ----------- |
-|         |              |             |
+| Version | Release date | Description   |
+| ------- | ------------ | ------------- |
+| 1.0     | 10/11/2019   | First release |
 
 ## Document Structure
 
@@ -266,41 +266,222 @@ Stronger dependencies exist between SafeStreets and the external services to who
 The characteristic of these dependencies is that the link is not exclusive with the service to which the tasks are delegated, in the sense that services can be changed. OCR software can be any, and OpenStreetMaps API can be used instead of GoogleMaps ones.
 
 # SPECIFIC REQUIREMENTS
-<!--Here we include more details on all aspects in Section 2 if they can be useful for the development team-->
 
 ## External Interface Requirements
 
 ### User Interfaces
 
-The following mockups are made to give an idea of what the UI should look like after the developing process.
-The mockups represents the core services of SafeStreets focusing on the interaction between the users and the system.
+The following mockups are made to give an idea of how the user interfaces should look like after the developing process. The mockups represent the core services of SafeStreets focusing on the interaction between the users and the system.
 
-![c](resources/mockup/choose_user.png)
 <br>
-*Figure 3.1. Choosing between the different type of users*
 
-![c](resources/mockup/sign_up.png)
-<br>
-*Figure 3.2. The figure shows the sign up process for the municipality user*
+![](resources/mockup/choose_user.png)
 
-![c](resources/mockup/select_violation.png)
-<br>
-*Figure 3.3. The figure shows the selection of the type of violation after a user took a picture*
+*Figure 3.1. The choice between different types of users.*
 
-![c](resources/mockup/get_violations.png)
 <br>
-*Figure 3.4. The figure shows the result of a query for violations made by an authority. The municipality can see all the data stored and can click on a specific violation for more information.*
 
-![c](resources/mockup/get_suggestions.png)
+![](resources/mockup/sign_up.png)
+
+*Figure 3.2. The sign-up process for the municipality user.*
+
 <br>
-*Figure 3.5. The figure shows the results of a query for SafeSuggestions.For more information the user needs to click on the selected suggestion*
+
+![](resources/mockup/select_violation.png)
+
+*Figure 3.3. Selection of the type of violation after a user took a picture.*
+
+<br>
+
+![](resources/mockup/get_violations.png)
+
+*Figure 3.4. The result of a query for violations made by an authority. Authorities can see all the data stored and can click on a specific violation for more information.*
+
+<br>
+
+![](resources/mockup/get_suggestions.png)
+
+*Figure 3.5. The result of a query using SafeSuggestions. For more information, the user needs to click on the selected suggestion.*
 
 ### Hardware Interfaces
+
+The system does not provide any hardware interface.
+
 ### Software Interfaces
+
+The system does not provide any software interface.
+
 ### Communication Interfaces
 
+The system does not provide any communication interface.
+
 ## Functional Requirements
-<!--definition of use case diagrams, use cases and associated sequence/activity diagrams, and mapping on requirements-->
+
+### Scenarios
+
+**Scenario 1**
+
+Ted Mosby, a very honest architect, is tired of seeing cars parked in the red zone right in front of his house. He told the problem to some police agents in the past but nothing happened. He wants to report these violations again but he doesn't know how to do it. Fortunately, Barney, a public employee, suggests him to download and use the new SafeStreets application for reporting violations. After signing up identifying himself as a common user and inserting the email and password he can finally report the violation. Mosby just needs to activate the GPS and the internet connection and take a picture of the violation. He selects the type of violation from a predefined list. After that, he is asked to confirm the plate of the violating vehicle. He finally waits for the outcome of his violation report.
+
+**Scenario 2**
+
+Sheldon, a theoretical physicist, is currently studying the complexity theory. He thinks that in big cities with a huge amount of traffic the number of traffic violations is much larger than in small cities and villages. Since Sheldon moved to Milan recently, he wants to know the areas of Milan with the highest levels of traffic violations to avoid parking in dangerous places. Sheldon knows about the SafeStreets app. He logs in inserting his email and password and makes a query for all the traffic violations reported in the last month in Milan. The results are anonymized preserving the privacy of the violators and then sent back to Sheldon. Sheldon can now park in safe areas.
+
+**Scenario 3**
+
+Chuck, a policeman, was notified about a stolen car. He gets the idea of looking for its possible traffic violations, to find it. He uses SafeAnalytics to retrieve information about it, searching for its license plate. Chuck discovers that the car is often parked on certain reserved parking and finds the car in that location.
+
+**Scenario 4**
+
+Seamus, the police chief, needs to collect the more money he can from traffic tickets, to fund the construction of another police station. Thanks to SafeTickets, he can identify the areas in which more traffic tickets are generated and focus on those areas.
+
+**Scenario 5**
+
+Giovanni, a municipality officer of the city of Milan, is looking for possible interventions in the city, to improve the mobility of his area. Giovanni logs in SafeStreets and accesses SafeSuggestions. He is suggested to build a barrier near the sidewalk in Via Golgi, due to the frequent parking violations that occur there.
+
+### Common users
+
+**Use cases diagram**
+
+![](resources/usecase_common_user.svg)
+
+**Use cases**
+
+| Name             | Sign up                                                      |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>Common user                                          |
+| Entry conditions | <ul><li>The user opens the app on his smartphone             |
+| Events flow      | <ul><li>The user clicks on the sign up button<li>The user selects the option to identify himself as a common user<li>The user fills the forms with his email and a password<li>The system confirms his data<li>The system adds the new user to his data |
+| Exit conditions  | <ul><li>The users is now registered and his account is registered to the system |
+| Exceptions       | <ul><li>The user has already an account. In this case the system suggests the user to click the login button instead or to use another email |
+
+| Name             | Login                                                        |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>Common user                                          |
+| Entry conditions | <ul><li>The users opens the app on his device<li>The user has already signed up |
+| Events flow      | <ul><li>The users presses the login button<li>The users types the email and the password<li>The system confirms the successful login |
+| Exit conditions  | <ul><li>The user is logged in and is able to use the SafeStreets services |
+| Exceptions       | <ul><li>The user types the wrong email or password. In both cases the system sends and error to the user asking him to try the email password combination again |
+
+| Name             | Report a violation                                           |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>Common user<li>OCR                                   |
+| Entry conditions | <ul><li>The user has already done the login                  |
+| Events flow      | <ul><li>The user takes a picture of the traffic violation<li>The required metadata are automatically added to the picture<li>The user selects the type of violation from a list of violations<li>The picture is sent to the OCR software to automatically scan and read the plate<li>After receiving the plate from the OCR, the system asks the user to confirm the plate of the violation vehicle<li>After the confirmation the system checks if the new violation is equivalent to an already stored one<li>The system checks the integrity of the report<li>The systems stores the violation report if and only if the previous equivalence check returned a negative result and the integrity test was positive |
+| Exit conditions  | <ul><li>The user receives a notification about the outcome of its violation |
+| Exceptions       | <ul><li>If the OCR is not able to read the plate then the system sends an error to the user and asks him to repeat the procedure |
+
+| Name             | Generate tickets                                             |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>SafeStreets<li>MTS                                   |
+| Entry conditions | <ul><li>The system has validated and stored a new traffic violation report |
+| Events flow      | <ul><li>The system forwards the violation report to MTS<li>MTS generates tickets from the violation report<li>MTS sends the results to SafeStreets |
+| Exit conditions  | <ul><li>The system stores data about issued tickets and builds statistics from that data |
+| Exceptions       | <ul><li>If MTS is not able to generate the tickets then and error is sent to SafeStreets and no data about issued tickets is stored |
+
+| Name             | Retrieve information                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>Common user<li>Google Maps                           |
+| Entry conditions | <ul><li>The user has already done the login<li>The user wants to retrieve information about traffic violations |
+| Events flow      | <ul><li>The user presses the button to start the query for the desired data<li>The user inserts the geographical filter for the query<li>The user inserts the time filter for the query<li>The system anonymizes the information<li>The results are sent to the user |
+| Exit conditions  | <ul><li>The results are displayed in a map exploiting Google Maps' API |
+| Exceptions       | -                                                            |
+
+**Sequence diagrams**
+
+![](resources/sequence_diagram_report.svg)
+
+![](resources/sequence_tickets_generation.svg)
+
+![](resources/sequence_diagram_retrieve_information.svg)
+
+### Authorities
+
+**Use cases diagram**
+
+![](resources/authorities_usecases.svg)
+
+**Use cases**
+
+| Name             | Sign up                                                      |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>Authority                                            |
+| Entry conditions | <ul><li>The authority opens SafeStreets on his device        |
+| Events flow      | <ul><li>The authority chooses the sign up option<li>The authority selects the option to identify himself as authority<li>The authority inserts the activation code<li>The authority inserts his email and password<li>Authority confirms his data<li>SafeStreets saves his data |
+| Exit conditions  | <ul><li>The authority is registered and his data are saved   |
+| Exceptions       | <ul><li>An account with the same email was already created. In this case SafeStreets warns the authority and asks to change email or log in<li>The activation code is not valid. The authority is asked to reinsert it<li>The authority doesn't provide all the data. In this case the system asks him to insert them |
+
+| Name             | Login                                                        |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>Authority                                            |
+| Entry conditions | <ul><li>The authority has opened the application on his device<li>The authority is already registered |
+| Events flow      | <ul><li>The authority chooses the login option<li>The authority inserts his email and password |
+| Exit conditions  | <ul><li>The authority is identified                          |
+| Exceptions       | <ul><li>The email is not registered. The authority is asked to reinsert it or sign up<li> The password is incorrect. The authority is asked to reinsert it |
+
+| Name             | Retrieve violation info                                      |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>Authority<li>Google Maps                             |
+| Entry conditions | <ul><li>The authority is logged in SafeStreets<li>The authority wants to collect data about violations |
+| Events flow      | <ul><li>The authority accesses the SafeAnalytics function<li>The authority selects the geographical filters<li>The authority selects the time filters<li>The authority selects the license plate filters<li>Data requested are sent to the authority |
+| Exit conditions  | <ul><li>SafeStreets displays the data. If a map is required, it is provided by Google Maps |
+| Exceptions       | -                                                            |
+
+| Name             | Get tickets info                                             |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>Authority<li>MTS                                     |
+| Entry conditions | <ul><li>The authority is logged in SafeStreets<li>The authority wants to get information about tickets issued by SafeStreets |
+| Events flow      | <ul><li>Authority accesses the SafeTickets functionality<li>The authority selects the geographical filters<li>The authority selects the time filters<li>The authority selects the license plate filters<li>Data requested are sent by SafeStreets to the authority |
+| Exit conditions  | <ul><li>Safestreets displays the data                        |
+| Exceptions       | -                                                            |
+
+**Sequence diagrams**
+
+![](resources/retrieve_violation_info_sequence_diagram.svg)
+
+### Municipality users
+
+**Use cases diagram**
+
+![](resources/municipality_usecases.svg)
+
+**Use cases**
+
+The use cases "Sign up" and "Login" are equal to the ones of the authorities, and are omitted to avoid redundancies.
+
+| Name             | Get intervention suggestion                                  |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>Municipality user                                    |
+| Entry conditions | <ul><li>The municipality user has opened the application on his device and logged in<li>The municipality user wants to get suggestions about possible improvements |
+| Events flow      | <ul><li>The municipality user accesses the SafeSuggestions functionality<li>The municipality user selects the geographical filters<li>SafeSuggestions gets possible interventions based on the filters provided<li>SafeStreets sends (if available) the suggestion relative to the filters provided |
+| Exit conditions  | <ul><li>SafeStreets displays the suggestion (if given) or a "no suggestions" notice |
+| Exceptions       | -                                                            |
+
+| Name             | Get accidents suggestion                                     |
+| ---------------- | ------------------------------------------------------------ |
+| Actors           | <ul><li>Municipality                                         |
+| Entry conditions | <ul><li>Timeout trigger is activated                         |
+| Events flow      | <ul><li>New data is requested by SafeStreets from the municipality<li>The municipality evaluates if updates in data occurred<li>The municipality provides the new data to SafeStreets<li>Safestreets updates its data and builds new statistics in order to generate new suggestions |
+| Exit conditions  | <ul><li>The new suggestions are stored in the system         |
+| Exceptions       | -                                                            |
+
+**Sequence diagrams**
+
+![](resources/get_intervention_suggestion_sequence_diagram.svg)
+
+![](resources/get_accidents_sequence_diagram.svg)
+
+### Activities
+
+The following activity diagram shows the activity flow of the registration process.
+
+![](resources/activity_diagram_login.svg)
+
+The following activity diagram shows the activity flow of the generation of new suggestions from the application.
+
+![](resources/activity_diagram_create_suggestions.svg)
+
+### Requirements
 
 **G1)  SafeReports must allow common users to send violation reports.**
 * **R1**	When a picture is taken using SafeReports, a new violation record is generated.
@@ -339,203 +520,7 @@ The mockups represents the core services of SafeStreets focusing on the interact
 * **R19**	SafeStreets must build statistics from stored data about issued tickets.
 * **R20**	SafeTickets allows authorities to get information and statistics on issued tickets.
 
-### Use cases diagrams
-
-#### Common users
-
-![](resources/usecase_common_user.svg)
-
-**Scenarios**
-
-**S1**
-
-Ted Mosby, a very honest architect , is tired of seeing cars parked in the red zone right in front of his house. He told the problem to some police agents in the past but nothing happened. He wants
-to report these violations again but he doesn't know how. Fortunately Barney, a public employee,
-suggests him to download and use the new app Safestreets for reporting violations. After signing
-up identifying himself as an user and inserting the email and password he can finally report the the violation. Mosby just needs to activate the GPS and the
-internet connection and take a picture of the violation. He selects the type of violation from a predefined list. After that he is asked to confirm the plate of the violating
-vehicle. He finally waits for the outcome of his violation report.
-
-
-**S2**
-
-Sheldon, a theoretical physicists, is currently studying the complexity theory. He thinks that in big
-cities with a huge amount of traffic the number of traffic violations is much larger then in small
-cities and villages. Since Sheldon moved to Milan recently, he wants to know the areas of Milan
-with the highest levels of traffic violations in order to avoid parking in dangerous places . Sheldon
-knows about the SafeStreets app. He logs in inserting his email and password and makes a query for all the traffic violations
-reported in the last month in Milan . The results are anonymized preserving the privacy of the
-violators and then sent back to Sheldon. Sheldon can now park in safe areas.
-
-
-| Name     | Sign-Up    |
-| :------------- | :------------- |
-|Actor| Common User |
-| Entry conditions       | The user opens the app on his smart phone      |
-| Events flow      | <ul><li>The user clicks on the sign up button</li><li>The user selects the option to identify himself as a common user.<li>The user fills the forms with his email and a password</li> <li>The system confirms his data</li><li>The system adds the new user to his data</li></ul>|      |
-| Exit conditions     | <ul><li>The users is now registered and his account is registered to the system</li></ul>       |
-| Exceptions     | <ul><li>The user has already an account. In this case the system suggests the user to click the login button instead or to use another email.</li>   |
-
-
-| Name |Login   |
-| :------------- | :------------- |
-|Actor| Common User |
-| Entry conditions       | <ul><li>The users opens the app on his device </li><li>The user has already Sign up in the app</ul>      |
-| Events flow      | <ul><li>The users presses the login button</li><li>The users types the email and the password</li><li>The system confirms the successful login</ul>     |
-| Exit conditions    | <ul><li>The user is logged in and is able to use the SafeStreets services     |
-| Exceptions      | <ul><li>The user types the wrong email or password. In both cases the system sends and error to the user asking him to try the email password combination again.        |
-
-| Name |Report a violation   |
-| :------------- | :------------- |
-|Actor| Common User, OCR |
-| Entry conditions       | <ul><li>The user has already done the login    |
-| Events flow      |  <ul><li>The user takes a picture of the traffic violation.<li>The required metadata() is added automatically to the picture.<li> The user selects the type of violation from a list of violations.<li>The picture is sent to the OCR software to automatically scan and read the plate.<li>After receiving the plate from the OCR, the system asks the user to confirm the plate of the violation vehicle .<li> After the confirmation the system checks if the new violation is equivalent to an already stored one.<li>The system checks the integrity of the report <li> The systems stores the violation report if and only if the previous equivalence check returned a negative result and the integrity test was positive.|
-| Exit conditions    | The user receives a notification about the outcome of its violation        |
-| Exceptions      | If the OCR is not able to read the plate then the system sends an error to the user and asks him to repeat the procedure .    |
-
-| Name | Generates tickets     |
-| :------------- | :------------- |
-| Actor       | SafeStreets, MTS     |
-| Entry condition | The system has validated and stored a new traffic violation report. |
-|Events flow |<ul><li>The system forwards the violation report to MTS<li>MTS generates tickets from the violation report<li> MTS sends the results to SafeStreets |
-|Exit conditions | The system stores data about issued tickets and builds statistics from that data |
-|Exceptions | If MTS is not able to generate the tickets then and error is sent to SafeStreets and no data about issued tickets is stored
-
-
-| Name | Retrieve information  |
-| :------------- | :------------- |
-| Actors     | Common User, Google Maps  |
-|Entry conditions| <ul><li>The user has already done the login<li>The user wants to retrieve information about traffic violations|
-| Events flow | <ul><li> The user presses the button to start the query for the desired data.<li>The user inserts the geographical filter for the query.<li> The user inserts the time filter for the query<li> The system anonymizes the  information <li> The results are sent to the user
-|Exit conditions | The results are displayed in a map exploiting Google Maps'API |
-|Exceptions ||
-
-![](resources/sequence_diagram_report.svg)
-
-<br>
-
-![](resources/sequence_tickets_generation.svg)
-
-<div style="text-align:center"><img src="resources/sequence_diagram_retrieve_information_.svg"/></div>
-<!--TODO images description-->
-
-#### Authorities
-
-**Scenarios**
-
-* **S1** <!-- {access general data} -->
-
-  [Name], a policeman, was notified about a stolen car. He gets the idea of looking for its possible traffic violations, in order to find it. He uses *SafeAnalytics* to retrieve information about it, searching for its license plate. [Name] discovers that the car is often parked on a reserved parking and finds the car in that location.
-
-
-
-* **S2** <!-- {statistics from fines} -->
-
-  [Name],  the police chief, needs to collect the more money he can from traffic tickets, to fund the construction of another police office. Thanks to *[GETTICKETINFO]* he is able to identify the areas in which more traffic tickets are generated and focus on that areas.
-
-**Use case diagram**
-
-![](resources/authorities_usecases.svg)
-
-**Use Cases**
-
-| Name             | Sign Up                                                      |
-| :--------------- | :----------------------------------------------------------- |
-| Actor(s)         | Authority                                                    |
-| Entry conditions | The authority opens SafeStreets on his device                |
-| Events flow      | - The authority chooses the *sign up* option<br />- The authority selects the option to identify himself as authority<br />- The authority inserts the activation code<br />- The authority inserts his e-mail and password<br />- Authority confirms his data<br />- SafeStreets saves his data |
-| Exit conditions  | The authority is registered and his data are saved           |
-| Exceptions       | - An account with the same e-mail was already created. In this case SafeStreets warns the authority and asks to change e-mail or log in<br />- The activation code is not valid. The authority is asked to reinsert it<br />- The authority doesn't provide all the data. In this case the system asks him to insert them.<br /> |
-
-| Name             | Login                                                        |
-| ---------------- | ------------------------------------------------------------ |
-| Actor(s)         | Authority                                                    |
-| Entry conditions | - The authority has opened the application on his device<br />- The authority is already registered |
-| Events flow      | - The authority chooses the *login* option<br />- The authority inserts his e-mail and password |
-| Exit conditions  | The authority is identified                                  |
-| Exceptions       | - The e-mail is not registered. The authority is asked to reinsert it or sign up<br />- The password is incorrect. The authority is asked to reinsert it |
-
-| Name             | Retrieve violation info                                      |
-| ---------------- | ------------------------------------------------------------ |
-| Actor(s)         | Authority, Google Maps                                       |
-| Entry conditions | - The authority is logged in SafeStreets   <br /> - The authority wants to collect data about violations       |
-| Events flow      | - The authority accesses the *SafeAnalytics* function<br />- The authority selects the geographical filters <br /> - The authority selects the time filters <br /> - The authority selects the license plate filters <br />- Data requested are sent to the authority |
-| Exit conditions  | SafeStreets displays the data. If a map is required, it is provided by Google Maps |
-| Exceptions       | /                                                            |
-
-
-
-| Name             | Get tickets info                                             |
-| ---------------- | ------------------------------------------------------------ |
-| Actor(s)         | Authority, MTS                                               |
-| Entry conditions | - The authority is logged in SafeStreets <br /> - The authority wants to get information about tickets issued by SafeStreets      |
-| Events flow      | - Authority accesses the *SafeTickets* functionality <br/> - The authority selects the geographical filters<br />  - The authority selects the time filters<br />  - The authority selects the license plate filters<br />- Data requested are sent by SafeStreets to the authority |
-| Exit conditions  | Safestreets displays the data                                |
-| Exceptions       | /                                                            |
-
-
-**Sequence diagrams**
-
-<!-- TODO sequence diagrams -->
-
-![](resources/retrieve_violation_info_sequence_diagram.svg)
-
-![](resources/get_tickets_info_sequence_diagram.svg) <!--TODO save the tickets (don't ask directly to MTS)-->
-
-<!--TODO ticket generation-->
-
-
-### Municipality user
-
-**Scenarios**
-
-* **S1**<!-- {get intervention suggestion} -->
-
-  [Name], a municipality officer of the city of Milan, is looking for possible interventions in the city, to improve the mobility of his area. [Name] logs in SafeStreets and accesses *SafeSuggestions*. He is suggested to build a barrier near the sidewalk in [STREETNAME], due to the frequent parking violations that occur there.
-
-(data from municipality, send data to MTS) <!--TODO ? -->
-
-**Use Case Diagram**
-
-![](resources/municipality_usecases.svg)
-
-**Use cases**
-
-The login and sign up procedures for the municipality user are the same as the municipality ones.
-
-<!--TODO (municipality gives data about accidents)
-Crossing information about violations and accidents-->
-
-| Name | Get intervention suggestion |
-| -------  | --------- |
-| Actor | Municipality user |
-| Entry conditions | - The municipality user has opened the application on his device and logged in <br /> - The municipality user wants to get suggestions about possible improvements |
-| Events flow | - The municipality user accesses the *SafeSuggestions* functionality <br /> - The municipality user selects the geographical filters <br /> SafeSuggestions gets possible interventions based on the filters provided <br />- SafeStreets sends (if available) the suggestion relative to the filters provided <br />|
-| Exit conditions | SafeStreets displays the suggestion (if given) or a "no suggestions" notice |
-| Exceptions | / |
-
-| Name | Get accidents |
-|-----||
-| Actor | Municipality |
-| Entry conditions | Timeout trigger is activated |
-| Events flow | - New data is requested by SafeStreets from the municipality <br /> - The municipality evaluates if updates in data occurred <br /> - The municipality provides the new data to SafeStreets <br /> - Safestreets updates its data and builds new statistics in order to generate new suggestions |
-| Exit condition | The new suggestions are stored in the system |
-| Exceptions | / |
-
-![](resources/get_intervention_suggestion_sequence_diagram.svg)
-![](resources/get_accidents_sequence_diagram.svg)
-
-
-## Activity Diagrams
-Shown the sign up activity diagram for all the different type of users.
-
-![](resources/activity_diagram_login.svg)
-
-Shown the activity diagram for the generation of new suggestions.
-
-![](resources/activity_diagram_create_suggestions.svg)
-
-## Traceability Matrix
+#### Traceability matrix
 
 | Requirements | Goal | Use case                    |
 | :----------- | :--- | :-------------------------- |
@@ -550,8 +535,8 @@ Shown the activity diagram for the generation of new suggestions.
 | R9           | G2   | Retrieve information        |
 | R10          | G2   | Retrieve information        |
 | R11          | G3   | Retrieve violations info    |
-| R12          | G4   | Get accidents           |
-| R13          | G4   | Get accidents           |
+| R12          | G4   | Get accidents               |
+| R13          | G4   | Get accidents               |
 | R14          | G4   | Get intervention suggestion |
 | R15          | G5   | Generate tickets            |
 | R16          | G5   | Generate tickets            |
@@ -560,74 +545,67 @@ Shown the activity diagram for the generation of new suggestions.
 | R19          | G6   | Generate tickets            |
 | R20          | G6   | Get tickets info            |
 
-
-
-
 ## Performance Requirements
 
-- The system must be able to serve a great number of users reporting a violation simultaneously.
-- The *SafeAnalytics* function must be able to provide the data requested by both common users and authorities in less than 3 seconds, in order to provide the best experience.
-- The data about accidents provided by the municipality must be updated at least every 5 minutes, to provide reliable and always updated statistics.
+* The system must be able to serve a great number of users reporting a violation simultaneously.
+
+* SafeAnalytics must be able to provide the data requested by both common users and authorities in less than 3 seconds, to provide the best experience.
+* The data about accidents provided by the municipality must be checked for updates at least every 5 minutes, to provide reliable and always updated suggestions.
 
 ## Design Constraints
+
 ### Standards compliance
 
-- The timestamp must adopt ISO 8601 standard ([YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]±[hh]:[mm] representation).
-- The chain of custody of the information coming from the user must never be broken, so the correspondence of the data provided by common user and the one received by MTS must be guaranteed.
+The timestamp must adopt the ISO 8601 standard. The chain of custody of the information coming from the user must never be broken, so the correspondence of the data provided by a common user and the one received by MTS must be guaranteed.
 
 ### Hardware limitations
 
-To run correctly the application, the device must have a camera with a resolution sufficient to provide a clearly understandable image, a working internet connection, and a GPS.
+To correctly run the application, the device must have a camera with a resolution sufficient to provide an understandable image, a working internet connection, and a GPS.
 
 ### Any other constraint
 
 The system must not provide sensitive data to common users, so the license plate and the photo of a violation must not be provided to them.
 
 ## Software System Attributes
+
 ### Reliability
 
-SafeStreets must be fault tolerant, so data must not be lost. This can be achieved keeping multiple copies of the data.
+SafeStreets must be fault-tolerant, so data must not be lost. This can be achieved by keeping multiple copies of the data.
 
 ### Availability
 
 SafeStreets must be working 24/7.
-
-The *SafeReports* functionality is expected to work with an availability of the 99.999%, as it is the core of the application. The other functionalities can be slightly less fault tolerant, and be available 99.99% of the time.
+SafeReports is expected to work with an availability of 99.999%, as it is the core of the application. The other functionalities can be slightly less fault-tolerant, and be available 99.99% of the time.
 
 ### Security
 
-The data provided by the common users contains sensitive information, so security is a crucial point.
-
-The databases on which data is collected must be protected to avoid attacks, and the software must be GDPR compliant. Data must be encrypted when sent, and the reliability of the data received by MTS must be checked.
+The data provided by common users contain sensitive information, so security is a crucial point. The databases on which data is collected must be protected to avoid attacks, and the software must be GDPR compliant. Data must be encrypted when sent, and the reliability of the data received by MTS must be checked.
 
 ### Maintainability
 
-Code must be easy to fix and modify, to reduce the effort and the cost of the modifications. It must avoid fast obsolescence, so be always as aligned as possible to the new stable technologies.
-
-Modularity of the code and the reusability of the logic (which needs to be as separated as possible from the implementation) are needed to guarantee the ease of maintenance in the future.
-
+The code must be easy to fix and modify, to reduce the effort and the cost of the modifications. It must avoid fast obsolescence, so be always as aligned as possible to the new stable technologies.
+The modularity of the code and the reusability of the logic (which needs to be as separated as possible from the implementation) are needed to guarantee the ease of maintenance in the future.
 
 ### Portability
 
-The software is thought to run on the majority of mobile devices, so it could be developed for Android and iOS smartphones.
+The software is thought to run on the majority of mobile devices, so it should be developed for Android and iOS smartphones.
 
 # FORMAL ANALYSIS USING ALLOY
-<!--this section should include a brief presentation of the main objectives driving the formal modeling activity, as well as a description of the model itself, what can be proved with it, and why what is proved is important given the problem at hand. To show the soundness and correctness of the model, this section can show some worlds obtained by running it, and/or the results of the checks performed on meaningful assertions-->
 
 # EFFORT SPENT
 
-| Task                                      | Braga | Calderon | Favaro |
-| ----------------------------------------- | :---: | :------: | :----: |
-| Introduction                              |  11   |    11    |   11   |
-| Product perspective                       |   3   |    3     |   3    |
-| Product functions                         |   2   |    2     |   2    |
-| User characteristics                      |   2   |    2     |   2    |
-| Assumptions, dependencies and constraints |   4   |    4     |   4    |
-| External Interface Requirements           |       |          |        |
-| Functional Requirements                   |  12   |    12    |   12   |
-| Performance Requirements                  |       |          |        |
-| Design Constraints                        |       |          |        |
-| Software System Attributes                |       |          |        |
-| Formal Analysis using Alloy               |       |          |        |
+| Task                            | Braga | Calderon | Favaro |
+| ------------------------------- | :---: | :------: | :----: |
+| Introduction                    |  11   |    11    |   11   |
+| Product perspective             |   3   |    3     |   3    |
+| Product functions               |   2   |    2     |   2    |
+| User characteristics            |   2   |    2     |   2    |
+| Assumptions and dependencies    |   4   |    4     |   4    |
+| External Interface Requirements |   2   |    2     |   2    |
+| Functional Requirements         |  12   |    12    |   12   |
+| Performance Requirements        |   1   |    1     |   1    |
+| Design Constraints              |   1   |    1     |   1    |
+| Software System Attributes      |   1   |    1     |   1    |
+| Formal Analysis using Alloy     |       |          |        |
 
 # REFERENCES
