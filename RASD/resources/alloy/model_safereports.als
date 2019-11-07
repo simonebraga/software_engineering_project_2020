@@ -8,6 +8,10 @@ one sig SafeReports extends Service{
 	storedViolationReports : set ViolationReport
 }
 
+one sig SafeSuggestions extends Service{
+	storedSuggestions: set Suggestion
+}
+
 sig ViolationReport {
 	picture:Picture,
 	licensePlate: lone LicensePlate,
@@ -54,6 +58,13 @@ sig RequestMTS{
 	violationReport:ViolationReport,
 	reply:Reply,
 }
+
+sig Suggestion{
+	position:Int,
+	suggestionType:SuggestionType
+}
+
+sig SuggestionType{}
 
 fact differentViolationsDifferentPictures{
 	no disj v1,v2 :ViolationReport| v1.picture = v2.picture
@@ -161,6 +172,24 @@ fact allTicketsAreStoredInSafeTickets
 		t in SafeTickets.storedTickets
 }
 
+fact allSuggestionsInSafeSuggestions{
+	all s:Suggestion |
+		s in SafeSuggestions.storedSuggestions
+}
+
+fact allSuggestionsAreDifferent{
+	no disj s1,s2 :Suggestion | s1.position = s2.position and s1.suggestionType = s2.suggestionType
+}
+
+//TODO We need to add the position of the accident. We need to create accidents from municipality
+//If there exist at least a violation or an accident in a position then a suggestion must be created and stored 
+fact suggestionExistsIfViolationOrAccidentInThatPosition
+{
+	all s:Suggestion |
+		some v:ViolationReport |
+			s.position = v.position  and v in SafeReports.storedViolationReports 
+}
+
 pred equivalence[ v1,v2 : ViolationReport ]
 {
 	 samePlate[v1,v2] and samePosition[v1,v2] and sameTimestamp[v1,v2] and sameViolationType[v1,v2]
@@ -195,7 +224,7 @@ pred a{
 }
 
 pred c{
-	 some c:UserConfirmation | c.reply = POSITIVE_REPLY
+	 some c:UserConfirmation | c.reply = NEGATIVE_REPLY
 }
 
 pred d{
