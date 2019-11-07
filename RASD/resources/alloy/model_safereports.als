@@ -1,3 +1,13 @@
+abstract sig Service{}
+
+one sig SafeTickets extends Service{
+	storedTickets:set Ticket
+}
+
+one sig SafeReports extends Service{
+	storedViolationReports : set ViolationReport
+}
+
 sig ViolationReport {
 	picture:Picture,
 	licensePlate: lone LicensePlate,
@@ -5,10 +15,6 @@ sig ViolationReport {
 	creator:CommonUser,
 	position:Int,
 	timestamp:Int,
-}
-
-one sig SafeReports{
-	storedViolationReports : set ViolationReport
 }
 
 sig Picture {
@@ -40,6 +46,16 @@ sig UserConfirmation{
 
 sig ViolationType{}
 
+//To be completed
+sig Ticket{
+	violationReport:ViolationReport
+}
+
+sig RequestMTS{
+	violationReport:ViolationReport,
+	reply:Reply,
+}
+
 fact differentViolationsDifferentPictures{
 	no disj v1,v2 :ViolationReport| v1.picture = v2.picture
 }
@@ -49,7 +65,7 @@ fact differentRequestOCRDifferentVIolations{
 }
 
 fact allViolationsHasRequestOCR{
-	all v:ViolationReport | one r:RequestOCR | v = r.violationReport 
+	all v:ViolationReport | one r:RequestOCR | v = r.violationReport
 }
 
 fact notEmptyAndPositive
@@ -76,28 +92,71 @@ fact noConfirmationSameReport{
 
 
 fact noConfirmationWithoutPlate{
-	no c:UserConfirmation, v:ViolationReport | v.licensePlate = none and v = c.violationReport 
+	no c:UserConfirmation, v:ViolationReport | v.licensePlate = none and v = c.violationReport
 }
 
 
 fact allPlatesHasConfirmation{
 	all v:ViolationReport |
-			(v.licensePlate != none ) implies 
+			(v.licensePlate != none ) implies
 					one c:UserConfirmation | v = c.violationReport
 }
 
 
 fact storedViolations{
 	all v:ViolationReport |
-		v in SafeReports.storedViolationReports iff 
+		v in SafeReports.storedViolationReports iff
 			one c:UserConfirmation | c.reply = POSITIVE_REPLY and c.violationReport = v
 }
 
 
 fact noEquivalentViolation{
-	no disj v1,v2:ViolationReport | 
+	no disj v1,v2:ViolationReport |
 		v1 in SafeReports.storedViolationReports and  v2 in SafeReports.storedViolationReports and
 		equivalence[v1,v2]
+}
+
+// MTS part
+
+fact differentMTSDifferentViolation{
+	no disj r1,r2:RequestMTS | r1.violationReport = r2.violationReport
+}
+
+
+fact allMTSinSafeReports{
+	all r:RequestMTS | r.violationReport in SafeReports.storedViolationReports
+}
+
+fact allStoredVIolationMustHaveMTS
+{
+	all v:ViolationReport |
+		v in SafeReports.storedViolationReports implies
+			one r:RequestMTS |
+				v = r.violationReport
+}
+
+fact disjointTickets
+{
+	no disj t1,t2:Ticket | t1.violationReport = t2.violationReport
+}
+
+fact ticketsStoredIfPositiveMTS
+{
+	all t:Ticket |
+		one r:RequestMTS |
+			t.violationReport = r.violationReport and r.reply = POSITIVE_REPLY
+
+}
+
+fact ifPositiveMTSthenTicket
+{
+
+}
+
+fact allTicketsAreStoredInSafeTickets
+{
+	all t:Ticket |
+		t in SafeTickets.storedTickets
 }
 
 pred equivalence[ v1,v2 : ViolationReport ]
@@ -128,10 +187,12 @@ pred sameViolationType[v1,v2:ViolationReport]
 
 
 
+
+
 pred a{
-	c and
-	some disj v1,v2,v3:ViolationReport | 
-		v1.picture.quality = GOOD and v2.picture.quality = GOOD and v3.picture.quality = GOOD 
+	c and d and
+	some disj v1,v2,v3:ViolationReport |
+		v1.picture.quality = GOOD and v2.picture.quality = GOOD and v3.picture.quality = GOOD
 }
 
 pred c{
@@ -139,7 +200,7 @@ pred c{
 }
 
 pred d{
-	one v:ViolationReport | v.picture.quality = GOOD 
+	all r:RequestMTS | r.reply = POSITIVE_REPLY
 }
 
 pred b{
