@@ -1,101 +1,129 @@
+/***********************************************************************/
+
 abstract sig Quality {}
 one sig GoodQuality extends Quality {}
 one sig BadQuality extends Quality {}
 
 sig Picture{
-	quality: Quality
+	quality: one Quality
 }
 
 sig LicensePlate {}
 
 sig ViolationType {}
 
-// This is the complete report stored by SafeReports
 sig ViolationReport {
-	picture: Picture,
+	picture: one Picture,
 	licensePlate: lone LicensePlate,
-	violationType: ViolationType,
-	position: Int,
-	timestamp: Int
+	violationType: one ViolationType,
+	position: one Int,
+	timestamp: one Int
 }
 
-// This is the anonymous report sent to common users
 sig AnonymousViolationReport {
-	violationType: ViolationType,
-	position: Int,
-	timestamp: Int
+	relatedTo: one ViolationReport
 }
 
-// This fact ensures that every anonymous report is generated from an existing complete report
-fact AnonymousViolationReportsAlwaysReferredToStoredReports {
-	all a: AnonymousViolationReport |
-		some v: ViolationReport |
-			v.violationType = a.violationType and
-			v.position = a.position and
-			v.timestamp = a.timestamp
-			// v stored in safestreets
-}
-
-// No good quality without license plate
-// No license plate with bad quality
-
-// The position interval is determined by a central point and a range
 sig PositionFilter {
-	position: Int,
-	range: Int
-} {
-	all p: PositionFilter |
-		some f: Filter | f.positionFilter = p
+	position: one Int,
+	range: one Int
 }
 
-// The time interval is determined by a certain time and a range
 sig TimeFilter {
-	time: Int,
-	range: Int
-} {
-	all t: TimeFilter |
-		some f:Filter | f.timeFilter = t
+	time: one Int,
+	range: one Int
 }
 
-// This is the filter of the queries accessible to common users
 sig Filter {
-	positionFilter: PositionFilter,
-	timeFilter: TimeFilter,
-	violationTypeFilter: ViolationType
+	positionFilter: lone PositionFilter,
+	timeFilter: lone TimeFilter,
+	violationTypeFilter: lone ViolationType
+} {
+	(some positionFilter) or
+	(some timeFilter) or
+	(some violationTypeFilter)
 }
 
-// This is the filter of the queries accessible to authorities
-sig SuperFilter extends Filter {
-	licensePlate: LicensePlate
+sig SuperFilter {
+	positionFilter: lone PositionFilter,
+	timeFilter: lone TimeFilter,
+	violationTypeFilter: lone ViolationType,
+	licensePlate: lone LicensePlate
+} {
+	(some positionFilter) or
+	(some timeFilter) or
+	(some violationTypeFilter) or
+	(some licensePlate)
 }
 
-// This is a set of anonymous violation reports sent to common users after a query
 sig Reply {
-	violation : set AnonymousViolationReport
-} {
-	no r: Reply |
-		no q: Query | q.reply = r
+	violation: set AnonymousViolationReport
 }
 
-// This is a set of violation reports sent to authorites after a query
 sig SuperReply {
-	violation : set ViolationReport
-} {
-	no r: SuperReply |
-		no q: SuperQuery | q.reply = r
+	violation: set ViolationReport
 }
 
-// This is the query that common users can make
 sig Query {
-	filter: Filter,
-	reply: Reply
+	filter: one Filter,
+	reply: one Reply
 }
 
-// This is the query that authorities can make
 sig SuperQuery {
-	filter: SuperFilter,
-	reply: SuperReply
+	filter: one SuperFilter,
+	reply: one SuperReply
 }
+
+/***********************************************************************/
+
+// This fact ensures that reports have license plate if and only if the quality of the picture is good
+fact OnlyGoodPicturesHaveLicensePlate {
+	all v: ViolationReport | ( v.picture.quality = BadQuality ) iff ( no v.licensePlate )
+}
+
+// This fact ensures that reports in replies are always good quality reports
+fact OnlyGoodReportsInReplies {
+	( all r: Reply |
+		no p: Picture | (p in r.violation.relatedTo.picture) and (p.quality = BadQuality) )
+	and
+	( all sr: SuperReply |
+		no p: Picture | (p in sr.violation.picture) and (p.quality = BadQuality) )
+}
+
+// This fact ensures that no position or time filter exists alone
+fact NoUnrelatedSubFilters {
+	( all p: PositionFilter |
+		( some sf: SuperFilter | sf.positionFilter = p ) or ( some f: Filter | f.positionFilter = p ) )
+	and
+	( all t: TimeFilter |
+		( some sf: SuperFilter | sf.timeFilter = t ) or ( some f: Filter | f.timeFilter = t ) )
+}
+
+// This fact ensures that no filter exists alone
+fact NoUnrelatedFilters {
+	( all f: Filter |
+		some q: Query | q.filter = f )
+	and
+	( all sf: SuperFilter |
+		some sq: SuperQuery | sq.filter = sf )
+}
+
+// This fact ensures that no reply exists alone
+fact NoUnrelatedReplies {
+	( all r: Reply |
+		some q: Query | q.reply = r )
+	and
+	( all sr: SuperReply |
+		some sq: SuperQuery | sq.reply = sr )
+}
+
+// This fact ensured that no anonymous violation report is generated alone
+fact NoUnrelatedAnonymousViolationReport {
+	all v: AnonymousViolationReport |
+		some r: Reply | v in r.violation
+}
+
+/***********************************************************************/
 
 pred PositionFilterSatisfaction[f: PositionFilter, p:Int] {
 	p < f.position + f.range and p > f.position - f.range
@@ -119,12 +147,13 @@ fact RepliesSatisfyFilters {
 		all r: Reply |
 			all v: AnonymousViolationReport |
 				(v in r.violation and r = q.reply) implies
-					( PositionFilterSatisfaction[q.filter.positionFilter,v.position] and
-					TimeFilterSatisfaction[q.filter.timeFilter,v.timestamp] and
-					ViolationTypeFilterSatisfaction[q.filter.violationTypeFilter,v.violationType] )
+					( PositionFilterSatisfaction[q.filter.positionFilter,v.relatedTo.position] and
+					TimeFilterSatisfaction[q.filter.timeFilter,v.relatedTo.timestamp] and
+					ViolationTypeFilterSatisfaction[q.filter.violationTypeFilter,v.relatedTo.violationType] )
 }
 
-fact RepliesSatisfyFilters {
+// This fact ensures that replies to a super query are coherent with the selected filters
+fact SuperRepliesSatisfyFilters {
 	all q: SuperQuery |
 		all r: SuperReply |
 			all v: ViolationReport |
@@ -135,14 +164,18 @@ fact RepliesSatisfyFilters {
 					LicensePlateFilterSatisfaction[q.filter.licensePlate,v.licensePlate] )
 }
 
+/***********************************************************************/
+
 pred showQuery {
+	no v: ViolationReport | v.picture.quality = BadQuality
 	#SuperQuery = 0
 }
 
-//run showQuery
+// run showQuery for 2
 
 pred showSuperQuery {
+	no v: ViolationReport | v.picture.quality = BadQuality
 	#Query = 0
 }
 
-run showSuperQuery
+// run showSuperQuery for 2
