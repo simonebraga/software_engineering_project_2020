@@ -21,6 +21,15 @@ sig ViolationReport {
 	timestamp:Int,
 }
 
+sig Accident{
+	licensePlate: LicensePlate,
+	accidentType:AccidentType,
+	position:Int,
+	timestamp:Int,
+}
+
+sig AccidentType{}
+
 sig Picture {
 	quality:Quality
 }
@@ -63,6 +72,17 @@ sig Suggestion{
 	position:Int,
 	suggestionType:SuggestionType
 }
+
+sig AccidentUpdate{
+	municipality:Municipality,
+	newAccidents:set Accident,
+}
+
+one sig SafeStreets{
+	storedAccidents:set Accident
+}
+
+one sig Municipality{}
 
 sig SuggestionType{}
 
@@ -172,6 +192,8 @@ fact allTicketsAreStoredInSafeTickets
 		t in SafeTickets.storedTickets
 }
 
+//SAFESUGGESTION
+
 fact allSuggestionsInSafeSuggestions{
 	all s:Suggestion |
 		s in SafeSuggestions.storedSuggestions
@@ -181,14 +203,50 @@ fact allSuggestionsAreDifferent{
 	no disj s1,s2 :Suggestion | s1.position = s2.position and s1.suggestionType = s2.suggestionType
 }
 
-//TODO We need to add the position of the accident. We need to create accidents from municipality
-//If there exist at least a violation or an accident in a position then a suggestion must be created and stored 
-fact suggestionExistsIfViolationOrAccidentInThatPosition
+/*The probabily of our internal algorithm to generate suggestions in a position is more than 0
+if there is at least one violation or accident in that position*/
+
+fact suggestionsExistIfOnlyAccidentInThatPosition
 {
 	all s:Suggestion |
-		some v:ViolationReport |
-			s.position = v.position  and v in SafeReports.storedViolationReports 
+		(some v:ViolationReport  |
+			s.position = v.position  and v in SafeReports.storedViolationReports 	) 
+			
+		or 
+
+		(some a:Accident |
+			s.position = a.position)
 }
+
+//ACCIDENTS
+fact noSameAccidents{
+	no disj a1,a2:Accident | sameAccident[a1,a2]
+}
+
+fact allAccidentsAreStored
+{
+	all a:Accident | a in SafeStreets.storedAccidents
+}
+
+
+fact allAccidentsHaveAccidentUpdate
+{
+	all a:Accident | 
+		one  au:AccidentUpdate | 
+			a in au.newAccidents
+}
+fact allAccidentUpdateAreStored{
+	all au:AccidentUpdate |
+		au.newAccidents in SafeStreets.storedAccidents
+}
+
+fact allAccidentUpdateHaveSomeAccidents
+{
+	all au:AccidentUpdate |
+		au.newAccidents != none 
+}
+
+//PRED
 
 pred equivalence[ v1,v2 : ViolationReport ]
 {
@@ -216,23 +274,39 @@ pred sameViolationType[v1,v2:ViolationReport]
 	v1.violationType = v2.violationType
 }
 
+pred sameAccident[a1,a2:Accident]
+{
+	a1.position = a2.position and a1.timestamp = a2.timestamp and a1.accidentType = a2.accidentType
+}
 
+//Prove varie da modificare
 pred a{
-	c and d and
+	c and d and 
 	some disj v1,v2,v3:ViolationReport | 
 		v1.picture.quality = GOOD and v2.picture.quality = GOOD and v3.picture.quality = GOOD 
 }
 
 pred c{
-	 some c:UserConfirmation | c.reply = NEGATIVE_REPLY
+	 all c:UserConfirmation | c.reply = POSITIVE_REPLY
 }
 
 pred d{
-	some r:RequestMTS | r.reply = NEGATIVE_REPLY
+	all r:RequestMTS | r.reply = POSITIVE_REPLY
 }
+
+pred e
+{
+	#SafeSuggestions.storedSuggestions = 2
+	#ViolationReport = 0
+}
+
 
 pred b{
 	#ViolationReport = 2
 }
 
-run a
+pred accidents{
+	#Accident = 3
+	#AccidentUpdate = 3
+}
+run e
