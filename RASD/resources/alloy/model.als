@@ -293,11 +293,15 @@ abstract sig Filter {}
 sig PositionFilter extends Filter {
 	position: one Int,
 	range: one Int
+} {
+	range > 0
 }
 
 sig TimeFilter extends Filter{
 	time: one Int,
 	range: one Int
+} {
+	range > 0
 }
 
 sig ReportFilter extends Filter {
@@ -336,6 +340,8 @@ sig TicketFilter extends Filter {
 sig SuggestionPositionFilter extends Filter{
 	position: one Int,
 	range: one Int
+} {
+	range > 0
 }
 
 sig SuggestionFilter extends Filter {
@@ -348,19 +354,21 @@ sig SuggestionFilter extends Filter {
 	(some accidentFilter)
 }
 
-sig ReportReply extends Reply {
+abstract sig QueryReply {}
+
+sig ReportReply extends QueryReply {
 	violation: set AnonymousViolationReport
 }
 
-sig SuperReportReply extends Reply {
+sig SuperReportReply extends QueryReply {
 	violation: set ViolationReport
 }
 
-sig TicketReply extends Reply {
+sig TicketReply extends QueryReply {
 	ticket: set Ticket
 }
 
-sig SuggestionReply extends Reply {
+sig SuggestionReply extends QueryReply {
 	suggestion: set Suggestion
 }
 
@@ -540,6 +548,43 @@ fact OnlyGoodReportsInReplies {
 
 /******************************************************************************/
 
+// This is the minimum show predicate. It is used as reference to list all the cardinalities that can be restricted
+pred show {
+	#ViolationType = 0
+	#AccidentType = 0
+	#SuggestionType = 0
+	#LicensePlate = 0
+	#Picture = 0
+	#ViolationReport = 0
+	#Accident = 0
+	#Ticket = 0
+	#Suggestion = 0
+
+	#RequestOCR = 0
+	#UserConfirmation = 0
+	#RequestMTS = 0
+	#AccidentUpdate = 0
+
+	#AnonymousViolationReport = 0
+	#PositionFilter = 0
+	#TimeFilter = 0
+	#ReportFilter = 0
+	#SuperReportFilter = 0
+	#TicketFilter = 0
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 0
+	#ReportReply = 0
+	#SuperReportReply = 0
+	#TicketReply = 0
+	#SuggestionReply = 0
+	#ReportQuery = 0
+	#SuperReportQuery = 0
+	#TicketQuery = 0
+	#SuggestionQuery = 0
+}
+
+run show
+
 pred showReportQuery {
 	//TODO Conditions
 }
@@ -562,4 +607,4 @@ pred showSuggestionQuery {
 	//TODO Conditions
 }
 
-run showSuggestionQuery for 3
+//run showSuggestionQuery for 3
