@@ -120,7 +120,7 @@ fact differentRequestOCRDifferentVIolations{
 }
 
 fact allViolationsHasRequestOCR{
-	all v:ViolationReport | one r:RequestOCR | v = r.violationReport 
+	all v:ViolationReport | one r:RequestOCR | v = r.violationReport
 }
 
 fact notEmptyAndPositive
@@ -145,23 +145,23 @@ fact noConfirmationSameReport{
 }
 
 fact noConfirmationWithoutPlate{
-	no c:UserConfirmation, v:ViolationReport | v.licensePlate = none and v = c.violationReport 
+	no c:UserConfirmation, v:ViolationReport | v.licensePlate = none and v = c.violationReport
 }
 
 fact allPlatesHasConfirmation{
 	all v:ViolationReport |
-			(v.licensePlate != none ) implies 
+			(v.licensePlate != none ) implies
 					one c:UserConfirmation | v = c.violationReport
 }
 
 fact storedViolations{
 	all v:ViolationReport |
-		v in SafeReports.storedViolationReports iff 
+		v in SafeReports.storedViolationReports iff
 			one c:UserConfirmation | c.reply = POSITIVE_REPLY and c.violationReport = v
 }
 
 fact noEquivalentViolation{
-	no disj v1,v2:ViolationReport | 
+	no disj v1,v2:ViolationReport |
 		v1 in SafeReports.storedViolationReports and  v2 in SafeReports.storedViolationReports and
 		equivalence[v1,v2]
 }
@@ -171,7 +171,7 @@ fact noUbiquitousViolationReport{
 		 samePlate[v1,v2] and sameTimestamp[v1,v2] and not samePosition[v1,v2]
 }
 
-// MTS part 
+// MTS part
 
 fact differentMTSDifferentViolation{
 	no disj r1,r2:RequestMTS | r1.violationReport = r2.violationReport
@@ -184,14 +184,14 @@ fact allMTSinSafeReports{
 fact allStoredVIolationMustHaveMTS
 {
 	all v:ViolationReport |
-		v in SafeReports.storedViolationReports implies 
+		v in SafeReports.storedViolationReports implies
 			one r:RequestMTS |
-				v = r.violationReport 
+				v = r.violationReport
 }
 
 fact disjointTickets
 {
-	no disj t1,t2:Ticket | t1.violationReport = t2.violationReport 
+	no disj t1,t2:Ticket | t1.violationReport = t2.violationReport
 }
 
 fact ticketsStoredIfPositiveMTS
@@ -206,7 +206,7 @@ fact ifPositiveMTSthenTicket
 	all r:RequestMTS |
 		r.reply = POSITIVE_REPLY implies
 			one t:Ticket |
-				t.violationReport = r.violationReport 
+				t.violationReport = r.violationReport
 }
 
 fact allTicketsAreStoredInSafeTickets
@@ -233,8 +233,8 @@ fact suggestionsExistIfOnlyAccidentInThatPosition
 {
 	all s:Suggestion |
 		( some v:ViolationReport |
-			s.position = v.position  and v in SafeReports.storedViolationReports ) 		
-		or 
+			s.position = v.position  and v in SafeReports.storedViolationReports )
+		or
 		( some a:Accident |
 			s.position = a.position )
 }
@@ -251,8 +251,8 @@ fact allAccidentsAreStored
 
 fact allAccidentsHaveAccidentUpdate
 {
-	all a:Accident | 
-		one  au:AccidentUpdate | 
+	all a:Accident |
+		one  au:AccidentUpdate |
 			a in au.newAccidents
 }
 
@@ -264,7 +264,7 @@ fact allAccidentUpdateAreStored{
 fact allAccidentUpdateHaveSomeAccidents
 {
 	all au:AccidentUpdate |
-		au.newAccidents != none 
+		au.newAccidents != none
 }
 
 fact noUbiquituousAccident{
@@ -347,11 +347,15 @@ abstract sig Filter {}
 sig PositionFilter extends Filter {
 	position: one Int,
 	range: one Int
+} {
+	range > 0
 }
 
 sig TimeFilter extends Filter{
 	time: one Int,
 	range: one Int
+} {
+	range > 0
 }
 
 sig ReportFilter extends Filter {
@@ -390,6 +394,8 @@ sig TicketFilter extends Filter {
 sig SuggestionPositionFilter extends Filter{
 	position: one Int,
 	range: one Int
+} {
+	range > 0
 }
 
 sig SuggestionFilter extends Filter {
@@ -402,19 +408,21 @@ sig SuggestionFilter extends Filter {
 	(some accidentFilter)
 }
 
-sig ReportReply extends Reply {
+abstract sig QueryReply {}
+
+sig ReportReply extends QueryReply {
 	violation: set AnonymousViolationReport
 }
 
-sig SuperReportReply extends Reply {
+sig SuperReportReply extends QueryReply {
 	violation: set ViolationReport
 }
 
-sig TicketReply extends Reply {
+sig TicketReply extends QueryReply {
 	ticket: set Ticket
 }
 
-sig SuggestionReply extends Reply {
+sig SuggestionReply extends QueryReply {
 	suggestion: set Suggestion
 }
 
@@ -556,7 +564,7 @@ fact TicketRepliesSatisfyFilters {
 
 pred SuggestionFilterSatisfaction[f: SuggestionFilter, i: Suggestion] {
 	(some f.positionFilter) implies
-		( i.position < f.positionFilter.position + f.positionFilter.range and 
+		( i.position < f.positionFilter.position + f.positionFilter.range and
 		i.position > f.positionFilter.position - f.positionFilter.range ) and
 	(some f.violationFilter) implies (i.violation = f.violationFilter) and
 	(some f.accidentFilter) implies (i.accident = f.accidentFilter)
@@ -594,50 +602,82 @@ fact OnlyGoodReportsInReplies {
 
 /******************************************************************************/
 
+// This is the minimum show predicate. It is used as reference to list all the cardinalities that can be restricted
+pred showMinimumModel {
+	// Constraints on shared signatures
+	#ViolationType = 0
+	#AccidentType = 0
+	#SuggestionType = 0
+	#LicensePlate = 0
+	#Picture = 0
+	#ViolationReport = 0
+	#Accident = 0
+	#Ticket = 0
+	#Suggestion = 0
+	// Constraints on report procedure signatures
+	#RequestOCR = 0
+	#UserConfirmation = 0
+	#RequestMTS = 0
+	#AccidentUpdate = 0
+	// Constraints on query procedure signatures
+	#AnonymousViolationReport = 0
+	#PositionFilter = 0
+	#TimeFilter = 0
+	#ReportFilter = 0
+	#SuperReportFilter = 0
+	#TicketFilter = 0
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 0
+	#ReportReply = 0
+	#SuperReportReply = 0
+	#TicketReply = 0
+	#SuggestionReply = 0
+	#ReportQuery = 0
+	#SuperReportQuery = 0
+	#TicketQuery = 0
+	#SuggestionQuery = 0
+	// Additional constraints
+}
+
+// run showMinimumModel
+
 pred showReportQuery {
 	//TODO Conditions
 }
 
-// run showReportQuery for 3
+// run showReportQuery
 
 pred showSuperReportQuery {
 	//TODO Conditions
 }
 
-// run showSuperReportQuery for 3
+// run showSuperReportQuery
 
 pred showTicketQuery {
 	//TODO Conditions
 }
 
-// run showTicketQuery for 3
+// run showTicketQuery
 
 pred showSuggestionQuery {
 	//TODO Conditions
 }
 
+//run showSuggestionQuery
 
-/*
-1 violation refused by OCR
-1 violation confirmed by a user
-*/
-
-pred w1 {
+pred showExample {
 	// Constraints on shared signatures
-	//#ViolationReport = 2
+	#ViolationType = 1
 	#AccidentType = 0
 	#SuggestionType = 0
 	#LicensePlate = 1
-	#Picture = 2
-	#ViolationReport = 2
+	#Picture = 1
+	#ViolationReport = 1
 	#Accident = 0
 	#Ticket = 0
 	#Suggestion = 0
-	#Authority = 0
-	#MunicipalityUser = 0
-	#CommonUser = 2
 	// Constraints on report procedure signatures
-	#RequestOCR = 2
+	#RequestOCR = 1
 	#UserConfirmation = 1
 	#RequestMTS = 1
 	#AccidentUpdate = 0
@@ -659,9 +699,9 @@ pred w1 {
 	#TicketQuery = 0
 	#SuggestionQuery = 0
 	// Additional constraints
-	#SafeReports.storedViolationReports = 1
+	#SafeReports.storedViolationReports > 0
 	ViolationReport.position = 2
 	ViolationReport.timestamp = 5
 }
 
-run w1 for 3  but exactly 5 String
+run showExample
