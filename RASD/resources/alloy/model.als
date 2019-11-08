@@ -19,10 +19,13 @@ one sig SafeSuggestions extends Service {
 	isProvidedBy: one SafeStreets
 }
 
-abstract sig User {}
-one sig CommonUser extends User {}
-one sig Authority extends User {}
-one sig MunicipalityUser extends User {}
+abstract sig User {
+	email:String,
+	password:String,
+}
+sig CommonUser extends User {}
+sig Authority extends User {}
+sig MunicipalityUser extends User {}
 one sig Municipality {}
 
 sig ViolationType {}
@@ -77,6 +80,7 @@ abstract sig Reply {}
 one sig POSITIVE_REPLY extends Reply {}
 one sig NEGATIVE_REPLY extends Reply {}
 
+
 //Represents the request for the OCR
 sig RequestOCR{
 	violationReport:ViolationReport,
@@ -96,6 +100,15 @@ sig RequestMTS{
 sig AccidentUpdate{
 	municipality:Municipality,
 	newAccidents:set Accident,
+}
+
+fact differentUsersDifferentPasswords{
+	no disj u1,u2:User | u1.email = u2.email
+}
+
+fact passwordAndEmailAreDifferent
+{
+	no u:User | u.email = u.password
 }
 
 fact differentViolationsDifferentPictures{
@@ -151,6 +164,11 @@ fact noEquivalentViolation{
 	no disj v1,v2:ViolationReport | 
 		v1 in SafeReports.storedViolationReports and  v2 in SafeReports.storedViolationReports and
 		equivalence[v1,v2]
+}
+
+fact noUbiquitousViolationReport{
+	no disj v1,v2:ViolationReport |
+		 samePlate[v1,v2] and sameTimestamp[v1,v2] and not samePosition[v1,v2]
 }
 
 // MTS part 
@@ -249,27 +267,63 @@ fact allAccidentUpdateHaveSomeAccidents
 		au.newAccidents != none 
 }
 
+fact noUbiquituousAccident{
+	no disj a1,a2:Accident |
+		samePlate[a1,a2] and sameTimestamp[a1,a2] and not samePosition[a1,a2]
+}
+
+fact noUbiquitousViolationAndAccidents
+{
+	no disj v:ViolationReport, a: Accident |
+		v.licensePlate = a.licensePlate and v.timestamp = a.timestamp and v.position != a.position
+}
+
 //PRED
 
 pred equivalence[ v1,v2 : ViolationReport ]
 {
-	 samePlate[v1,v2] and samePosition[v1,v2] and sameTimestamp[v1,v2] and sameViolationType[v1,v2]
+	 samePlate[v1,v2] and equivalentPosition[v1,v2] and equivalentTimestamp[v1,v2] and sameViolationType[v1,v2]
 }
 
 //The define of the integer must be changed
-pred samePosition[v1,v2:ViolationReport]
+pred equivalentPosition[v1,v2:ViolationReport]
 {
 	v1.position - v2.position < 2 or  v2.position -  v1.position < 2
 }
 
-pred sameTimestamp[v1,v2:ViolationReport]
+pred samePosition[v1,v2:ViolationReport]
+{
+	v1.position = v2.position
+}
+
+pred samePosition[a1,a2:Accident]
+{
+	a1.position = a2.position
+}
+
+pred equivalentTimestamp[v1,v2:ViolationReport]
 {
 	v1.timestamp - v2.timestamp < 2 or v2.timestamp - v1.timestamp < 2
+}
+
+pred sameTimestamp[v1,v2:ViolationReport]
+{
+	v1.timestamp = v2.timestamp
+}
+
+pred sameTimestamp[a1,a2:Accident]
+{
+	a1.timestamp = a2.timestamp
 }
 
 pred samePlate[v1,v2:ViolationReport]
 {
 	v1.licensePlate != none and v1.licensePlate = v2.licensePlate
+}
+
+pred samePlate[a1,a2:Accident]
+{
+	a1.licensePlate = a2.licensePlate
 }
 
 pred sameViolationType[v1,v2:ViolationReport]
@@ -562,4 +616,52 @@ pred showSuggestionQuery {
 	//TODO Conditions
 }
 
-run showSuggestionQuery for 3
+
+/*
+1 violation refused by OCR
+1 violation confirmed by a user
+*/
+
+pred w1 {
+	// Constraints on shared signatures
+	//#ViolationReport = 2
+	#AccidentType = 0
+	#SuggestionType = 0
+	#LicensePlate = 1
+	#Picture = 2
+	#ViolationReport = 2
+	#Accident = 0
+	#Ticket = 0
+	#Suggestion = 0
+	#Authority = 0
+	#MunicipalityUser = 0
+	#CommonUser = 2
+	// Constraints on report procedure signatures
+	#RequestOCR = 2
+	#UserConfirmation = 1
+	#RequestMTS = 1
+	#AccidentUpdate = 0
+	// Constraints on query procedure signatures
+	#AnonymousViolationReport = 0
+	#PositionFilter = 0
+	#TimeFilter = 0
+	#ReportFilter = 0
+	#SuperReportFilter = 0
+	#TicketFilter = 0
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 0
+	#ReportReply = 0
+	#SuperReportReply = 0
+	#TicketReply = 0
+	#SuggestionReply = 0
+	#ReportQuery = 0
+	#SuperReportQuery = 0
+	#TicketQuery = 0
+	#SuggestionQuery = 0
+	// Additional constraints
+	#SafeReports.storedViolationReports = 1
+	ViolationReport.position = 2
+	ViolationReport.timestamp = 5
+}
+
+run w1 for 3  but exactly 5 String
