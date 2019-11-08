@@ -549,7 +549,8 @@ fact OnlyGoodReportsInReplies {
 /******************************************************************************/
 
 // This is the minimum show predicate. It is used as reference to list all the cardinalities that can be restricted
-pred show {
+pred showMinimumModel {
+	// Constraints on shared signatures
 	#ViolationType = 0
 	#AccidentType = 0
 	#SuggestionType = 0
@@ -559,12 +560,12 @@ pred show {
 	#Accident = 0
 	#Ticket = 0
 	#Suggestion = 0
-
+	// Constraints on report procedure signatures
 	#RequestOCR = 0
 	#UserConfirmation = 0
 	#RequestMTS = 0
 	#AccidentUpdate = 0
-
+	// Constraints on query procedure signatures
 	#AnonymousViolationReport = 0
 	#PositionFilter = 0
 	#TimeFilter = 0
@@ -581,30 +582,72 @@ pred show {
 	#SuperReportQuery = 0
 	#TicketQuery = 0
 	#SuggestionQuery = 0
+	// Additional constraints
 }
 
-run show
+// run showMinimumModel
 
 pred showReportQuery {
 	//TODO Conditions
 }
 
-// run showReportQuery for 3
+// run showReportQuery
 
 pred showSuperReportQuery {
 	//TODO Conditions
 }
 
-// run showSuperReportQuery for 3
+// run showSuperReportQuery
 
 pred showTicketQuery {
 	//TODO Conditions
 }
 
-// run showTicketQuery for 3
+// run showTicketQuery
 
 pred showSuggestionQuery {
 	//TODO Conditions
 }
 
-//run showSuggestionQuery for 3
+//run showSuggestionQuery
+
+pred showExample {
+	// Constraints on shared signatures
+	#ViolationType = 1
+	#AccidentType = 0
+	#SuggestionType = 0
+	#LicensePlate = 1
+	#Picture = 1
+	#ViolationReport = 1
+	#Accident = 0
+	#Ticket = 0
+	#Suggestion = 0
+	// Constraints on report procedure signatures
+	#RequestOCR = 1
+	#UserConfirmation = 1
+	#RequestMTS = 1
+	#AccidentUpdate = 0
+	// Constraints on query procedure signatures
+	#AnonymousViolationReport = 0
+	#PositionFilter = 0
+	#TimeFilter = 0
+	#ReportFilter = 0
+	#SuperReportFilter = 0
+	#TicketFilter = 0
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 0
+	#ReportReply = 0
+	#SuperReportReply = 0
+	#TicketReply = 0
+	#SuggestionReply = 0
+	#ReportQuery = 0
+	#SuperReportQuery = 0
+	#TicketQuery = 0
+	#SuggestionQuery = 0
+	// Additional constraints
+	#SafeReports.storedViolationReports > 0
+	ViolationReport.position = 2
+	ViolationReport.timestamp = 5
+}
+
+run showExample
