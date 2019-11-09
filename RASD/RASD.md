@@ -601,11 +601,19 @@ The software is thought to run on the majority of mobile devices, so it should b
 | Product functions               |   2   |    2     |   2    |
 | User characteristics            |   2   |    2     |   2    |
 | Assumptions and dependencies    |   4   |    4     |   4    |
-| External Interface Requirements |   2   |    2     |   2    |
+| External Interface Requirements |   3   |    3     |   3    |
 | Functional Requirements         |  12   |    12    |   12   |
 | Performance Requirements        |   1   |    1     |   1    |
 | Design Constraints              |   1   |    1     |   1    |
 | Software System Attributes      |   1   |    1     |   1    |
-| Formal Analysis using Alloy     |       |          |        |
+| Formal Analysis using Alloy     |  17   |    17    |   17   |
 
 # REFERENCES
+
+* Specification document "Mandatory Project Assignment" 2019-2020
+
+* IEEE Std 830-­1998 IEEE Recommended Practice for Software Requirements Specifications
+* UML diagrams:
+<https://www.uml-diagrams.org/>
+* Alloy:
+<http://alloytools.org/>
