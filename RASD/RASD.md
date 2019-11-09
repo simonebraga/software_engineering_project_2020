@@ -1,3 +1,5 @@
+<center><\center>
+
 # INTRODUCTION
 
 ## Purpose
@@ -609,3 +611,8 @@ The software is thought to run on the majority of mobile devices, so it should b
 | Formal Analysis using Alloy     |       |          |        |
 
 # REFERENCES
+
+- Specification document "Mandatory Project Assignment" 2019-2020
+- IEEE Std 830-­1998 IEEE Recommended Practice for Software Requirements Specifications
+- UML diagrams: <https://www.uml-diagrams.org>
+- Alloy doc: <http://alloy.lcs.mit.edu/alloy/documentation>
