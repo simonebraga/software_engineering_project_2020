@@ -111,6 +111,11 @@ fact passwordAndEmailAreDifferent
 	no u:User | u.email = u.password
 }
 
+fact passwordAndEmailAreDifferent
+{
+	no disj u1,u2 :User | u1.email = u2.password
+}
+
 fact differentViolationsDifferentPictures{
 	no disj v1,v2 :ViolationReport| v1.picture = v2.picture
 }
@@ -237,6 +242,18 @@ fact suggestionsExistIfOnlyAccidentInThatPosition
 		or
 		( some a:Accident |
 			s.position = a.position )
+}
+
+fact coherentTypes{
+	all s:Suggestion |
+		
+		(s.accident != none implies some a:Accident |
+			s.position = a.position )
+
+		and
+
+		(s.violation != none implies some v:ViolationReport  |
+			v in SafeReports.storedViolationReports and s.position = v.position)
 }
 
 //ACCIDENTS
@@ -502,7 +519,6 @@ fact NoUnrelatedTicketReply {
 	all r: TicketReply |
 		some q: TicketQuery | q.reply = r
 }
-
 // This fact ensures that no SuggestionReply exists alone
 fact NoUnrelatedSuggestionReply {
 	all r: SuggestionReply |
@@ -704,4 +720,5 @@ pred showExample {
 	ViolationReport.timestamp = 5
 }
 
-run showExample
+
+
