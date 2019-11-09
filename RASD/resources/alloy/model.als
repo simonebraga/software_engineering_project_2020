@@ -720,5 +720,146 @@ pred showExample {
 	ViolationReport.timestamp = 5
 }
 
+/*There are 2 violation reports. The first is refused by the OCR and the second is refused by the user.
+No violation is stored. We see the different emails and passwords of the users*/
 
+pred noConfirmation {
+	// Constraints on shared signatures
+	//#ViolationType = 0
+	#AccidentType = 0
+	#SuggestionType = 0
+	#LicensePlate = 1
+	#Picture = 2
+	#ViolationReport = 2
+	#Accident = 0
+	#Ticket = 0
+	#Suggestion = 0
+	// Constraints on report procedure signatures
+	#RequestOCR = 2
+	#UserConfirmation = 1
+	#RequestMTS = 0
+	#AccidentUpdate = 0
+	// Constraints on query procedure signatures
+	#AnonymousViolationReport = 0
+	#PositionFilter = 0
+	#TimeFilter = 0
+	#ReportFilter = 0
+	#SuperReportFilter = 0
+	#TicketFilter = 0
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 0
+	#ReportReply = 0
+	#SuperReportReply = 0
+	#TicketReply = 0
+	#SuggestionReply = 0
+	#ReportQuery = 0
+	#SuperReportQuery = 0
+	#TicketQuery = 0
+	#SuggestionQuery = 0
+	// Additional constraints
+	#Authority = 0
+	#MunicipalityUser = 0
+	#CommonUser = 2
+	morePosition and
+	one u:UserConfirmation | u.reply = NEGATIVE_REPLY
 
+}
+
+pred morePosition{
+	one disj v1,v2:ViolationReport | v1.position = 1 and v2.position = 2
+}
+
+/*
+One violation report is accepted by the OCR and by the USER and it is stored in SafeReports.
+Then a fine ticket is produced by the MTS and it is stored in SafeTIckets.
+There is also a suggestion and an accident.
+*/
+pred ticketsAndSuggestions
+{
+		// Constraints on shared signatures
+	#ViolationType = 1
+	#AccidentType = 1
+	#SuggestionType = 1
+	#LicensePlate = 2
+	#Picture = 1
+	#ViolationReport = 1
+	#Accident = 1
+	#Ticket = 1
+	#Suggestion = 1
+	// Constraints on report procedure signatures
+	#RequestOCR = 1 
+	#UserConfirmation = 1
+	#RequestMTS = 1
+	#AccidentUpdate = 1
+	// Constraints on query procedure signatures
+	#AnonymousViolationReport = 0
+	#PositionFilter = 0
+	#TimeFilter = 0
+	#ReportFilter = 0
+	#SuperReportFilter = 0
+	#TicketFilter = 0
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 0
+	#ReportReply = 0
+	#SuperReportReply = 0
+	#TicketReply = 0
+	#SuggestionReply = 0
+	#ReportQuery = 0
+	#SuperReportQuery = 0
+	#TicketQuery = 0
+	#SuggestionQuery = 0
+	// Additional constraints
+	#Authority = 0
+	#MunicipalityUser = 0
+	#CommonUser = 1
+}
+
+/*Two violation reports are accepted and stored in SafeReports.
+MTS doesn't approve the creation of the tickets from the reports.
+The reports are done by the same user but they have different plates position and timestamp*/
+
+pred acceptedViolations{
+		// Constraints on shared signatures
+	#ViolationType = 2
+	#AccidentType = 0
+	#SuggestionType = 0
+	#LicensePlate = 2
+	#Picture = 2
+	#ViolationReport = 2
+	#Accident = 0
+	#Ticket = 0
+	#Suggestion = 0
+	// Constraints on report procedure signatures
+	#RequestOCR = 2
+	#UserConfirmation = 2
+	#RequestMTS = 2
+	#AccidentUpdate = 0
+	// Constraints on query procedure signatures
+	#AnonymousViolationReport = 0
+	#PositionFilter = 0
+	#TimeFilter = 0
+	#ReportFilter = 0
+	#SuperReportFilter = 0
+	#TicketFilter = 0
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 0
+	#ReportReply = 0
+	#SuperReportReply = 0
+	#TicketReply = 0
+	#SuggestionReply = 0
+	#ReportQuery = 0
+	#SuperReportQuery = 0
+	#TicketQuery = 0
+	#SuggestionQuery = 0
+	// Additional constraints
+	#Authority = 0
+	#MunicipalityUser = 0
+	#CommonUser = 2
+	no disj v1,v2:ViolationReport | v1.licensePlate = v2.licensePlate
+}
+
+run noConfirmation for 3 but exactly 4 String 
+
+run ticketsAndSuggestions for 3 but exactly 3 String
+
+run acceptedViolations for 4 but exactly 3 String
