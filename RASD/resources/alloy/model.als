@@ -75,13 +75,12 @@ sig Suggestion {
 
 abstract sig Reply {}
 
-/******************************************************************************/
-
 one sig POSITIVE_REPLY extends Reply {}
 one sig NEGATIVE_REPLY extends Reply {}
 
 
 //Represents the request for the OCR
+
 sig RequestOCR{
 	violationReport:ViolationReport,
 	reply: Reply
@@ -176,7 +175,7 @@ fact noUbiquitousViolationReport{
 		 samePlate[v1,v2] and sameTimestamp[v1,v2] and not samePosition[v1,v2]
 }
 
-// MTS part
+// MTS
 
 fact differentMTSDifferentViolation{
 	no disj r1,r2:RequestMTS | r1.violationReport = r2.violationReport
@@ -231,9 +230,6 @@ fact allSuggestionsAreDifferent{
 	no disj s1,s2 :Suggestion | s1.position = s2.position and s1.suggestionType = s2.suggestionType
 }
 
-/*The probabily of our internal algorithm to generate suggestions in a position is more than 0
-if there is at least one violation or accident in that position*/
-
 fact suggestionsExistIfOnlyAccidentInThatPosition
 {
 	all s:Suggestion |
@@ -257,6 +253,7 @@ fact coherentTypes{
 }
 
 //ACCIDENTS
+
 fact noSameAccidents{
 	no disj a1,a2:Accident | sameAccident[a1,a2]
 }
@@ -302,7 +299,6 @@ pred equivalence[ v1,v2 : ViolationReport ]
 	 samePlate[v1,v2] and equivalentPosition[v1,v2] and equivalentTimestamp[v1,v2] and sameViolationType[v1,v2]
 }
 
-//The define of the integer must be changed
 pred equivalentPosition[v1,v2:ViolationReport]
 {
 	v1.position - v2.position < 2 or  v2.position -  v1.position < 2
@@ -352,8 +348,6 @@ pred sameAccident[a1,a2:Accident]
 {
 	a1.position = a2.position and a1.timestamp = a2.timestamp and a1.accidentType = a2.accidentType
 }
-
-/******************************************************************************/
 
 sig AnonymousViolationReport {
 	relatedTo: one ViolationReport
@@ -470,12 +464,14 @@ sig SuggestionQuery extends Query {
 }
 
 // This fact ensured that no AnonymousViolationReport exists alone
+
 fact NoUnrelatedAnonymousViolationReport {
 	all v: AnonymousViolationReport |
 		some r: ReportReply | v in r.violation
 }
 
 // This fact ensures that no PositionFilter or TimeFilter exists alone
+
 fact NoUnrelatedSubFilters {
 	( all p: PositionFilter |
 		( some sf: SuperReportFilter | sf.positionFilter = p ) or ( some f: ReportFilter | f.positionFilter = p ) )
@@ -485,6 +481,7 @@ fact NoUnrelatedSubFilters {
 }
 
 // This fact ensures that no ReportFilter or SuperReportFilter exists alone
+
 fact NoUnrelatedFilters {
 	( all f: ReportFilter |
 		some q: ReportQuery | q.filter = f )
@@ -494,18 +491,21 @@ fact NoUnrelatedFilters {
 }
 
 // This fact ensures that no TicketFilter exists alone
+
 fact NoUnrelatedTicketFilter {
 	all f: TicketFilter |
 		some q: TicketQuery | q.filter = f
 }
 
 // This fact ensures that no SuggestionFilter exists alone
+
 fact NoUnrelatedSuggestionFilter {
 	all f: SuggestionFilter |
 		some q: SuggestionQuery | q.filter = f
 }
 
 // This fact ensures that no ReportReply or SuperReportReply exists alone
+
 fact NoUnrelatedReplies {
 	( all r: ReportReply |
 		some q: ReportQuery | q.reply = r )
@@ -515,11 +515,14 @@ fact NoUnrelatedReplies {
 }
 
 // This fact ensures that no TicketReply exists alone
+
 fact NoUnrelatedTicketReply {
 	all r: TicketReply |
 		some q: TicketQuery | q.reply = r
 }
+
 // This fact ensures that no SuggestionReply exists alone
+
 fact NoUnrelatedSuggestionReply {
 	all r: SuggestionReply |
 		some q: SuggestionQuery | q.reply = r
@@ -542,6 +545,7 @@ pred LicensePlateFilterSatisfaction[f: LicensePlate, t: LicensePlate] {
 }
 
 // This fact ensures that replies to a ReportQuery are coherent with the filters
+
 fact RepliesSatisfyFilters {
 	all q: ReportQuery |
 		all r: ReportReply |
@@ -553,6 +557,7 @@ fact RepliesSatisfyFilters {
 }
 
 // This fact ensures that replies to a SuperReportQuery are coherent with the filters
+
 fact SuperRepliesSatisfyFilters {
 	all q: SuperReportQuery |
 		all r: SuperReportReply |
@@ -571,6 +576,7 @@ pred TicketFilterSatisfaction[f: TicketFilter, i: Ticket] {
 }
 
 // This fact ensures that replies to a TicketQuery are coherent with the filters
+
 fact TicketRepliesSatisfyFilters {
 	all q: TicketQuery |
 		all r: TicketReply |
@@ -587,6 +593,7 @@ pred SuggestionFilterSatisfaction[f: SuggestionFilter, i: Suggestion] {
 }
 
 // This fact ensures that replies to a SuggestionQuery are coherent with the filters
+
 fact SuggestionRepliesSatisfyFilters {
 	all q: SuggestionQuery |
 		all r: SuggestionReply |
@@ -594,34 +601,10 @@ fact SuggestionRepliesSatisfyFilters {
 				(s in r.suggestion and r = q.reply) implies SuggestionFilterSatisfaction [q.filter, s]
 }
 
-//TODO Review the following facts
-
-/* // This fact ensures that no picture exists alone
-fact NoUnrelatedPictures {
-	all p: Picture |
-		some v: ViolationReport | v.picture = p
-}
-
-// This fact ensures that reports have license plate if and only if the quality of the picture is good
-fact OnlyGoodPicturesHaveLicensePlate {
-	all v: ViolationReport | ( v.picture.quality = BAD_QUALITY ) iff ( no v.licensePlate )
-}
-
-// This fact ensures that reports in replies are always good quality reports
-fact OnlyGoodReportsInReplies {
-	( all r: ReportReply |
-		no p: Picture | (p in r.violation.relatedTo.picture) and (p.quality = BAD_QUALITY) )
-	and
-	( all sr: SuperReportReply |
-		no p: Picture | (p in sr.violation.picture) and (p.quality = BAD_QUALITY) )
-} */
-
-/******************************************************************************/
-
 /*There are 2 violation reports. The first is refused by the OCR and the second is refused by the user.
 No violation is stored. We see the different emails and passwords of the users*/
+
 pred noConfirmation {
-	// Constraints on shared signatures
 	#AccidentType = 0
 	#SuggestionType = 0
 	#LicensePlate = 1
@@ -630,12 +613,10 @@ pred noConfirmation {
 	#Accident = 0
 	#Ticket = 0
 	#Suggestion = 0
-	// Constraints on report procedure signatures
 	#RequestOCR = 2
 	#UserConfirmation = 1
 	#RequestMTS = 0
 	#AccidentUpdate = 0
-	// Constraints on query procedure signatures
 	#AnonymousViolationReport = 0
 	#PositionFilter = 0
 	#TimeFilter = 0
@@ -652,7 +633,6 @@ pred noConfirmation {
 	#SuperReportQuery = 0
 	#TicketQuery = 0
 	#SuggestionQuery = 0
-	// Additional constraints
 	#Authority = 0
 	#MunicipalityUser = 0
 	#CommonUser = 2
@@ -660,15 +640,14 @@ pred noConfirmation {
 	one u:UserConfirmation | u.reply = NEGATIVE_REPLY
 }
 
-// run noConfirmation for 3 but exactly 4 String 
+// run noConfirmation for 3 but exactly 4 String
 
-/*
-One violation report is accepted by the OCR and by the USER and it is stored in SafeReports.
+/*One violation report is accepted by the OCR and by the USER and it is stored in SafeReports.
 Then a fine ticket is produced by the MTS and it is stored in SafeTIckets.
 There is also a suggestion and an accident.*/
+
 pred ticketsAndSuggestions
 {
-	// Constraints on shared signatures
 	#ViolationType = 1
 	#AccidentType = 1
 	#SuggestionType = 1
@@ -678,12 +657,10 @@ pred ticketsAndSuggestions
 	#Accident = 1
 	#Ticket = 1
 	#Suggestion = 1
-	// Constraints on report procedure signatures
 	#RequestOCR = 1 
 	#UserConfirmation = 1
 	#RequestMTS = 1
 	#AccidentUpdate = 1
-	// Constraints on query procedure signatures
 	#AnonymousViolationReport = 0
 	#PositionFilter = 0
 	#TimeFilter = 0
@@ -700,7 +677,6 @@ pred ticketsAndSuggestions
 	#SuperReportQuery = 0
 	#TicketQuery = 0
 	#SuggestionQuery = 0
-	// Additional constraints
 	#Authority = 0
 	#MunicipalityUser = 0
 	#CommonUser = 1
@@ -711,8 +687,8 @@ pred ticketsAndSuggestions
 /*Two violation reports are accepted and stored in SafeReports.
 MTS doesn't approve the creation of the tickets from the reports.
 The reports are done by the same user but they have different plates position and timestamp*/
+
 pred acceptedViolations{
-	// Constraints on shared signatures
 	#ViolationType = 2
 	#AccidentType = 0
 	#SuggestionType = 0
@@ -722,12 +698,10 @@ pred acceptedViolations{
 	#Accident = 0
 	#Ticket = 0
 	#Suggestion = 0
-	// Constraints on report procedure signatures
 	#RequestOCR = 2
 	#UserConfirmation = 2
 	#RequestMTS = 2
 	#AccidentUpdate = 0
-	// Constraints on query procedure signatures
 	#AnonymousViolationReport = 0
 	#PositionFilter = 0
 	#TimeFilter = 0
@@ -744,7 +718,6 @@ pred acceptedViolations{
 	#SuperReportQuery = 0
 	#TicketQuery = 0
 	#SuggestionQuery = 0
-	// Additional constraints
 	#Authority = 0
 	#MunicipalityUser = 0
 	#CommonUser = 2
@@ -754,25 +727,125 @@ pred acceptedViolations{
 // run acceptedViolations for 4 but exactly 3 String
 
 pred showReportQuery {
-	//TODO Conditions
+	#ViolationType = 2
+	#AccidentType = 0
+	#SuggestionType = 0
+	#LicensePlate = 2
+	#Picture = 2
+	#ViolationReport = 2
+	#Accident = 0
+	#Ticket = 0
+	#Suggestion = 0
+	#AccidentUpdate = 0
+	#AnonymousViolationReport = 1
+	#ReportFilter = 1
+	#SuperReportFilter = 0
+	#TicketFilter = 0
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 0
+	#ReportReply = 1
+	#SuperReportReply = 0
+	#TicketReply = 0
+	#SuggestionReply = 0
+	#ReportQuery = 1
+	#SuperReportQuery = 0
+	#TicketQuery = 0
+	#SuggestionQuery = 0
+	#Authority = 0
+	#MunicipalityUser = 0
+	#SafeReports.storedViolationReports = 2
+	#ReportReply.violation > 0
 }
 
-// run showReportQuery
+// run showReportQuery for 3 but exactly 2 String
 
 pred showSuperReportQuery {
-	//TODO Conditions
+	#ViolationType = 2
+	#AccidentType = 0
+	#SuggestionType = 0
+	#LicensePlate = 2
+	#Picture = 2
+	#ViolationReport = 2
+	#Accident = 0
+	#Ticket = 0
+	#Suggestion = 0
+	#AccidentUpdate = 0
+	#AnonymousViolationReport = 0
+	#ReportFilter = 0
+	#SuperReportFilter = 1
+	#TicketFilter = 0
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 0
+	#ReportReply = 0
+	#SuperReportReply = 1
+	#TicketReply = 0
+	#SuggestionReply = 0
+	#ReportQuery = 0
+	#SuperReportQuery = 1
+	#TicketQuery = 0
+	#SuggestionQuery = 0
+	#MunicipalityUser = 0
+	#SafeReports.storedViolationReports = 2
+	#SuperReportReply.violation > 0
 }
 
-// run showSuperReportQuery
+// run showSuperReportQuery for 3 but exactly 4 String
 
 pred showTicketQuery {
-	//TODO Conditions
+	#ViolationType = 2
+	#AccidentType = 0
+	#SuggestionType = 0
+	#LicensePlate = 2
+	#Picture = 2
+	#ViolationReport = 2
+	#Accident = 0
+	#Ticket = 1
+	#Suggestion = 0
+	#AccidentUpdate = 0
+	#AnonymousViolationReport = 0
+	#PositionFilter = 0
+	#TimeFilter = 0
+	#ReportFilter = 0
+	#SuperReportFilter = 0
+	#TicketFilter = 1
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 0
+	#ReportReply = 0
+	#SuperReportReply = 0
+	#TicketReply = 1
+	#SuggestionReply = 0
+	#ReportQuery = 0
+	#SuperReportQuery = 0
+	#TicketQuery = 1
+	#SuggestionQuery = 0
+	#MunicipalityUser = 0
+	#SafeReports.storedViolationReports = 2
+	#TicketReply.ticket > 0
 }
 
-// run showTicketQuery
+// run showTicketQuery  for 3 but exactly 4 String
 
 pred showSuggestionQuery {
-	//TODO Conditions
+	#Suggestion = 3
+	#AnonymousViolationReport = 0
+	#PositionFilter = 0
+	#TimeFilter = 0
+	#ReportFilter = 0
+	#SuperReportFilter = 0
+	#TicketFilter = 0
+	#SuggestionPositionFilter = 0
+	#SuggestionFilter = 1
+	#ReportReply = 0
+	#SuperReportReply = 0
+	#TicketReply = 0
+	#SuggestionReply = 1
+	#ReportQuery = 0
+	#SuperReportQuery = 0
+	#TicketQuery = 0
+	#SuggestionQuery = 1
+	#CommonUser = 0
+	#Authority = 0
+	#SuggestionReply.suggestion > 0
 }
 
-//run showSuggestionQuery
+// run showSuggestionQuery  for 3 but exactly 3 String
