@@ -1,3 +1,5 @@
+<center><\center>
+
 # INTRODUCTION
 
 ## Purpose
