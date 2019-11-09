@@ -592,15 +592,15 @@ The software is thought to run on the majority of mobile devices, so it should b
 
 # FORMAL ANALYSIS USING ALLOY
 
-![](resources/world_tickets_and_suggestions.svg)
-
-<br>
-
-![](resources/world_tickets_and_suggestions.svg)
-
-<br>
-
 ![](resources/world_no_confirmation.svg)
+
+<br>
+
+![](resources/world_tickets_and_suggestions.svg)
+
+<br>
+
+![](resources/world_accepted_violation.svg)
 
 # EFFORT SPENT
 
