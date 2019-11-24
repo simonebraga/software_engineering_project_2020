@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="652px" preserveAspectRatio="none" style="width:1058px;height:652px;" version="1.1" viewBox="0 0 1058 652" width="1058px" zoomAndPan="magnify">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="713px" preserveAspectRatio="none" style="width:1058px;height:713px;" version="1.1" viewBox="0 0 1058 713" width="1058px" zoomAndPan="magnify">
     <defs>
-        <filter height="300%" id="fj8fu3hstpnt4" width="300%" x="-1" y="-1">
+        <filter height="300%" id="f1emg3h56pnj7b" width="300%" x="-1" y="-1">
             <feGaussianBlur result="blurOut" stdDeviation="2.0" />
             <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0" />
             <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3" />
@@ -8,74 +8,80 @@
         </filter>
     </defs>
     <g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="165" x="447.25" y="24.5332">Retrieve Violations Info</text>
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="416.9219" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="34" y="129.2188" />
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="416.9219" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="323" y="129.2188" />
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="182.1094" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="537" y="272.9766" />
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="121.4063" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="751" y="303.3281" />
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="60.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="906" y="333.6797" />
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="60.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="995.5" y="455.0859" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="39" x2="39" y1="119.2188" y2="564.1406" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="327.5" x2="327.5" y1="119.2188" y2="564.1406" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="541.5" x2="541.5" y1="119.2188" y2="564.1406" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="756" x2="756" y1="119.2188" y2="564.1406" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="910.5" x2="910.5" y1="119.2188" y2="564.1406" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="1000.5" x2="1000.5" y1="119.2188" y2="564.1406" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="56" x="8" y="116.1426">Authority</text>
-        <ellipse cx="39" cy="44.6094" fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
-        <path d="M39,52.6094 L39,79.6094 M26,60.6094 L52,60.6094 M39,79.6094 L26,94.6094 M39,79.6094 L52,94.6094 " fill="none" filter="url(#fj8fu3hstpnt4)" style="stroke: #A80036; stroke-width: 2.0;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="56" x="8" y="577.6738">Authority</text>
-        <ellipse cx="39" cy="590.75" fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
-        <path d="M39,598.75 L39,625.75 M26,606.75 L52,606.75 M39,625.75 L26,640.75 M39,625.75 L52,640.75 " fill="none" filter="url(#fj8fu3hstpnt4)" style="stroke: #A80036; stroke-width: 2.0;" />
-        <rect fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="49" x="301.5" y="82.6094" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="35" x="308.5" y="104.1426">[APP]</text>
-        <rect fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="49" x="301.5" y="563.1406" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="35" x="308.5" y="584.6738">[APP]</text>
-        <rect fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="65" x="507.5" y="82.6094" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="51" x="514.5" y="104.1426">[Router]</text>
-        <rect fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="65" x="507.5" y="563.1406" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="51" x="514.5" y="584.6738">[Router]</text>
-        <rect fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="138" x="685" y="82.6094" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="124" x="692" y="104.1426">[QUERY HANDLER]</text>
-        <rect fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="138" x="685" y="563.1406" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="124" x="692" y="584.6738">[QUERY HANDLER]</text>
-        <rect fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="53" x="882.5" y="82.6094" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="39" x="889.5" y="104.1426">DBMS</text>
-        <rect fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="53" x="882.5" y="563.1406" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="39" x="889.5" y="584.6738">DBMS</text>
-        <rect fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="98" x="949.5" y="82.6094" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="84" x="956.5" y="104.1426">Google Maps</text>
-        <rect fill="#FEFECE" filter="url(#fj8fu3hstpnt4)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="98" x="949.5" y="563.1406" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="84" x="956.5" y="584.6738">Google Maps</text>
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="416.9219" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="34" y="129.2188" />
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="416.9219" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="323" y="129.2188" />
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="182.1094" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="537" y="272.9766" />
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="121.4063" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="751" y="303.3281" />
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="60.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="906" y="333.6797" />
-        <rect fill="#FFFFFF" filter="url(#fj8fu3hstpnt4)" height="60.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="995.5" y="455.0859" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="477.625" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="34" y="129.2188" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="477.625" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="323" y="129.2188" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="182.1094" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="537" y="333.6797" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="121.4063" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="751" y="364.0313" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="60.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="906" y="394.3828" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="30.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="995.5" y="181.9219" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="60.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="995.5" y="515.7891" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="39" x2="39" y1="119.2188" y2="624.8438" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="327.5" x2="327.5" y1="119.2188" y2="624.8438" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="541.5" x2="541.5" y1="119.2188" y2="624.8438" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="756" x2="756" y1="119.2188" y2="624.8438" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="910.5" x2="910.5" y1="119.2188" y2="624.8438" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 5.0,5.0;" x1="1000.5" x2="1000.5" y1="119.2188" y2="624.8438" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="56" x="8" y="116.1426">Authority</text>
+        <ellipse cx="39" cy="44.6094" fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
+        <path d="M39,52.6094 L39,79.6094 M26,60.6094 L52,60.6094 M39,79.6094 L26,94.6094 M39,79.6094 L52,94.6094 " fill="none" filter="url(#f1emg3h56pnj7b)" style="stroke: #A80036; stroke-width: 2.0;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="56" x="8" y="638.377">Authority</text>
+        <ellipse cx="39" cy="651.4531" fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
+        <path d="M39,659.4531 L39,686.4531 M26,667.4531 L52,667.4531 M39,686.4531 L26,701.4531 M39,686.4531 L52,701.4531 " fill="none" filter="url(#f1emg3h56pnj7b)" style="stroke: #A80036; stroke-width: 2.0;" />
+        <rect fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="49" x="301.5" y="82.6094" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="35" x="308.5" y="104.1426">[APP]</text>
+        <rect fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="49" x="301.5" y="623.8438" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="35" x="308.5" y="645.377">[APP]</text>
+        <rect fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="57" x="511.5" y="82.6094" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="43" x="518.5" y="104.1426">Router</text>
+        <rect fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="57" x="511.5" y="623.8438" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="43" x="518.5" y="645.377">Router</text>
+        <rect fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="138" x="685" y="82.6094" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="124" x="692" y="104.1426">[QUERY HANDLER]</text>
+        <rect fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="138" x="685" y="623.8438" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="124" x="692" y="645.377">[QUERY HANDLER]</text>
+        <rect fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="53" x="882.5" y="82.6094" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="39" x="889.5" y="104.1426">DBMS</text>
+        <rect fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="53" x="882.5" y="623.8438" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="39" x="889.5" y="645.377">DBMS</text>
+        <rect fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="98" x="949.5" y="82.6094" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="84" x="956.5" y="104.1426">Google Maps</text>
+        <rect fill="#FEFECE" filter="url(#f1emg3h56pnj7b)" height="31.6094" style="stroke: #A80036; stroke-width: 1.5;" width="98" x="949.5" y="623.8438" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="84" x="956.5" y="645.377">Google Maps</text>
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="477.625" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="34" y="129.2188" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="477.625" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="323" y="129.2188" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="182.1094" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="537" y="333.6797" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="121.4063" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="751" y="364.0313" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="60.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="906" y="394.3828" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="30.3516" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="995.5" y="181.9219" />
+        <rect fill="#FFFFFF" filter="url(#f1emg3h56pnj7b)" height="60.7031" style="stroke: #A80036; stroke-width: 1.0;" width="10" x="995.5" y="515.7891" />
         <polygon fill="#A80036" points="311,147.5703,321,151.5703,311,155.5703,315,151.5703" style="stroke: #A80036; stroke-width: 1.0;" />
         <line style="stroke: #A80036; stroke-width: 1.0;" x1="44" x2="317" y1="151.5703" y2="151.5703" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="183" x="51" y="146.7139">showSafeAnalyticsQueryPage()</text>
-        <polygon fill="#A80036" points="55,177.9219,45,181.9219,55,185.9219,51,181.9219" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="49" x2="322" y1="181.9219" y2="181.9219" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="148" x="61" y="177.0654">SafeAnalytics query page</text>
-        <polygon fill="#A80036" points="311,208.2734,321,212.2734,311,216.2734,315,212.2734" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="44" x2="317" y1="212.2734" y2="212.2734" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="111" x="51" y="207.417">Geographical filters</text>
-        <polygon fill="#A80036" points="311,238.625,321,242.625,311,246.625,315,242.625" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="44" x2="317" y1="242.625" y2="242.625" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="63" x="51" y="237.7686">Time filters</text>
+        <polygon fill="#A80036" points="983.5,177.9219,993.5,181.9219,983.5,185.9219,987.5,181.9219" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="333" x2="989.5" y1="181.9219" y2="181.9219" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="86" x="340" y="177.0654">getQueryMap()</text>
+        <polygon fill="#A80036" points="344,208.2734,334,212.2734,344,216.2734,340,212.2734" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="338" x2="999.5" y1="212.2734" y2="212.2734" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="25" x="350" y="207.417">Map</text>
+        <polygon fill="#A80036" points="55,238.625,45,242.625,55,246.625,51,242.625" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="49" x2="322" y1="242.625" y2="242.625" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="148" x="61" y="237.7686">SafeAnalytics query page</text>
         <polygon fill="#A80036" points="311,268.9766,321,272.9766,311,276.9766,315,272.9766" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="44" x2="317" y1="272.9766" y2="272.9766" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="112" x="51" y="268.1201">License plate filters</text>
-        <polygon fill="#A80036" points="525,299.3281,535,303.3281,525,307.3281,529,303.3281" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="333" x2="531" y1="303.3281" y2="303.3281" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="180" x="340" y="298.4717">sendViolationQuery(filter:filters)</text>
-        <polygon fill="#A80036" points="739,329.6797,749,333.6797,739,337.6797,743,333.6797" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="547" x2="745" y1="333.6797" y2="333.6797" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="180" x="554" y="328.8232">sendViolationQuery(filter:filters)</text>
-        <polygon fill="#A80036" points="894,360.0313,904,364.0313,894,368.0313,898,364.0313" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="761" x2="900" y1="364.0313" y2="364.0313" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="121" x="768" y="359.1748">getData(query:query)</text>
-        <polygon fill="#A80036" points="772,390.3828,762,394.3828,772,398.3828,768,394.3828" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="766" x2="910" y1="394.3828" y2="394.3828" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="81" x="778" y="389.5264">Violations Info</text>
-        <polygon fill="#A80036" points="558,420.7344,548,424.7344,558,428.7344,554,424.7344" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="552" x2="755" y1="424.7344" y2="424.7344" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="81" x="564" y="419.8779">Violations Info</text>
-        <polygon fill="#A80036" points="344,451.0859,334,455.0859,344,459.0859,340,455.0859" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="338" x2="541" y1="455.0859" y2="455.0859" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="81" x="350" y="450.2295">Violations Info</text>
-        <polygon fill="#A80036" points="983.5,481.4375,993.5,485.4375,983.5,489.4375,987.5,485.4375" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0;" x1="333" x2="989.5" y1="485.4375" y2="485.4375" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="215" x="340" y="480.5811">displayDataOnMap(info:violationsInfo)</text>
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="44" x2="317" y1="272.9766" y2="272.9766" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="111" x="51" y="268.1201">Geographical filters</text>
+        <polygon fill="#A80036" points="311,299.3281,321,303.3281,311,307.3281,315,303.3281" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="44" x2="317" y1="303.3281" y2="303.3281" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="63" x="51" y="298.4717">Time filters</text>
+        <polygon fill="#A80036" points="311,329.6797,321,333.6797,311,337.6797,315,333.6797" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="44" x2="317" y1="333.6797" y2="333.6797" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="112" x="51" y="328.8232">License plate filters</text>
+        <polygon fill="#A80036" points="525,360.0313,535,364.0313,525,368.0313,529,364.0313" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="333" x2="531" y1="364.0313" y2="364.0313" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="180" x="340" y="359.1748">sendViolationQuery(filter:filters)</text>
+        <polygon fill="#A80036" points="739,390.3828,749,394.3828,739,398.3828,743,394.3828" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="547" x2="745" y1="394.3828" y2="394.3828" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="180" x="554" y="389.5264">sendViolationQuery(filter:filters)</text>
+        <polygon fill="#A80036" points="894,420.7344,904,424.7344,894,428.7344,898,424.7344" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="761" x2="900" y1="424.7344" y2="424.7344" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="121" x="768" y="419.8779">getData(query:query)</text>
+        <polygon fill="#A80036" points="772,451.0859,762,455.0859,772,459.0859,768,455.0859" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="766" x2="910" y1="455.0859" y2="455.0859" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="81" x="778" y="450.2295">Violations Info</text>
+        <polygon fill="#A80036" points="558,481.4375,548,485.4375,558,489.4375,554,485.4375" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="552" x2="755" y1="485.4375" y2="485.4375" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="81" x="564" y="480.5811">Violations Info</text>
         <polygon fill="#A80036" points="344,511.7891,334,515.7891,344,519.7891,340,515.7891" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="338" x2="999.5" y1="515.7891" y2="515.7891" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="25" x="350" y="510.9326">Map</text>
-        <polygon fill="#A80036" points="50,542.1406,40,546.1406,50,550.1406,46,546.1406" style="stroke: #A80036; stroke-width: 1.0;" />
-        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="44" x2="327" y1="546.1406" y2="546.1406" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="255" x="56" y="541.2842">displayViolationsOnMap(map:violationsMap)</text>
-        <!--MD5=[e64be5d52fd3158430baeb0066083694]
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="338" x2="541" y1="515.7891" y2="515.7891" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="81" x="350" y="510.9326">Violations Info</text>
+        <polygon fill="#A80036" points="983.5,542.1406,993.5,546.1406,983.5,550.1406,987.5,546.1406" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="333" x2="989.5" y1="546.1406" y2="546.1406" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="215" x="340" y="541.2842">displayDataOnMap(info:violationsInfo)</text>
+        <polygon fill="#A80036" points="344,572.4922,334,576.4922,344,580.4922,340,576.4922" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="338" x2="999.5" y1="576.4922" y2="576.4922" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="25" x="350" y="571.6357">Map</text>
+        <polygon fill="#A80036" points="50,602.8438,40,606.8438,50,610.8438,46,606.8438" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 2.0,2.0;" x1="44" x2="327" y1="606.8438" y2="606.8438" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="255" x="56" y="601.9873">displayViolationsOnMap(map:violationsMap)</text>
+        <!--MD5=[e661ec4eab8f45136c859e053408bb65]
 @startuml
 
 title Retrieve Violations Info
 
 actor Authority as auth
 participant "[APP]" as app
-participant "[Router]" as rout
+participant "Router" as rout
 participant "[QUERY HANDLER]" as queryh
 participant "DBMS" as db
 participant "Google Maps" as google
@@ -84,6 +90,10 @@ activate auth
 activate app
 
   auth -> app : showSafeAnalyticsQueryPage()
+  app -> google : getQueryMap()
+  activate google
+    google - -> app : Map
+  deactivate google
   app - -> auth : SafeAnalytics query page
   auth -> app : Geographical filters
   auth -> app : Time filters
