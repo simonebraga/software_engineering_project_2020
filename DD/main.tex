@@ -212,19 +212,22 @@ The design is thought to satisfy the requirements shown in the RASD. To clarify 
   	\textbf{[APP]} is aware of the type of user and  allows municipality users to access SafeSuggestions' functionalities through \textbf{[ROUTER]}. 
 \end{itemize}
 
-\textbf{G5) SafeStreets must generate traffic tickets forwarding
-reliable data to MTS.}
+%G5
 
 \begin{itemize}
 \item
   \textbf{R15} When the users send a violation report, its integrity is
-  checked.
-\item
+  checked. \\
   \textbf{R16} If the integrity check is not successful, the violation
   report is discarded.
+  \subitem
+    %TODO is the camera check enough? add other checks?
+  
 \item
   \textbf{R17} SafeStreets must forward every new stored violation
   report to MTS to generate traffic tickets.
+  \subitem
+    \textbf{[MTS MANAGER]} receives the data about the new violations from \textbf{[REPORT MANAGER]} and forwards it to [MTS]
 \end{itemize}
 
 \textbf{G6) SafeTickets must allow authorities to get statistics on
