@@ -128,6 +128,8 @@
 \section{Requirements traceability}
 The design is thought to satisfy the requirements shown in the RASD. To clarify the motivations that led to the definitions of the components here are reported the links between requirements and components.
 
+%G1
+
 \begin{itemize}
 \item
   \textbf{R1} When a picture is taken using SafeReports, a new violation
@@ -169,26 +171,26 @@ The design is thought to satisfy the requirements shown in the RASD. To clarify 
   
 \end{itemize}
 
-\textbf{G2) SafeAnalytics must allow common users to get anonymous data
-on violations.}
+%G2
 
 \begin{itemize}
 \item
   \textbf{R9} SafeAnalytics allows common users to get data about
   violations selecting zone, time and type of violation.
+  \subitem	
+	\textbf{[APP]} is aware of the type of user who is interacting with the system (thanks to \textbf{[USER MANAGER]}) and allows it to send (through the [ROUTER]) just the allowed filters to the \textbf{[QUERY HANDLER]}.
+  
 \item
   \textbf{R10} SafeAnalytics anonymizes information before sending it to
-  common users.
-\end{itemize}
-
-\textbf{G3) SafeAnalytics must allow authorities to access to all the
-data without restrictions.}
-
-\begin{itemize}
-\item
+  common users.\\
+%G3
   \textbf{R11} SafeAnalytics allows authorities to get all the information
   stored by SafeStreets.
+  \subitem
+    \textbf{[QUERY HANDLER]} deals with the data received and filters it for the common user, while letting all the informations available for the authorities.
+
 \end{itemize}
+
 
 \textbf{G4) SafeSuggestions must allow municipality users to get
 suggestions on possible interventions.}
