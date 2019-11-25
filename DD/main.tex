@@ -191,20 +191,25 @@ The design is thought to satisfy the requirements shown in the RASD. To clarify 
 
 \end{itemize}
 
-
-\textbf{G4) SafeSuggestions must allow municipality users to get
-suggestions on possible interventions.}
-
+%G4
 \begin{itemize}
 \item
   \textbf{R12} SafeStreets must store data about accidents provided by
   the municipality when available.
+  \subitem
+    \textbf{[INFO UPDATER]} manages the periodic update of the database adding the data acquired from the [MUNICIPALITY].
+    
 \item
   \textbf{R13} SafeStreets must analyze collected data crossed with data
   from the municipality to identify possible interventions.
+  \subitem
+    \textbf{[QUERY MANAGER]} gets the suggestions related to the user's query from \textbf{[DBMS]} %TODO data warehouse...
+    
 \item
   \textbf{R14} SafeSuggestions allows municipality users to get
   suggestions provided by SafeStreets.
+  \subitem
+  	\textbf{[APP]} is aware of the type of user and  allows municipality users to access SafeSuggestions' functionalities through \textbf{[ROUTER]}. 
 \end{itemize}
 
 \textbf{G5) SafeStreets must generate traffic tickets forwarding
