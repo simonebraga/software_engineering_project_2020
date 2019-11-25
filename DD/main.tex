@@ -230,19 +230,22 @@ The design is thought to satisfy the requirements shown in the RASD. To clarify 
     \textbf{[MTS MANAGER]} receives the data about the new violations from \textbf{[REPORT MANAGER]} and forwards it to [MTS]
 \end{itemize}
 
-\textbf{G6) SafeTickets must allow authorities to get statistics on
-issued tickets.}
+%G6
 
 \begin{itemize}
 \item
   \textbf{R18} When a new ticket is generated using MTS, ticket-related
-  data are stored by SafeStreets.
-\item
+  data are stored by SafeStreets.\\
   \textbf{R19} SafeStreets must build statistics from stored data about
   issued tickets.
+  \subitem
+    The link between \textbf{[MTS MANAGER]} and \textbf{[DBMS]} shows that the ticket data are stored in the database. The statistics are built inside the [DATA WAREHOUSE]. %TODO this is not described in the schema right now
+
 \item
   \textbf{R20} SafeTickets allows authorities to get information and
   statistics on issued tickets.
+  \subitem
+    Since the data about issued tickets is saved in the database, authorities can access it as they do for the violations data.
 \end{itemize}
 
 
