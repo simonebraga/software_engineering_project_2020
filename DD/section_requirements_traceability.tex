@@ -79,7 +79,7 @@ The design is thought to satisfy the requirements shown in the RASD. To clarify 
   \textbf{R13} SafeStreets must analyze collected data crossed with data
   from the municipality to identify possible interventions.
   \subitem
-    \textbf{QueryManager} gets the suggestions related to the user's query from \textbf{DBMS} %TODO data warehouse...
+    \textbf{QueryManager} gets the suggestions related to the user's query from \textbf{DBMS}, in particular {Datawarehouse}.
     
 \item
   \textbf{R14} SafeSuggestions allows municipality users to get
@@ -123,6 +123,26 @@ The design is thought to satisfy the requirements shown in the RASD. To clarify 
   \subitem
     Since the data about issued tickets is saved in the database, authorities can access it as they do for the violations data.
 \end{itemize}
+
+%Non functional
+
+\item
+  The system must be able to serve a great number of users reporting a
+  violation simultaneously.
+  \subitem
+  	%TODO
+\item
+  SafeAnalytics must be able to provide the data requested by both
+  common users and authorities in less than 3 seconds, to provide the
+  best experience.
+  \subitem 
+  	%TODO
+\item
+  The data about accidents provided by the municipality must be checked
+  for updates at least every 5 minutes, to provide reliable and always
+  updated suggestions.
+  \subitem
+    This can be achieved by setting the correct time T to activate the loop described in the Accident Updater sequence diagram, triggering \textbf{InfoUpdater} as frequently as needed.
 
 
 \end{document}
