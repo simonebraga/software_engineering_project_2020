@@ -130,19 +130,19 @@ The design is thought to satisfy the requirements shown in the RASD. To clarify 
   The system must be able to serve a great number of users reporting a
   violation simultaneously.
   \subitem
-  	%TODO
+  	The database exploits an OLTP policy, that allows to manage a large number of transactions (the concurrency is internally handled by the DBMS).
 \item
   SafeAnalytics must be able to provide the data requested by both
   common users and authorities in less than 3 seconds, to provide the
   best experience.
   \subitem 
-  	%TODO
+  	The data warehouse pre-processes the data according to an OLAP policy, in order to speed up the queries.
 \item
   The data about accidents provided by the municipality must be checked
   for updates at least every 5 minutes, to provide reliable and always
   updated suggestions.
   \subitem
-    This can be achieved by setting the correct time T to activate the loop described in the Accident Updater sequence diagram, triggering \textbf{InfoUpdater} as frequently as needed.
+    This can be achieved by setting the correct time T to activate the loop described in the AccidentUpdater sequence diagram, triggering \textbf{InfoUpdater} as frequently as needed.
 \end{itemize}
 
 \end{document}
