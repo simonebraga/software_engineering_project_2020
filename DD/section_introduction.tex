@@ -1,0 +1,168 @@
+\documentclass[./main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Purpose}
+
+\textbf{SafeStreets} is a crowd-sourced application that intends to
+provide users with the possibility to notify authorities when traffic
+violations occur. The main target of the application are violations that
+can be easily captured by a camera (like, for instance, parking
+violations). SafeStreets intends also to provide users with the
+possibility to mine the stored information with different levels of
+visibility. Moreover, the application must cross the collected data with
+information coming from the municipality to provide suggestions on
+possible interventions to decrease the incidence of violations and
+accidents. In the end, the application must forward data about
+violations to generate traffic tickets, and must allow authorities to
+get statistics on issued tickets.
+
+\subsection{Scope}
+
+The services of SafeStreets must be developed through a mobile application.
+Everyone can use the mobile application, whose behavior is different depending
+on the user's privileges. Excluding the secondary actors (that interact
+directly with the back-end of the application with the purpose to exploit the
+front-end services), 3 types of user can be identified:
+
+\begin{itemize}
+	\item Common user
+	\item Authority
+	\item Municipality user
+\end{itemize}
+
+SafeStreets must provide common users with the possibility to notify a traffic
+violation by taking a picture. Then the data about the violation is sent to the
+application server that checks its integrity before storing it in a database.
+Common users can access the data stored in the database with some restrictions.
+SafeStreets provides them with the possibility to select some filters for
+querying the data, and with a proper graphic interface to visualize the queried
+data.\medskip\\
+Authorities are provided with the possibility to query without restrictions the
+data stored by SafeStreets. The application server must use a service
+responsible for the generation of traffic tickets. The results of the ticket
+generations are stored by SafeStreets and analyzed with the purpose to provide
+in-depth statistics. To do so, SafeStreets relies on a data warehousing system
+that gets the information from the primary database and analyzes it with data
+mining techniques. Authorities must be provided with the proper interfaces for
+this particular type of query.\medskip\\
+Municipality users must be provided with the possibility to get suggestions on
+possible interventions to reduce the incidence of accidents and violations. To
+do so, SafeStreets relies on the data warehousing system described so far, that
+must apply data analysis techniques to identify possible solutions. SafeStreets
+can access information about accidents provided by the municipality to identify
+more precise interventions. Data from the municipality must be periodically
+checked for updates.
+
+\subsection{Definitions and acronyms}
+
+\begin{itemize}
+\item
+  \textbf{User}\\
+  The consumer of the application. It includes common users, authorities
+  and municipality users.
+\item
+  \textbf{Common user}\\
+  The user type that everyone can sign up as. It does not require any
+  kind of verification.
+\item
+  \textbf{Authority}\\
+  The user type that authorities can get. It requires the verification
+  of an activation code.
+\item
+  \textbf{Municipality user}\\
+  The user type that municipal employees can get. It requires the
+  verification of an activation code.
+\textbf{Activation code}\\
+  The code to be provided during the registration to get special permits
+  on the account.
+\item
+  \textbf{Municipality Tickets Service (MTS)}\\
+  Service offered by the municipality to generate traffic tickets from
+  information about the violations.
+\item
+  \textbf{Optical Character Recognition (OCR)}\\
+  Software that converts text scanned from a photo in a machine-encoded
+  text.
+\item
+  \textbf{Query interface}\\
+  The interface provided to the users to select some filters when
+  requesting data.
+\item
+  \textbf{Application Programming Interface (API)}\\
+  An interface or communication protocol between client and server
+  intended to simplify the building of client-side software.
+\item
+  \textbf{Extract Transform Load (ETL)}\\
+  The general procedure of copying data from one or more sources into a
+  destination system which represents the data differently from the
+  sources or in a different context than the sources.
+\item
+  \textbf{User Experience (UX)}\\
+  The person's emotions and attitudes about using a particular product, system
+  or service.
+\item
+  \textbf{Database Management System (DBMS)}\\
+  A software system that enables users to define, create, maintain and
+  control access to the database
+\item
+  \textbf{Online Transaction Processing (OLTP)}\\
+  The approach used to handle a large number of transactions.
+\item
+  \textbf{Online Analytical Processing (OLTP)}\\
+  The approach used to answer multi-dimensional analytical queries.
+\end{itemize}
+
+\subsection{Revision history}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Version & Release date & Description\tabularnewline
+\hline
+1.0 & December 9, 2019 & First release\tabularnewline
+%TODO Add new information for every new release
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Document Structure}
+
+\textbf{Section \ref{introduction}} contains a summary of the features of the
+application and a description of the purpose of this document. The description
+is slightly different from the one provided in the RASD, as it captures a more
+practical point of view of the application. It also contains all the necessary
+elements for the comprehension of this document.
+\medskip\\
+\textbf{Section \ref{architectural_design}} is the core of the document. It
+contains all the most important notions for the developing process of the
+application. It includes the description of the design architecture and the
+analysis of the chosen design patterns. Every subsection offers a different
+point of view of the application: in this sense, it can be considered as a
+"framework" where it is possible to access information with different levels of
+granularity.
+\medskip\\
+\textbf{Section \ref{user_interface_design}} contains a large set of mockups
+that capture all the important aspects of the communication between the user
+and the application. Moreover, this section contains a formal description of
+the UX flow, which was not included in the previous section because it is not
+strictly part of the system architecture.
+\medskip\\
+\textbf{Section \ref{requirements_traceability}} contains a formal description
+of the mapping between the requirements and the components responsible for
+their exploitation.
+\medskip\\
+\textbf{Section \ref{implementation_integration_test_plan}} contains a
+description of how the project should be developed. It is a useful reference
+for the optimization of the developing process as it contains a forecast on how
+much the developing of every component is onerous. It also contains a plan for
+the testing and integration process.
+\medskip\\
+\textbf{Section \ref{effort_spent}} includes information about the number of
+hours each group member has worked for this document.
+\medskip\\
+\textbf{Section \ref{references}} includes the references to the tools used to
+draw up this document.
+
+\end{document}
