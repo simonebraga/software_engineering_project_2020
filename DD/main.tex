@@ -18,11 +18,7 @@
 
 \begin{document}
 
-%----------------------------------------------------------------------------------------
-%	TITLE PAGE
-%----------------------------------------------------------------------------------------
 \import{}{section_first_page}
-%----------------------------------------------------------------------------------------
 
 \newpage
 \pagenumbering{roman}
@@ -32,20 +28,22 @@
 \newpage
 \pagenumbering{arabic}
 
-\section{Introduction}
+\section{Introduction}\label{introduction}
 
-\subsection{Purpose}
-\subsection{Scope}
-\subsection{Definitions, Acronyms, Abbreviations}
-\subsection{Revision history}
-\subsection{Reference Documents}
-\subsection{Document Structure}
+\import{}{section_introduction}
 
 \newpage
-\section{Architectural design}
+
+\section{Architectural design}\label{architectural_design}
 
 \subsection{Overview}
+
+\import{}{subsection_overview}
+
 \subsection{Component view}
+
+\import{}{subsection_component_view}
+
 \subsection{Deployment view}
 \subsection{Runtime view}
 \subsection{Component interfaces}
@@ -54,18 +52,25 @@
 \subsection{Other design decisions}
 
 \newpage
-\section{User interface design}
+
+\section{User interface design}\label{user_interface_design}
 
 \newpage
-\section{Requirements traceability}
+
+\section{Requirements traceability}\label{requirements_traceability}
+
 \import{}{section_requirements_traceability}
 
+\newpage
 
+\section{Implementation, integration and test plan}\label{implementation_integration_test_plan}
 
 \newpage
-\section{Implementation, integration and test plan}
-\newpage
-\section{Effort spent}
-\section{References}
+
+\section{Effort spent}\label{effort_spent}
+
+\section{References}\label{references}
+
+\import{}{section_references}
 
 \end{document}
