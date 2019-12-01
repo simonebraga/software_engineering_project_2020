@@ -1,0 +1,22 @@
+\documentclass[./main.tex]{subfiles}
+\begin{document}
+
+Testing will be done using a bottom-up approach. Every time a new component is implemented it must be tested with unit tests. This approach allows us to have single components that properly work. During the testing process, it might be necessary to develop stub or drivers that simulate the behavior of subcomponents that are not implemented yet. The entire testing process follows the famous V model. During the process, we test different parts of our system such as :
+
+\begin{enumerate}
+\item Single components or modules
+\item Groups of related components
+\item Subsystems
+\item Entire system
+\end{enumerate}
+
+
+\subsubsection{Unit test}
+The single components are tested through the unit tests. The most used framework for unit testing is the well-known Junit test framework. Every public method of every class must be properly tested. The tests should cover all the edge cases for every functionality exposed by the component. The tests are written after the component is properly implemented to avoid the massive implementation of stubs typical of the test-driven approach.
+
+\subsubsection{Integration test}
+After testing all the single components, it is necessary to work on integration testing. The integration testing is made on groups of components or subsystems. Assuming the single components correctly working the main focus of the integration testing is the testing of the interfaces between the different modules since the dynamic behavior of the subsystems is encapsulated in the interfaces.\medskip\\
+After testing the subsystems the entire system needs to be tested. We are going to test the integration of the different functionalities subsystems (SafeReports, SafeSuggestions, SafeTickets, SafeAnalytics) with all the different users that our application handles. With the entire integration testing, we need to discover the limits of our system such as the throughput, the response time and all the non-functional requirements already described in the RASD. After having a good correspondence between our goals and the developed systems we can release a beta version of the application. We let a small number of users try the beta version to test the robustness of the system and to have useful feedback for the final release.
+
+
+\end{document}

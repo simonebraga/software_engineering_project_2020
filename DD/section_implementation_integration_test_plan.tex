@@ -2,6 +2,8 @@
 
 \begin{document}
 
+This section contains the guidelines for the implementation, the testing and the integration for the development teams. Before diving into the specific implementation order it is useful to have an abstract view on the different functionalities available for the SafeStreets' customers. The table above shows for every functionality the importance for the customer and the implementation difficulty. The classification of features based on the importance and the difficulty allows us to give priority to some functionalities. Therefore, the developers can focus on the high priority functionalities and if necessary postpone the others.
+
 \begin{table}[H]
 \centering
 \begin{tabularx}{\textwidth}{|X|l|l|}
@@ -24,9 +26,17 @@ Municipality users must be allowed to get suggestions on possible interventions
 \hline
 \end{tabularx}
 \end{table}
+ 
+SafeStreets offers different services but the core services are the ones offered by SafeReports and SafeAnalytics. This explain the high importance for the first three features in the table. All the other functionalities are important but not as much as the core functionalities.
+Almost all the SafeStreets features are simple queries. The implementation is not that heavy. However, there are two services that requires more logic.
+\\SafeReports must stores the reports sent by the users appliyng a complex logic. Since this functionality involves many subcomponents the implementation becomes trickier. The other complex functionality is SafeSuggestions. SafeSuggestions is consider a high difficulty feature because in order to provide the results for the query a complex data mining process must be implemented. 
+The sign-up and the login process are not the core of our application and they are an easy feature to implement. 
 
 \subsection{Component integration}
 
 \import{}{subsection_component_integration}
+
+\subsection{Test plan}
+\import{}{subsection_test_plan}
 
 \end{document}
