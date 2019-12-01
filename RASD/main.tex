@@ -4,7 +4,7 @@
 
 \usepackage{graphicx,float}
 \graphicspath{ {./resources/} }
-\newcommand{\mockupheight}{0.4\textheight}
+\newcommand{\mockupsize}{0.36\textwidth}
 
 \usepackage{tabularx,enumitem}
 \usepackage{booktabs}
@@ -742,40 +742,49 @@ The following mockups are made to give an idea of how the user
 interfaces should look like after the developing process. The mockups
 represent the core services of SafeStreets focusing on the interaction
 between the users and the system.
-\bigskip\bigskip
-\begin{figure}[H]
-\centering
-\includegraphics[height=\mockupheight]{mockup/choose_user}
-\caption{The choice between different types of users.}
-\end{figure}
+
+\vfill
 
 \begin{figure}[H]
-\centering
-\includegraphics[height=\mockupheight]{mockup/sign_up}
-\caption{The sign-up process for the municipality user.}
+    \centering
+    \begin{minipage}[t]{\mockupsize}
+        \includegraphics[width=\textwidth]{mockup/choose_user}
+        \caption{\protect\raggedright The choice between different types of users.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{\mockupsize}
+        \includegraphics[width=\textwidth]{mockup/sign_up}
+        \caption{\protect\raggedright The sign-up process for the municipality user.}
+    \end{minipage}
 \end{figure}
 
+\vfill
+\newpage
+
 \begin{figure}[H]
-\centering
-\includegraphics[height=\mockupheight]{mockup/select_violation}
-\caption{Selection of the type of violation after a user took a
+    \centering
+    \begin{minipage}[t]{\mockupsize}
+        \includegraphics[width=\textwidth]{mockup/select_violation}
+        \caption{Selection of the type of violation after a user took a
 picture.}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{\mockupsize}
+        \includegraphics[width=\textwidth]{mockup/get_violations}
+        \caption{The result of a query for violations made by an
+authority.}
+    \end{minipage}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[height=\mockupheight]{mockup/get_violations}
-\caption{The result of a query for violations made by an
-authority. Authorities can see all the data stored and can click on a
-specific violation for more information.}
+    \centering
+    \begin{minipage}[t]{\mockupsize}
+        \includegraphics[width=\textwidth]{mockup/get_suggestions}
+        \caption{The result of a query using SafeSuggestions.}
+    \end{minipage}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[height=\mockupheight]{mockup/get_suggestions}
-\caption{The result of a query using SafeSuggestions. For more
-information, the user needs to click on the selected suggestion.}
-\end{figure}
+\newpage
 
 \subsubsection{Hardware Interfaces}
 
