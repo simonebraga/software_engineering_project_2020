@@ -16,7 +16,7 @@ It is relatively easy to add web application clients because both web and hybrid
 \subsubsection{Data architecture}
 
 The implementation of the database is not the focus of this document. However, it is important to list the main characteristic of the database to have a full understanding of the interaction between the application server and the DBMS.
-SafeStreets must handle simple and complex historical queries. Therefore, we need to have a separation of the information into a database and a data warehouse.\\\\
+SafeStreets must handle simple and complex historical queries. Therefore, we need to have a separation of the information into a database and a data warehouse.\medskip\\
 \textbf{The database} is in charge of simple and frequent queries like the SafeAnalytics queries. We adopted a relational database since the relational model has a series of advantages:
 \begin{itemize}
 \item Easy to use.
@@ -26,6 +26,6 @@ SafeStreets must handle simple and complex historical queries. Therefore, we nee
 \end{itemize} 
 
 The relational database adopts an OLTP policy that consists of a large number of short and online queries.  OLTP focuses on the integrity of the data in multi-access environments. The efficiency of an OLTP system is defined as the number of transactions per second (throughput). The throughput is very important since SafeStreets must handle queries from a huge number of users and it must reply in less than 3 seconds.
-\\\\
+\medskip\\
 \textbf{The data warehouse} instead, must process historical data and must handle complex queries like the SafeSuggetions queries. We adopted a data warehouse since SafeStreets must create new suggestions from the violation and accident reports. The creation of new suggestions is a complex process that involves AI and data mining techniques (clustering, association rule learning, etc). The data warehouse is the sine qua non for mining the information and producing the expected results. The source data of the data warehouse comes from the relational database described before but it is not difficult to extend the source of information even to external heterogeneous data sources. The incoming data is pre-processed by the ETL, a module that extracts transforms and loads the data into the data warehouse. The ETL module is responsible for integrating all the heterogeneous data sources. The data warehouse uses an OLAP policy that consists of small but complex queries from aggregated and historical data. The efficiency of an OLAP system is defined as the response time.
 \end{document}
