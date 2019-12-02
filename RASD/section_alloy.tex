@@ -1,0 +1,95 @@
+\documentclass[./main.tex]{subfiles}
+
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily,
+breaklines = true,
+tabsize=2
+}
+
+%https://github.com/Angtrim/alloy-latex-highlighting
+\usepackage[dvipsnames]{xcolor}
+\usepackage{alloy}
+
+\begin{document}
+
+\lstinputlisting[language=alloy]{resources/alloy/model.als}
+
+\newpage
+
+\lstinputlisting[language=alloy]{resources/alloy/world_no_confirmation.als}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{alloy/world_no_confirmation}
+\caption{This world proves the consistency of the model when the violation
+report is refused by the user and by the OCR software.}
+\end{figure}
+
+\newpage
+
+\lstinputlisting[language=alloy]{resources/alloy/world_tickets_and_suggestions.als}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{alloy/world_tickets_and_suggestions}
+\caption{This world proves the consistency of the model when a violation
+report is stored and a traffic ticket is generated.}
+\end{figure}
+
+\newpage
+
+\lstinputlisting[language=alloy]{resources/alloy/world_accepted_violation.als}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{alloy/world_accepted_violation}
+\caption{This world proves the consistency of the model when two violation
+reports are stored, and no traffic ticket is generated.}
+\end{figure}
+
+\newpage
+
+\lstinputlisting[language=alloy]{resources/alloy/world_report_query.als}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{alloy/world_report_query}
+\caption{This world proves the consistency of the model when a common user
+makes a query on stored data.}
+\end{figure}
+
+\newpage
+
+\lstinputlisting[language=alloy]{resources/alloy/world_super_report_query.als}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{alloy/world_super_report_query}
+\caption{This world proves the consistency of the model when an authority
+makes a query on stored data.}
+\end{figure}
+
+\newpage
+
+\lstinputlisting[language=alloy]{resources/alloy/world_ticket_query.als}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{alloy/world_ticket_query}
+\caption{This world proves the consistency of the model when an authority
+makes a query on data about issued tickets.}
+\end{figure}
+
+\newpage
+
+\lstinputlisting[language=alloy]{resources/alloy/world_suggestion_query.als}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{alloy/world_suggestion_query}
+\caption{This world proves the consistency of the model when a
+municipality user makes a query to get suggestions.}
+\end{figure}
+
+\end{document}
