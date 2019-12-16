@@ -11,5 +11,5 @@ The purpose is to develop in a group an assigned project, from the requirement a
 
 The documentation consists of two documents
 
-* [Requirements Analysis and Specification Document](https://github.com/simonebraga/BragaCalderonFavaro/blob/master/DeliveryFolder/RASD1.pdf)
-* [Design Document]()
+* [Requirements Analysis and Specification Document](https://github.com/simonebraga/BragaCalderonFavaro/blob/master/DeliveryFolder/RASD2.pdf)
+* [Design Document](https://github.com/simonebraga/BragaCalderonFavaro/blob/master/DeliveryFolder/DD1.pdf)
