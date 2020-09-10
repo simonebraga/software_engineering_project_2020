@@ -1,4 +1,4 @@
-# Software Engineering 2 (2019)
+# Software Engineering 2 (A.A. 2019-2020)
 
 The development of this project is part of the software engineering 2 course at the Polytechnic University of Milan.
 The purpose is to develop in a group an assigned project, from the requirement analysis to the implementation, following the software engineering principles.
